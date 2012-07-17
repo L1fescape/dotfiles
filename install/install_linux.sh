@@ -1,11 +1,7 @@
 echo "Deleting the old files"
 rm ~/.vimrc
-rm ~/.zshrc
-rm ~/.vim
-rm ~/.gvimrc
+rm -rf ~/.vim
 rm ~/.gitconfig
-rm ~/.gitignore
-rm ~/.tmux.conf
 
 echo "Symlinking files"
 ln -s ../vim/.vimrc ~/.vimrc
