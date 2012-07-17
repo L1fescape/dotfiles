@@ -1,0 +1,22 @@
+[user]
+	name = Andrew Kennedy
+	email = akennedy2292@gmail.com
+[github]
+	user = L1fescape
+  token = 
+[core]
+	excludesfile = .global_ignore
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  type = cat-file -t
+  dump = cat-file -p
+[diff]
+  tool = vimdiff
+[merge]
+  tool = vim
+[mergetool "vim"]
+  cmd = vim \"+Gdiff\" $MERGED
