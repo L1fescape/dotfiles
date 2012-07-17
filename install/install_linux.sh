@@ -4,8 +4,8 @@ rm -rf ~/.vim
 rm ~/.gitconfig
 
 echo "Symlinking files"
-ln -s ../vim/.vimrc ~/.vimrc
-ln -s ../vim/.vim ~/.vim
-ln -s ../github/.gitconfig ~/.gitconfig
+ln -s ~/dotfiles/.vimrc ~/.vimrc
+ln -s ~/dotfiles/.vim ~/.vim
+ln -s ~/dotfiles/github/.gitconfig ~/.gitconfig
 
 echo "All done."
