@@ -8,9 +8,8 @@ rm ~/.gitignore
 rm ~/.tmux.conf
 
 echo "Symlinking files"
-ln -s ~/prog/dotfiles/.vimrc ~/.vimrc
-ln -s ~/prog/dotfiles/.zshrc ~/.zshrc
-ln -s ~/prog/dotfiles/.vim ~/.vim
-ln -s ~/prog/dotfiles/.gitconfig ~/.gitconfig
+ln -s ../vim/.vimrc ~/.vimrc
+ln -s ../vim/.vim ~/.vim
+ln -s ../github/.gitconfig ~/.gitconfig
 
 echo "All done."
