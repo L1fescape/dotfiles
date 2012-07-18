@@ -8,6 +8,7 @@ ZSH_THEME="andrewk"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+alias http="http"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
