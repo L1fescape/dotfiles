@@ -5,14 +5,14 @@ read zsh
 
 case "$zsh" in
   "y"|"Y"|"yes"|"Yes"|"YES")
-    zsh = 1
+    $zsh = 1
     ;;
   *)
     echo "Do you want to install zsh? [ Y/n ]"
     read install_zsh
     case "$install_zsh" in
       "n"|"N"|"no"|"No"|"NO")
-        zsh = 0
+        $zsh = 0
         ;;
       *)
         wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
@@ -24,7 +24,7 @@ case "$zsh" in
            *)
               chsh -s /bin/zsh
         esac
-        zsh = 1
+        $zsh = 1
     esac
 esac
 
