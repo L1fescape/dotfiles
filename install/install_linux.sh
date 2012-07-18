@@ -1,24 +1,32 @@
 #!/bin/sh
 
-echo "Is zsh installed? [ enter 1 for yes ]"
+echo "Is zsh installed? [ y/N ]"
 read zsh
 
-if [ !"$zsh" ]
-then
-  echo "Do you want to install zsh? [ enter 1 for yes ]"
-  read install_zsh
-  if [ "$install_zsh" ]
-  then
-    wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
-    echo "Set zsh as default shell? [ enter 1 for yes ]"
-    read zsh_default
-    if [ "$zsh_default" ]
-    then
-      chsh -s /bin/zsh
-    fi
-    $zsh = 1
-  fi
-fi
+case "$zsh" in
+  "y"|"Y"|"yes"|"Yes"|"YES")
+    zsh = 1
+    break
+  *)
+    echo "Do you want to install zsh? [ Y/n ]"
+    read install_zsh
+    case "$install_zsh" in
+      "n"|"N"|"no"|"No"|"NO")
+        zsh = 0
+        break
+      *)
+        wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+        echo "Set zsh as default shell? [ Y/n ]"
+        read zsh_default
+        case "$zsh_default" in
+          "n"|"N"|"no"|"No"|"NO")
+            break
+           *)
+              chsh -s /bin/zsh
+        esac
+        zsh = 1
+    esac
+esac
 
 
 echo "Deleting the old files"
