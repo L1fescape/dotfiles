@@ -6,21 +6,21 @@ read zsh
 case "$zsh" in
   "y"|"Y"|"yes"|"Yes"|"YES")
     zsh = 1
-    break
+    ;;
   *)
     echo "Do you want to install zsh? [ Y/n ]"
     read install_zsh
     case "$install_zsh" in
       "n"|"N"|"no"|"No"|"NO")
         zsh = 0
-        break
+        ;;
       *)
         wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
         echo "Set zsh as default shell? [ Y/n ]"
         read zsh_default
         case "$zsh_default" in
           "n"|"N"|"no"|"No"|"NO")
-            break
+            ;;
            *)
               chsh -s /bin/zsh
         esac
