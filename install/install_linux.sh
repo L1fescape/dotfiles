@@ -3,6 +3,23 @@
 echo "Is zsh installed? [ enter 1 for yes ]"
 read zsh
 
+if [ !"$zsh" ]
+then
+  echo "Do you want to install zsh? [ enter 1 for yes ]"
+  read install_zsh
+  if [ "$install_zsh" ]
+  then
+    wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+    echo "Set zsh as default shell? [ enter 1 for yes ]"
+    read zsh_default
+    if [ "$zsh_default" ]
+    then
+      chsh -s /bin/zsh
+    fi
+    $zsh = 1
+  fi
+fi
+
 
 echo "Deleting the old files"
 rm ~/.bashrc
