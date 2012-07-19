@@ -9,7 +9,7 @@ set nowrap                          " don't wrap lines
 set tabstop=2 shiftwidth=2          " a tab is two spaces
 set backspace=indent,eol,start      " backspace through everything in insert mode
 set softtabstop=2                   " respect hard tabs
-set noexpandtab											" don't convert tabs to spaces
+set noexpandtab                     " don't convert tabs to spaces
 
 " Numbers
 set number                          " Show numbers
