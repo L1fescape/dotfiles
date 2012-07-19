@@ -1,10 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/var/www/akenn/bigband/server'
-let g:netrw_dirhist_2='/var/www/akenn/games/server'
-let g:netrw_dirhist_3='/var/www/akenn/bigband/server'
-let g:netrw_dirhist_4='/home/andrewk/.oh-my-zsh'
-let g:netrw_dirhist_5='/home/andrewk/.byobu'
-let g:netrw_dirhist_6='/home/andrewk/.vim'
-let g:netrw_dirhist_7='/home/andrewk/.oh-my-zsh'
-let g:netrw_dirhist_8='/home/andrewk/prog/nowchat/chat'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/home/andrewk/dotfiles/vim/.vim/bundle/gundo.vim'
