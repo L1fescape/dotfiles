@@ -15,22 +15,22 @@ case "$zsh" in
         zsh=0
         ;;
       *)
-				echo "Operating System [ d:debian, r:redhat, o:osx ]"
-				read os
-				case "$os" in
-					"d")
-				    sudo apt-get install zsh
-					  ;;
-					"r")
-					  sudo yum install zsh
-						;;
-				  "o")
-						# code for osx install here
-						;;
-					*)
-						sudo apt-get install zsh
-						;;
-				esac
+        echo "Operating System [ d:debian, r:redhat, o:osx ]"
+        read os
+        case "$os" in
+          "d")
+            sudo apt-get install zsh
+            ;;
+          "r")
+            sudo yum install zsh
+            ;;
+          "o")
+            # code for osx install here
+            ;;
+          *)
+            sudo apt-get install zsh
+            ;;
+        esac
         wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
         echo "Set zsh as default shell? [ Y/n ]"
         read zsh_default
