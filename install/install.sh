@@ -68,9 +68,11 @@ then
   ln -s ~/dotfiles/zsh/themes/andrewk.zsh-theme ~/.oh-my-zsh/themes/andrewk.zsh-theme
 fi
 
-echo "Cloning Git Repos"
-git clone http://github.com/sjl/gundo.vim.git ~/.vim/bundle/gundo.vim
 
+echo "Cloning git repos for vim plugins"
+git clone http://github.com/sjl/gundo.vim.git ~/.vim/bundle/gundo
+git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
+git clone https://github.com/Lokaltog/vim-powerline.git ~/.vim/bundle/vim-powerline
 
 
 echo "All done."
