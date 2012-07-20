@@ -15,7 +15,22 @@ case "$zsh" in
         zsh=0
         ;;
       *)
-        sudo yum install zsh
+				echo "Operating System [ d:debian, r:redhat, o:osx ]"
+				read os
+				case "$os" in
+					"d")
+				    sudo apt-get install zsh
+					  ;;
+					"r")
+					  sudo yum install zsh
+						;;
+				  "o")
+						# code for osx install here
+						;;
+					*)
+						sudo apt-get install zsh
+						;;
+				esac
         wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
         echo "Set zsh as default shell? [ Y/n ]"
         read zsh_default
@@ -52,6 +67,10 @@ then
   ln -s ~/dotfiles/zsh/.zshrc ~/.zshrc
   ln -s ~/dotfiles/zsh/themes/andrewk.zsh-theme ~/.oh-my-zsh/themes/andrewk.zsh-theme
 fi
+
+echo "Cloning Git Repos"
+git clone http://github.com/sjl/gundo.vim.git ~/.vim/bundle/gundo.vim
+
 
 
 echo "All done."
