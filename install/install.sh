@@ -31,7 +31,6 @@ case "$zsh" in
             sudo apt-get install zsh
             ;;
         esac
-        wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
         echo "Set zsh as default shell? [ Y/n ]"
         read zsh_default
         case "$zsh_default" in
@@ -42,6 +41,15 @@ case "$zsh" in
         esac
         zsh=1
     esac
+		echo "Do you want to install ohmyzsh? [Y/n]"
+		read ohmy
+		case "$ohmy" in
+			"n"|"N"|"no"|"No"|"NO")
+				;;
+			*)
+        wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+				;;
+		esac
 esac
 
 
