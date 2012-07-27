@@ -38,8 +38,15 @@ alias -s cpp=vim
 #256 colors
 export TERM="xterm-256color"
 
+# Functions
 let randnum=$RANDOM%12660
+
 mkcd() { mkdir -p "$@" && cd "$_"; }
+
+function server() {
+	local port="${1:-8000}"
+	python -m SimpleHTTPServer "$port"
+}
 
 source $ZSH/oh-my-zsh.sh
 

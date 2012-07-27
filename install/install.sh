@@ -15,9 +15,12 @@ case "$zsh" in
         zsh=0
         ;;
       *)
-        echo "Operating System [ d:debian, r:redhat, o:osx ]"
+        echo "Operating System [ a:arch, d:debian, r:redhat, o:osx ]"
         read os
         case "$os" in
+          "a")
+            sudo pacman -S zsh
+            ;;
           "d")
             sudo apt-get install zsh
             ;;
