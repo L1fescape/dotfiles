@@ -66,6 +66,7 @@ then
   rm ~/.zshrc
   rm ~/.oh-my-zsh/themes/andrewk.zsh-theme
 fi
+rm ~/.tmux.conf
 
 
 echo "Symlinking files"
@@ -78,6 +79,7 @@ then
   ln -s ~/dotfiles/zsh/.zshrc ~/.zshrc
   ln -s ~/dotfiles/zsh/themes/andrewk.zsh-theme ~/.oh-my-zsh/themes/andrewk.zsh-theme
 fi
+ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
 
 
 echo "Cloning git repos for vim plugins"
