@@ -39,6 +39,7 @@ noremap <F5> :GundoToggle<CR>       " mapping f5 to Gundo
 
 "" Color Scheme
 colorscheme tomorrow_night          " Tomorrow Theme
+set term=screen-256color
 
 set laststatus=2                    " Always show the statusline
 

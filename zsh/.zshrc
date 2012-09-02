@@ -52,3 +52,5 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export PATH=/home/andrewk/.rvm/gems/ruby-1.9.2-p290/bin:/home/andrewk/.rvm/gems/ruby-1.9.2-p290@global/bin:/home/andrewk/.rvm/rubies/ruby-1.9.2-p290/bin:/home/andrewk/.rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
