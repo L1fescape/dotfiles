@@ -51,3 +51,11 @@ function server() {
 source $ZSH/oh-my-zsh.sh
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+
+# use v to launch edit command
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd '^V' edit-command-line
+
+bindkey '^R' history-incremental-search-backward

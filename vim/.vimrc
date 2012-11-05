@@ -44,7 +44,9 @@ set term=screen-256color
 set laststatus=2                    " Always show the statusline
 
 " Enable fancy mode 
-" let g:Powerline_symbols = 'fancy'   " Powerline
+let g:Powerline_symbols = 'fancy'   " Powerline
 
 " Call Pathogen
 call pathogen#infect()
+
+imap jj <esc>
