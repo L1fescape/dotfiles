@@ -28,7 +28,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git debian lol)
+plugins=(git ruby rails lol)
 
 #lets open anything python, cpp, or js with vim
 alias -s js=vim
@@ -59,3 +59,16 @@ zle -N edit-command-line
 bindkey -M vicmd '^V' edit-command-line
 
 bindkey '^R' history-incremental-search-backward
+
+
+# IP addresses
+alias localip="ipconfig getifaddr en0"
+alias whois="whois -h whois-servers.net"
+
+# View HTTP traffic
+alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+
+# Shortcuts
+alias g="git"
+alias v="vim"
