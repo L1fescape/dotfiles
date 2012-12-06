@@ -9,6 +9,8 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias http="http"
+alias slime='open -a "Sublime Text 2"'
+alias :q="exit"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -52,17 +54,15 @@ source $ZSH/oh-my-zsh.sh
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-
-# use v to launch edit command
-autoload -Uz edit-command-line
-zle -N edit-command-line
-bindkey -M vicmd '^V' edit-command-line
-
-bindkey '^R' history-incremental-search-backward
+function show_mode() {
+	echo "$1 mode"
+}
 
 
 # IP addresses
 alias localip="ipconfig getifaddr en0"
+alias globalip="curl ifconfig.me"
+alias gateway="route -n get default | sed -n 4p | cut -c14-"
 alias whois="whois -h whois-servers.net"
 
 # View HTTP traffic
@@ -79,3 +79,6 @@ alias pumpitup="osascript -e 'set volume 10'"
 function setvol() { 
 	osascript -e "set volume ${1:-0}"
 } 
+
+alias chrome="open /Applications/Google\ Chrome.app/"
+alias chrome-web="chrome --args --disable-web-security"
