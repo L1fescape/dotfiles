@@ -77,8 +77,6 @@ alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET
 alias g="git"
 alias gpo="git push origin"
 alias gpom="git push origin master"
-alias pom="push origin master"
-alias po="push origin"
 alias v="vim"
 
 # Sweet Volume Shortcuts
