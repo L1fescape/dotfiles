@@ -11,6 +11,8 @@ alias ....="cd ../../.."
 alias http="http"
 alias slime='open -a "Sublime Text 2"'
 alias :q="exit"
+alias la="cat ~/.zshrc | grep alias"
+
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -52,12 +54,14 @@ function server() {
 
 source $ZSH/oh-my-zsh.sh
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH
+PATH=$PATH:$HOME/prog/tools/mongodb/bin # Add mongo to PATH
 
 function show_mode() {
 	echo "$1 mode"
 }
 
+function tail_ls { ls -l "$1" | tail }
 
 # IP addresses
 alias localip="ipconfig getifaddr en0"
@@ -71,6 +75,8 @@ alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET
 
 # Shortcuts
 alias g="git"
+alias gpo="git push origin"
+alias gpom="git push origin master"
 alias v="vim"
 
 # Sweet Volume Shortcuts
