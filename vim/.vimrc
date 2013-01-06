@@ -48,6 +48,7 @@ colorscheme tomorrow_night          " Tomorrow Theme
 set term=screen-256color
 
 set laststatus=2                    " Always show the statusline
+set clipboard=unnamedplus						" Global registers
 
 " Enable fancy mode 
 let g:Powerline_symbols = 'fancy'   " Powerline
