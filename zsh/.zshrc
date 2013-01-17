@@ -50,6 +50,10 @@ alias globalip="curl ifconfig.me"
 alias gateway="route -n get default | sed -n 4p | cut -c14-"
 alias whois="whois -h whois-servers.net"
 
+# MAC
+alias mac="ifconfig en0 | grep ether | cut -c8-"
+alias dnsflush="sudo killall -HUP mDNSResponder"
+
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
@@ -61,6 +65,10 @@ function setvol() {
 	osascript -e "set volume ${1:-0}"
 } 
 
+# Suppress Mac Notification Warnings (eg ejecting drives improperly)
+alias disablenotifs="sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.UserNotificationCenter.plist"
+alias enablenotifs="sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.UserNotificationCenter.plist"
+
 # Chrome tricks
 alias chrome="open /Applications/Google\ Chrome.app/"
 alias chrome-web="chrome --args --disable-web-security"
@@ -71,5 +79,10 @@ alias chrome-web="chrome --args --disable-web-security"
 # Paths
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH
 PATH=$PATH:$HOME/prog/tools/mongodb/bin # Add mongo to PATH
+PATH=$PATH:/Users/andrewk/prog/tools/android-sdk-macosx/platform-tools
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 source $ZSH/oh-my-zsh.sh
+
+
+
+export CCETC_ROOT=/Users/andrewk/prog/cryptic-candy/ccetc

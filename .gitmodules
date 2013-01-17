@@ -1,0 +1,3 @@
+[submodule "vim/.vim/bundle/neocomplcache"]
+	path = vim/.vim/bundle/neocomplcache
+	url = git://github.com/Shougo/neocomplcache.git
