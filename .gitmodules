@@ -4,3 +4,15 @@
 [submodule "vim/.vim/bundle/surround"]
 	path = vim/.vim/bundle/surround
 	url = git://github.com/tpope/vim-surround.git
+[submodule "vim/.vim/bundle/syntastic"]
+	path = vim/.vim/bundle/syntastic
+	url = git://github.com/scrooloose/syntastic.git
+[submodule "vim/.vim/bundle/nerdtree"]
+	path = vim/.vim/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule "vim/.vim/bundle/powerline"]
+	path = vim/.vim/bundle/powerline
+	url = git://github.com/Lokaltog/powerline.git
+[submodule "vim/.vim/bundle/gundo"]
+	path = vim/.vim/bundle/gundo
+	url = git://github.com/sjl/gundo.vim.git

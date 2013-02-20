@@ -36,7 +36,7 @@ nmap <F8> :TagbarToggle<CR>         " mapping f8 to TagbarToggle
 nmap <F2> :NERDTreeToggle<CR>       " mapping f2 to NERDTreeToggle
 nmap <F3> :NumbersToggle<CR>        " mapping f3 to NumbersToggle
 noremap <F5> :GundoToggle<CR>       " mapping f5 to Gundo
-set pastetoggle=<F2>
+set pastetoggle=<F1>
 
 
 "" Color Scheme
