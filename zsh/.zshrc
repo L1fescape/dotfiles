@@ -93,5 +93,5 @@ source $ZSH/oh-my-zsh.sh
 # Cryptic Candy
 export CCETC_ROOT=/Users/andrewk/prog/cryptic-candy/ccetc
 
-
+# Random Samuel L Jackson Quotes
 #cowsay -f tux $(/opt/local/libexec/gnubin/shuf -n 1 dotfiles/quotes) | lolcat
