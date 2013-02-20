@@ -53,6 +53,13 @@ alias whois="whois -h whois-servers.net"
 # MAC
 alias mac="ifconfig en0 | grep ether | cut -c8-"
 alias dnsflush="sudo killall -HUP mDNSResponder"
+alias flushdns="dnsflush"
+
+# Change Hostname
+function hostname() {
+	sudo scutil --set HostName "$1"
+	sudo scutil --set LocalHostName "$1"
+}
 
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
@@ -83,6 +90,8 @@ PATH=$PATH:/Users/andrewk/prog/tools/android-sdk-macosx/platform-tools
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 source $ZSH/oh-my-zsh.sh
 
-
-
+# Cryptic Candy
 export CCETC_ROOT=/Users/andrewk/prog/cryptic-candy/ccetc
+
+
+#cowsay -f tux $(/opt/local/libexec/gnubin/shuf -n 1 dotfiles/quotes) | lolcat

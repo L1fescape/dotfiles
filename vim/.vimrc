@@ -37,10 +37,6 @@ nmap <F2> :NERDTreeToggle<CR>       " mapping f2 to NERDTreeToggle
 nmap <F3> :NumbersToggle<CR>        " mapping f3 to NumbersToggle
 noremap <F5> :GundoToggle<CR>       " mapping f5 to Gundo
 set pastetoggle=<F2>
-imap jj <esc>
-vmap jk <esc>
-nmap jk <esc>
-omap jk <esc>
 
 
 "" Color Scheme
@@ -48,7 +44,6 @@ colorscheme tomorrow_night          " Tomorrow Theme
 set term=screen-256color
 
 set laststatus=2                    " Always show the statusline
-set clipboard=unnamedplus						" Global registers
 
 " Enable fancy mode 
 let g:Powerline_symbols = 'fancy'   " Powerline
