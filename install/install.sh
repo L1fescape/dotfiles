@@ -56,7 +56,7 @@ case "$zsh" in
 esac
 
 
-echo "Deleting the old files"
+echo "\n\nDeleting the old files..."
 rm ~/.bashrc
 rm ~/.vimrc
 rm -rf ~/.vim
@@ -69,7 +69,7 @@ fi
 rm ~/.tmux.conf
 
 
-echo "Symlinking files"
+echo "\n\nSymlinking files..."
 ln -s ~/dotfiles/bash/.bashrc ~/.bashrc
 ln -s ~/dotfiles/vim/.vimrc ~/.vimrc
 ln -s ~/dotfiles/vim/.vim ~/.vim
@@ -82,10 +82,7 @@ fi
 ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
 
 
-echo "Cloning git repos for vim plugins"
-git clone http://github.com/sjl/gundo.vim.git ~/.vim/bundle/gundo
-git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
-git clone https://github.com/Lokaltog/vim-powerline.git ~/.vim/bundle/vim-powerline
+echo "\n\nInitializing vim git submodules..."
 
 
 echo "All done."
