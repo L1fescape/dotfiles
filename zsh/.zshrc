@@ -14,6 +14,7 @@ alias http="http"
 alias slime='open -a "Sublime Text 2"'
 alias :q="exit"
 alias la="cat ~/.zshrc | grep alias"
+alias updatedb="sudo /usr/libexec/locate.updatedb" # updatedb for mac
 
 #lets open anything python, cpp, or js with vim
 alias -s js=vim
@@ -26,11 +27,10 @@ alias -s cpp=vim
 COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(git ruby rails lol)
+plugins=(git ruby rails lol vi-mode)
 
 #256 colors
 export TERM="xterm-256color"
-
 
 
 
@@ -50,10 +50,16 @@ alias globalip="curl ifconfig.me"
 alias gateway="route -n get default | sed -n 4p | cut -c14-"
 alias whois="whois -h whois-servers.net"
 
-# MAC
-alias mac="ifconfig en0 | grep ether | cut -c8-"
+# DNS
 alias dnsflush="sudo killall -HUP mDNSResponder"
 alias flushdns="dnsflush"
+
+# MAC Address
+alias getmac="ifconfig en0 | grep ether | cut -c8-"
+alias genmac="openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//'"
+function setmac() {
+	sudo ifconfig en0 ether "$1"
+}
 
 # Change Hostname
 function hostname() {
@@ -62,8 +68,8 @@ function hostname() {
 }
 
 # View HTTP traffic
-alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
-alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+alias sniff="sudo ngrep -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i en0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
 # Sweet Volume Shortcuts
 alias stfu="osascript -e 'set volume output muted true'"
@@ -79,7 +85,6 @@ alias enablenotifs="sudo launchctl load -w /System/Library/LaunchDaemons/com.app
 # Chrome tricks
 alias chrome="open /Applications/Google\ Chrome.app/"
 alias chrome-web="chrome --args --disable-web-security"
-
 
 
 

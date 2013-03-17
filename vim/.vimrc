@@ -40,7 +40,7 @@ set pastetoggle=<F1>
 
 
 "" Color Scheme
-colorscheme tomorrow_night          " Tomorrow Theme
+colorscheme jellybeans          " Tomorrow Night Theme
 set term=screen-256color
 
 set laststatus=2                    " Always show the statusline
