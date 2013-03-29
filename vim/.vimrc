@@ -38,15 +38,20 @@ nmap <F3> :NumbersToggle<CR>        " mapping f3 to NumbersToggle
 noremap <F5> :GundoToggle<CR>       " mapping f5 to Gundo
 set pastetoggle=<F1>
 
-
 "" Color Scheme
 colorscheme jellybeans          " Tomorrow Night Theme
 set term=screen-256color
 
+"" Enable Mouse
+set mouse=a
+
 set laststatus=2                    " Always show the statusline
 
-" Enable fancy mode 
-let g:Powerline_symbols = 'fancy'   " Powerline
+"" Powerline
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+set t_Co=256
+let g:Powerline_symbols = 'unicode'
+"let g:Powerline_symbols = 'fancy'
 
 " Call Pathogen
 call pathogen#infect()

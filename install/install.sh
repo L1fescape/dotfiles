@@ -84,8 +84,7 @@ ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
 
 echo "\n\nInitializing vim git submodules..."
 cd ~/dotfiles
-git submodule init
-git submodule update
+git submodule update --init --recursive
 cd ~/
 
 

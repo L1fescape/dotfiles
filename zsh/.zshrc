@@ -4,8 +4,6 @@ ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load.
 ZSH_THEME="andrewk"
 
-
-
 # Aliases
 alias ..="cd .."
 alias ...="cd ../.."
@@ -16,23 +14,14 @@ alias :q="exit"
 alias la="cat ~/.zshrc | grep alias"
 alias updatedb="sudo /usr/libexec/locate.updatedb" # updatedb for mac
 
-#lets open anything python, cpp, or js with vim
-alias -s js=vim
-alias -s py=vim
-alias -s cpp=vim
-
-
-
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(git ruby rails lol vi-mode)
 
-#256 colors
+# 256 colors
 export TERM="xterm-256color"
-
-
 
 # Functions
 let randnum=$RANDOM%12660
@@ -86,7 +75,9 @@ alias enablenotifs="sudo launchctl load -w /System/Library/LaunchDaemons/com.app
 alias chrome="open /Applications/Google\ Chrome.app/"
 alias chrome-web="chrome --args --disable-web-security"
 
-
+# Mac restart apache
+alias apacherestart="sudo apachectl restart"
+alias apacheconfig="sudo apachectl configtest"
 
 # Paths
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH
@@ -98,5 +89,9 @@ source $ZSH/oh-my-zsh.sh
 # Cryptic Candy
 export CCETC_ROOT=/Users/andrewk/prog/cryptic-candy/ccetc
 
-# Random Samuel L Jackson Quotes
-#cowsay -f tux $(/opt/local/libexec/gnubin/shuf -n 1 dotfiles/quotes) | lolcat
+# AWS RDS
+export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home
+export EC2_REGION=us-east-1
+export AWS_RDS_HOME=/Users/andrewk/prog/tools/aws-rds
+export AWS_CREDENTIAL_FILE=$AWS_RDS_HOME/credential-file-path.template
+PATH=$PATH:$AWS_RDS_HOME/bin
