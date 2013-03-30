@@ -71,6 +71,9 @@ function setvol() {
 alias disablenotifs="sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.UserNotificationCenter.plist"
 alias enablenotifs="sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.UserNotificationCenter.plist"
 
+# Mac Spacers in Dock
+alias dockaddspace="defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'; killall Dock"
+
 # Chrome tricks
 alias chrome="open /Applications/Google\ Chrome.app/"
 alias chrome-web="chrome --args --disable-web-security"
@@ -78,6 +81,10 @@ alias chrome-web="chrome --args --disable-web-security"
 # Mac restart apache
 alias apacherestart="sudo apachectl restart"
 alias apacheconfig="sudo apachectl configtest"
+
+# Virtualenv Settings
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
 
 # Paths
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH
