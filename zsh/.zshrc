@@ -95,3 +95,6 @@ export EC2_REGION=us-east-1
 export AWS_RDS_HOME=/Users/andrewk/prog/tools/aws-rds
 export AWS_CREDENTIAL_FILE=$AWS_RDS_HOME/credential-file-path.template
 PATH=$PATH:$AWS_RDS_HOME/bin
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
