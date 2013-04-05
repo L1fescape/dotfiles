@@ -74,6 +74,9 @@ alias enablenotifs="sudo launchctl load -w /System/Library/LaunchDaemons/com.app
 # Mac Spacers in Dock
 alias dockaddspace="defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'; killall Dock"
 
+# Start MySQL Mac
+alias startmysql="sudo /usr/local/mysql/bin/mysqld_safe"
+
 # Chrome tricks
 alias chrome="open /Applications/Google\ Chrome.app/"
 alias chrome-web="chrome --args --disable-web-security"
@@ -96,12 +99,17 @@ source $ZSH/oh-my-zsh.sh
 # Cryptic Candy
 export CCETC_ROOT=/Users/andrewk/prog/cryptic-candy/ccetc
 
-# AWS RDS
+# AWS
+export AWS_HOME=/Users/andrewk/prog/tools/aws
+export AWS_CREDENTIAL_FILE=$AWS_HOME/aws-credential-file.conf
+## RDS
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home
+export AWS_RDS_HOME=$AWS_HOME/rds
 export EC2_REGION=us-east-1
-export AWS_RDS_HOME=/Users/andrewk/prog/tools/aws-rds
-export AWS_CREDENTIAL_FILE=$AWS_RDS_HOME/credential-file-path.template
-PATH=$PATH:$AWS_RDS_HOME/bin
+## Elastic Beanstalk
+export ELASTICBEANSTALK_URL="https://elasticbeanstalk.us-east-1.amazonaws.com"
+export AWS_EB_HOME=$AWS_HOME/eb
+PATH=$PATH:$AWS_RDS_HOME/bin:$AWS_EB_HOME/macosx/python2.7
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
