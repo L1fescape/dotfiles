@@ -26,6 +26,14 @@ export TERM="xterm-256color"
 # Functions
 let randnum=$RANDOM%12660
 
+# YOLO
+alias yolo="git add -A && git commit -am '#YOLO' && git push origin master"
+
+# Django
+alias django-new="django-admin.py startproject"
+alias django-start="python manage.py runserver"
+
+
 mkcd() { mkdir -p "$@" && cd "$_"; }
 
 function server() {
