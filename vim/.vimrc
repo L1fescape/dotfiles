@@ -12,6 +12,12 @@ set softtabstop=2                   " respect hard tabs
 set expandtab                       " convert tabs to spaces
 " set noexpandtab                     " don't convert tabs to spaces
 
+" folding
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=1
+
 " Numbers
 set number                          " Show numbers
 
