@@ -18,7 +18,7 @@ alias updatedb="sudo /usr/libexec/locate.updatedb" # updatedb for mac
 COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(git ruby rails lol vi-mode osx)
+plugins=(git ruby rails vi-mode)
 
 # 256 colors
 export TERM="xterm-256color"
@@ -121,3 +121,8 @@ PATH=$PATH:$AWS_RDS_HOME/bin:$AWS_EB_HOME/macosx/python2.7
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+
+## re-bind zsh backwards search (gets unbound by vi-mode plugin)
+bindkey '^[[A' up-line-or-search
+bindkey '^[[B' down-line-or-search
