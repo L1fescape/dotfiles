@@ -100,15 +100,15 @@ source /usr/local/bin/virtualenvwrapper.sh
 # Paths
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH
 PATH=$PATH:$HOME/prog/tools/mongodb/bin # Add mongo to PATH
-PATH=$PATH:/Users/andrewk/prog/tools/android-sdk-macosx/platform-tools
+PATH=$PATH:$HOME/prog/tools/android-sdk-macosx/platform-tools
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 source $ZSH/oh-my-zsh.sh
 
 # Cryptic Candy
-export CCETC_ROOT=/Users/andrewk/prog/cryptic-candy/ccetc
+export CCETC_ROOT=$HOME/prog/cryptic-candy/ccetc
 
 # AWS
-export AWS_HOME=/Users/andrewk/prog/tools/aws
+export AWS_HOME=$HOME/prog/tools/aws
 export AWS_CREDENTIAL_FILE=$AWS_HOME/aws-credential-file.conf
 ## RDS
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home
@@ -126,3 +126,8 @@ export PATH="/usr/local/heroku/bin:$PATH"
 ## re-bind zsh backwards search (gets unbound by vi-mode plugin)
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
+
+# use v to launch edit command
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd 'v' edit-command-line
