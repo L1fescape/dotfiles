@@ -45,6 +45,25 @@ nmap <F3> :NumbersToggle<CR>        " mapping f3 to NumbersToggle
 noremap <F5> :GundoToggle<CR>       " mapping f5 to Gundo
 set pastetoggle=<F1>
 
+" Splits
+" switching splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+" resizing splits
+map = <c-w>+
+map - <c-w>-
+map + <c-w><
+map _ <c-w>>
+" new splits
+map <Bar> <c-w>v
+map \ <c-w>n
+" open new splits to right and bottom
+set splitbelow
+set splitright
+
+
 "" Color Scheme
 colorscheme jellybeans          " Tomorrow Night Theme
 set term=screen-256color
