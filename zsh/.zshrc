@@ -26,6 +26,10 @@ export TERM="xterm-256color"
 # Functions
 let randnum=$RANDOM%12660
 
+function genhash() {
+  openssl rand -base64 ${1:-12}
+}
+
 # YOLO
 alias yolo="git add -A && git commit -am '#YOLO' && git push origin master"
 
