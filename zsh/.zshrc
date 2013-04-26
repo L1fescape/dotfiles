@@ -14,6 +14,9 @@ alias :q="exit"
 alias la="cat ~/.zshrc | grep alias"
 alias updatedb="sudo /usr/libexec/locate.updatedb" # updatedb for mac
 
+alias fucking="sudo"
+#alias ssh="autossh -M 2000"
+
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 
