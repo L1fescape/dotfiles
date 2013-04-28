@@ -42,6 +42,8 @@ alias yolo="git add -A && git commit -am '#YOLO' && git push origin master"
 alias django-new="django-admin.py startproject"
 alias django-start="python manage.py runserver"
 
+# Gource
+alias gourcedef="gource -1280x720 --time-scale 3.0 --seconds-per-day 1 -o - | ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -preset ultrafast -pix_fmt yuv420p -crf 1 -threads 0 -bf 0 gource.mp4"
 
 mkcd() { mkdir -p "$@" && cd "$_"; }
 
