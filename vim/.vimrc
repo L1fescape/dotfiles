@@ -52,6 +52,12 @@ set splitbelow
 set splitright
 
 
+" Mouse mode
+" (not best bindings, need to find better ones)
+nnoremap <C-M>- :set mouse=<CR>
+nnoremap <C-M>= :set mouse=a<CR>
+set mouse=a                         " Enable mouse by default
+
 " Swag 
 colorscheme jellybeans
 set term=screen-256color
@@ -60,7 +66,6 @@ set nowrap                          " Don't wrap long lines
 set anti                            " 
 set guifont=Ubuntu\ Mono\ Bold\ 10  " Setting font
 set number                          " Show line numbers
-set mouse=a                         " Enable mouse
 set laststatus=2                    " Always show the statusline
 set nocompatible                    " choose no compatibility with legacy vi
 syntax on                           " turn syntax highlighting on
