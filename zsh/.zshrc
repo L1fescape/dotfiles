@@ -140,7 +140,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 ## re-bind zsh backwards search (gets unbound by vi-mode plugin)
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
-bindkey "^[[3~" delete-char
+bindkey '^[[3~' delete-char
 
 # use v to launch edit command
 autoload -Uz edit-command-line
