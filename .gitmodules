@@ -19,3 +19,6 @@
 [submodule "vim/.vim/bundle/vim-multiple-cursors"]
 	path = vim/.vim/bundle/vim-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors
+[submodule "vim/.vim/bundle/vimclojure"]
+	path = vim/.vim/bundle/vimclojure
+	url = git@github.com:vim-scripts/VimClojure.git
