@@ -54,8 +54,8 @@ set splitright
 
 " Mouse mode
 " (not best bindings, need to find better ones)
-nnoremap <C-M>- :set mouse=<CR>
-nnoremap <C-M>= :set mouse=a<CR>
+map <C-M>m :set mouse=<CR>
+map <C-M><C-M> :set mouse=a<CR>
 set mouse=a                         " Enable mouse by default
 
 " Swag 
