@@ -137,10 +137,18 @@ PATH=$PATH:$AWS_RDS_HOME/bin:$AWS_EB_HOME/macosx/python2.7
 export PATH="/usr/local/heroku/bin:$PATH"
 
 
+## Newrelic Android
+export ANDROID_HOME=$HOME/prog/tools/adt/sdk
+export NEWRELIC_HOME=$HOME/prog/tools/adt/app-addons/newrelic-android-1.347
+export PATH="$PATH:/Users/andrewk/prog/tools/adt/app-addons/newrelic-android-1.347/bin"
+alias ant='nrandroid-ant '
+
+
 ## re-bind zsh backwards search (gets unbound by vi-mode plugin)
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 bindkey '^[[3~' delete-char
+bindkey '^R' history-incremental-search-backward
 
 # use v to launch edit command
 autoload -Uz edit-command-line
