@@ -28,9 +28,6 @@ plugins=(git ruby rails vi-mode)
 # 10ms for key sequences (default is 0.4 seconds)
 KEYTIMEOUT=1
 
-# 256 colors
-export TERM="xterm-256color"
-
 # Functions
 let randnum=$RANDOM%12660
 
