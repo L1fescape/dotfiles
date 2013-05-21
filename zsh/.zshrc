@@ -138,6 +138,10 @@ PATH=$PATH:$AWS_RDS_HOME/bin:$AWS_EB_HOME/macosx/python2.7
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
+# Fix for homebrew pathing
+homebrew=/usr/local/bin:/usr/local/sbin
+export PATH=$homebrew:$PATH
+
 
 ## Newrelic Android
 export ANDROID_HOME=$HOME/prog/tools/adt/sdk
@@ -151,6 +155,10 @@ bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 bindkey '^[[3~' delete-char
 bindkey '^R' history-incremental-search-backward
+bindkey "^W" backward-kill-word    # vi-backward-kill-word
+bindkey "^H" backward-delete-char  # vi-backward-delete-char
+bindkey "^U" kill-line             # vi-kill-line
+bindkey "^?" backward-delete-char  # vi-backward-delete-char
 
 # use v to launch edit command
 autoload -Uz edit-command-line
