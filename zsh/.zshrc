@@ -106,7 +106,12 @@ alias apacheconfig="sudo apachectl configtest"
 
 # Virtualenv Settings
 export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUAL_ENV_DISABLE_PROMPT='1' # don't prepend active environment to your prompt
 source /usr/local/bin/virtualenvwrapper.sh
+
+function virtualenv_info {
+  [ $VIRTUAL_ENV ] && echo `basename $VIRTUAL_ENV`
+}
 
 # Paths
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH

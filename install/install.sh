@@ -28,7 +28,7 @@ case "$zsh" in
             sudo yum install zsh
             ;;
           "o")
-            # code for osx install here
+            brew install zsh
             ;;
           *)
             sudo apt-get install zsh

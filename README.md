@@ -18,7 +18,10 @@
 3. Install a powerline font from the fonts directory to enable fancy symbols (Droid mono)
 
 # Requirements
-* <code>gem install tmuxinator rails</code>
+* java
+* `brew install wget tmux`
+* `pip install virtualenv virtualenvwrapper`
+* `gem install tmuxinator rails`
 
 # TODO
 Create process for building .zshrc via install script.
