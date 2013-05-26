@@ -1,6 +1,9 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
+# So much z up in this
+. `brew --prefix`/etc/profile.d/z.sh
+
 # Set name of the theme to load.
 ZSH_THEME="andrewk"
 
@@ -49,7 +52,14 @@ mkcd() { mkdir -p "$@" && cd "$_"; }
 
 function server() {
 	local port="${1:-8000}"
+  open "http://localhost:${port}/"
 	python -m SimpleHTTPServer "$port"
+}
+
+function spectrum_ls() {
+  for code in {000..255}; do
+    print -P -- "$code: %F{$code}Test%f"
+  done
 }
 
 # IP addresses
@@ -94,7 +104,7 @@ alias enablenotifs="sudo launchctl load -w /System/Library/LaunchDaemons/com.app
 alias dockaddspace="defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'; killall Dock"
 
 # Start MySQL Mac
-alias startmysql="sudo /usr/local/mysql/bin/mysqld_safe"
+alias startmysql="mysql.server start"
 
 # Chrome tricks
 alias chrome="open /Applications/Google\ Chrome.app/"
@@ -110,13 +120,13 @@ export VIRTUAL_ENV_DISABLE_PROMPT='1' # don't prepend active environment to your
 source /usr/local/bin/virtualenvwrapper.sh
 
 function virtualenv_info {
-  [ $VIRTUAL_ENV ] && echo `basename $VIRTUAL_ENV`
+  [ $VIRTUAL_ENV ] && echo `basename $VIRTUAL_ENV`" "
 }
 
 # Paths
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH
 PATH=$PATH:$HOME/prog/tools/mongodb/bin # Add mongo to PATH
-PATH=$PATH:$HOME/prog/tools/android-sdk-macosx/platform-tools
+PATH=$PATH:$HOME/prog/tools/adt/sdk/platform-tools
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 source $ZSH/oh-my-zsh.sh
 
