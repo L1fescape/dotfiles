@@ -26,9 +26,9 @@ case "$zsh" in
         ;;
       *)
         echo "Operating System [ a:arch, d:debian, r:redhat, o:osx ]"
-        read os
+        read eos
         echo "${underline}Installing Zsh${nounderline}"
-        case "$os" in
+        case "$eos" in
           "a")
             sudo pacman -S zsh
             ;;
@@ -169,5 +169,17 @@ git submodule update --init --recursive
 printf "done.\n"
 cd ~/
 
+hasrvm="$(type rvm |head -1)"
+if [ -z "$hasrvm" ]; then
+		echo "Rvm is not installed. Would you like to install it? [Y/n]"
+		read rvm
+    case "$rvm" in
+      "n"|"N"|"no"|"No"|"NO")
+        ;;
+      *)
+        curl -L https://get.rvm.io | bash -s stable --ruby
+        ;;
+    esac
+fi
 
 echo "\n\n\nAll done!"
