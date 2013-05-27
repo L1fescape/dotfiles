@@ -108,7 +108,7 @@ ln -s ~/dotfiles/vim/.vim ~/.vim
 printf "done.\n"
 
 printf "ln -s ~/dotfiles/github/.gitconfig ~/.gitconfig .... "
-ln -s ~/dotfiles/github/.gitconfig ~/.gitconfig
+ln -s ~/dotfiles/git/.gitconfig ~/.gitconfig
 printf "done.\n"
 
 if [ "$zsh" ]

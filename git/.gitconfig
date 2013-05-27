@@ -3,7 +3,6 @@
 	email = akennedy2292@gmail.com
 [github]
 	user = L1fescape
-  token = 
 [core]
 	excludesfile = /Users/andrewk/.gitignore_global
 [alias]

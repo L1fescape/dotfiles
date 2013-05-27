@@ -13,8 +13,7 @@
 ```
 
 # Installation
-1. <code>git clone ssh://git@github.com/L1fescape/dotfiles.git</code>
-2. <code>sh dotfiles/install/install.sh</code>
+1. <code>git clone https://github.com/L1fescape/dotfiles.git && sh dotfiles/install/install.sh</code>
 3. Install a powerline font from the fonts directory to enable fancy symbols (Droid mono)
 
 # Requirements
