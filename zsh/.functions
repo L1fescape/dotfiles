@@ -1,0 +1,24 @@
+# Functions
+let randnum=$RANDOM%12660
+
+function genhash() {
+  openssl rand -base64 ${1:-12}
+}
+
+mkcd() { mkdir -p "$@" && cd "$_"; }
+
+function server() {
+	local port="${1:-8000}"
+	python -m SimpleHTTPServer "$port"
+  open "http://localhost:${port}/"
+}
+
+function spectrum_ls() {
+  for code in {000..255}; do
+    print -P -- "$code: %F{$code}Test%f"
+  done
+}
+
+function virtualenv_info {
+  [ $VIRTUAL_ENV ] && echo `basename $VIRTUAL_ENV`" "
+}

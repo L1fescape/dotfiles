@@ -1,0 +1,69 @@
+# Aliases
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias http="http"
+alias slime='open -a "Sublime Text 2"'
+alias :q="exit"
+alias la="cat ~/.zshrc | grep alias"
+alias updatedb="sudo /usr/libexec/locate.updatedb" # updatedb for mac
+alias fucking="sudo"
+alias fuck="sudo" # fuck !! > fucking !!
+alias please="sudo"
+#alias ssh="autossh -M 2000"
+
+# YOLO
+alias yolo="git add -A && git commit -am '#YOLO' && git push origin master"
+
+# Django
+alias django-new="django-admin.py startproject"
+alias django-start="python manage.py runserver"
+
+# Gource
+alias gourcedef="gource -1280x720 --time-scale 3.0 --seconds-per-day 1 -o - | ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -preset ultrafast -pix_fmt yuv420p -crf 1 -threads 0 -bf 0 gource.mp4"
+
+# IP addresses
+alias localip="ipconfig getifaddr en0"
+alias globalip="curl ifconfig.me"
+alias gateway="route -n get default | sed -n 4p | cut -c14-"
+alias whois="whois -h whois-servers.net"
+
+# DNS
+alias dnsflush="sudo killall -HUP mDNSResponder"
+alias flushdns="dnsflush"
+
+# MAC Address
+alias getmac="ifconfig en0 | grep ether | cut -c8-"
+alias genmac="openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//'"
+function setmac() {
+	sudo ifconfig en0 ether "$1"
+}
+
+# View HTTP traffic
+alias sniff="sudo ngrep -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i en0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+
+# Sweet Volume Shortcuts
+alias stfu="osascript -e 'set volume output muted true'"
+alias pumpitup="osascript -e 'set volume 10'"
+function setvol() { 
+	osascript -e "set volume ${1:-0}"
+} 
+
+# Suppress Mac Notification Warnings (eg ejecting drives improperly)
+alias disablenotifs="sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.UserNotificationCenter.plist"
+alias enablenotifs="sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.UserNotificationCenter.plist"
+
+# Mac Spacers in Dock
+alias dockaddspace="defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'; killall Dock"
+
+# Start MySQL Mac
+alias startmysql="mysql.server start"
+
+# Chrome tricks
+alias chrome="open /Applications/Google\ Chrome.app/"
+alias chrome-web="chrome --args --disable-web-security"
+
+# Mac restart apache
+alias apacherestart="sudo apachectl restart"
+alias apacheconfig="sudo apachectl configtest"

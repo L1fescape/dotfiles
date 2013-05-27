@@ -1,0 +1,35 @@
+# Paths
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH
+PATH=$PATH:$HOME/prog/tools/mongodb/bin # Add mongo to PATH
+PATH=$PATH:$HOME/prog/tools/adt/sdk/platform-tools
+[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+source $ZSH/oh-my-zsh.sh
+
+# Cryptic Candy
+export CCETC_ROOT=$HOME/prog/cryptic-candy/ccetc
+
+# AWS
+export AWS_HOME=$HOME/prog/tools/aws
+export AWS_CREDENTIAL_FILE=$AWS_HOME/aws-credential-file.conf
+## RDS
+export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home
+export AWS_RDS_HOME=$AWS_HOME/rds
+export EC2_REGION=us-east-1
+## Elastic Beanstalk
+export ELASTICBEANSTALK_URL="https://elasticbeanstalk.us-east-1.amazonaws.com"
+export AWS_EB_HOME=$AWS_HOME/eb
+PATH=$PATH:$AWS_RDS_HOME/bin:$AWS_EB_HOME/macosx/python2.7
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+# Fix for homebrew pathing
+homebrew=/usr/local/bin:/usr/local/sbin
+export PATH=$homebrew:$PATH
+
+
+## Newrelic Android
+export ANDROID_HOME=$HOME/prog/tools/adt/sdk
+export NEWRELIC_HOME=$HOME/prog/tools/adt/app-addons/newrelic-android-1.347
+export PATH="$PATH:$HOME/prog/tools/adt/app-addons/newrelic-android-1.347/bin"
+alias ant='nrandroid-ant '
