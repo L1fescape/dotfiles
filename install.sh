@@ -169,7 +169,5 @@ git submodule update --init --recursive
 printf "done.\n"
 cd ~/
 
-if
-
 
 echo "\n\n\nAll done!"
