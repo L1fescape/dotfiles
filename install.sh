@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # check which os we're running
-[[ `uname` == "Darwin" ]] && OS="osx" || OS="linux" # not checking for windows. screw that.
+echo "Operating System [ a:arch, d:debian, r:redhat, o:osx ]"
+read os
 
 # for text formatting
 underline=`tput smul`
@@ -25,10 +26,8 @@ case "$zsh" in
         zsh=0
         ;;
       *)
-        echo "Operating System [ a:arch, d:debian, r:redhat, o:osx ]"
-        read eos
         echo "${underline}Installing Zsh${nounderline}"
-        case "$eos" in
+        case "$os" in
           "a")
             sudo pacman -S zsh
             ;;
@@ -97,7 +96,7 @@ then
   rm ~/.oh-my-zsh/themes/andrewk.zsh-theme
   printf "done.\n"
 fi
-if [ "$OS" = "osx" ]
+if [ "$os" = "o" ]
 then
   rm ~/.osx
   rm ~/.hushlogin
@@ -152,7 +151,7 @@ then
   printf "done.\n"
 fi
 
-if [ "$OS" = "osx" ]
+if [ "$os" = "o" ]
 then
   ln -s ~/dotfiles/osx/.osx ~/
   ln -s ~/dotfiles/osx/.hushlogin ~/
@@ -169,17 +168,18 @@ git submodule update --init --recursive
 printf "done.\n"
 cd ~/
 
-hasrvm="$(type rvm |head -1)"
-if [ -z "$hasrvm" ]; then
-		echo "Rvm is not installed. Would you like to install it? [Y/n]"
-		read rvm
-    case "$rvm" in
-      "n"|"N"|"no"|"No"|"NO")
-        ;;
-      *)
-        curl -L https://get.rvm.io | bash -s stable --ruby
-        ;;
-    esac
+# check if rvm installed
+if which rvm >/dev/null 2>&1
+then
+  echo "Rvm is not installed. Would you like to install it? [Y/n]"
+  read rvm
+  case "$rvm" in
+    "n"|"N"|"no"|"No"|"NO")
+      ;;
+    *)
+      curl -L https://get.rvm.io | bash -s stable --ruby
+      ;;
+  esac
 fi
 
 echo "\n\n\nAll done!"
