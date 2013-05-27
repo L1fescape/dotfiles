@@ -1,8 +1,32 @@
 #!/bin/sh
 
 # check which os we're running
-echo "Operating System [ a:arch, d:debian, r:redhat, o:osx ]"
+printf "Operating System [ a:arch, d:debian, r:redhat, o:osx ]: "
 read os
+printf "\n"
+
+# pick which package manager to use based on os
+case "$os" in
+  "a")
+    pkgmgmt="pacman -S"
+    ;;
+  "d")
+    pkgmgmt="apt-get install"
+    ;;
+  "r")
+    pkgmgmt="yum install"
+    ;;
+  "o")
+    pkgmgmt="brew install"
+    ;;
+  *)
+    pkgmgmt="apt-get install"
+    ;;
+esac
+
+# prepend sudo if not osx
+[ $os != "o" ] && pkgmgmt="sudo $pkgmgmt"
+
 
 # for text formatting
 underline=`tput smul`
@@ -11,8 +35,9 @@ bold=`tput bold`
 normal=`tput sgr0`
 
 # Install Zsh
-echo "Is zsh installed? [ y/N ]"
+printf "Is zsh installed? [ y/N ]: "
 read zsh
+printf "\n"
 
 case "$zsh" in
   "y"|"Y"|"yes"|"Yes"|"YES")
@@ -27,23 +52,7 @@ case "$zsh" in
         ;;
       *)
         echo "${underline}Installing Zsh${nounderline}"
-        case "$os" in
-          "a")
-            sudo pacman -S zsh
-            ;;
-          "d")
-            sudo apt-get install zsh
-            ;;
-          "r")
-            sudo yum install zsh
-            ;;
-          "o")
-            brew install zsh
-            ;;
-          *)
-            sudo apt-get install zsh
-            ;;
-        esac
+        $pkgmgmt zsh
         echo "Set zsh as default shell? [ Y/n ]"
         read zsh_default
         case "$zsh_default" in
@@ -96,11 +105,23 @@ then
   rm ~/.oh-my-zsh/themes/andrewk.zsh-theme
   printf "done.\n"
 fi
+
 if [ "$os" = "o" ]
 then
+  printf "rm ~/.osx .... "
   rm ~/.osx
+  printf "done.\n"
+
+  printf "rm ~/.hushlogin .... "
   rm ~/.hushlogin
+  printf "done.\n"
 fi
+
+rm ~/.aliases
+rm ~/.functions
+rm ~/.bindings
+rm ~/.paths
+
 rm ~/.tmux.conf
 
 
@@ -146,7 +167,7 @@ then
   ln -s ~/dotfiles/zsh/.bindings ~/.bindings
   printf "done.\n"
 
-  printf "ln -s ~/dotfiles/zsh/themes/andrewk.zsh-theme ~/.oh-my-zsh/themes/andrewk.zsh-theme ...."
+  printf "ln -s ~/dotfiles/zsh/themes/andrewk.zsh-theme ~/.oh-my-zsh/themes/andrewk.zsh-theme .... "
   ln -s ~/dotfiles/zsh/themes/andrewk.zsh-theme ~/.oh-my-zsh/themes/andrewk.zsh-theme
   printf "done.\n"
 fi
@@ -157,16 +178,20 @@ then
   ln -s ~/dotfiles/osx/.hushlogin ~/
 fi
 
-printf "ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf ...."
+printf "ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf .... "
 ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
 printf "done.\n"
 
 printf "\e[4m%s\e[0m\n" "Initialize vim git submodules"
+# save current directory so we can go back to it after this
+curdir=`pwd`
 cd ~/dotfiles
-printf "git submodule update --init --recursive ...."
+printf "git submodule update --init --recursive .... "
 git submodule update --init --recursive
 printf "done.\n"
-cd ~/
+cd curdir
+
+
 
 # check if rvm installed
 if which rvm >/dev/null 2>&1
@@ -181,5 +206,20 @@ then
       ;;
   esac
 fi
+
+# install pip
+$pkgmgmt python-pip
+
+# install virtualenv and virtualenvwrapper
+sudo pip install virtualenv virtualenvwrapper
+
+# install z
+$pkgmgmt z
+
+# install vim
+$pkgmgmt vim
+
+# install rails
+sudo gem install rails
 
 echo "\n\n\nAll done!"
