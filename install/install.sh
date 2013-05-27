@@ -1,5 +1,10 @@
 #!/bin/sh
 
+underline=`tput smul`
+nounderline=`tput rmul`
+bold=`tput bold`
+normal=`tput sgr0`
+
 # Install Zsh
 echo "Is zsh installed? [ y/N ]"
 read zsh
@@ -18,7 +23,7 @@ case "$zsh" in
       *)
         echo "Operating System [ a:arch, d:debian, r:redhat, o:osx ]"
         read os
-        printf "\e[4m%s\e[0m\n" "Installing Zsh"
+        echo "${underline}Installing Zsh${nounderline}"
         case "$os" in
           "a")
             sudo pacman -S zsh
@@ -42,10 +47,10 @@ case "$zsh" in
           "n"|"N"|"no"|"No"|"NO")
             ;;
            *)
-              printf "\e[4m%s\e[0m\n" "Setting zsh as default shell"
-              printf "chsh -s /bin/zsh .... "
+              echo "${underline}Setting zsh as default shell${nounderline}"
+              echo -n "chsh -s /bin/zsh .... "
               chsh -s /bin/zsh
-              printf "done.\n"
+              echo "done.\n"
         esac
         zsh=1
     esac
@@ -55,7 +60,7 @@ case "$zsh" in
 			"n"|"N"|"no"|"No"|"NO")
 				;;
 			*)
-        printf "\e[4m%s\e[0m\n" "Downloading and installing ohmyzsh"
+        echo "${underline}Downloading and installing ohmyzsh${nounderline}"
         wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
 				;;
 		esac
@@ -64,7 +69,7 @@ esac
 
 
 # Remove old files
-printf "\e[4m%s\e[0m\n" "Removing old files"
+echo "${underline}Removing old files${nounderline}"
 
 printf "rm ~/.bashrc ~/.vimrc .... "
 rm ~/.bashrc ~/.vimrc

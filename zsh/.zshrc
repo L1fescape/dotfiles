@@ -27,3 +27,4 @@ source ~/.paths
 source ~/.aliases
 source ~/.functions
 source ~/.bindings
+source ~/.osx
