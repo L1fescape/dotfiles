@@ -191,10 +191,14 @@ git submodule update --init --recursive
 printf "done.\n"
 cd curdir
 
+# install curl
+$pkgmgmt curl
 
+# install wget
+$pkgmgmt wget
 
 # check if rvm installed
-if which rvm >/dev/null 2>&1
+if ! which rvm >/dev/null 2>&1
 then
   echo "Rvm is not installed. Would you like to install it? [Y/n]"
   read rvm
@@ -218,6 +222,9 @@ $pkgmgmt z
 
 # install vim
 $pkgmgmt vim
+
+# install tmux
+$pkgmgmt tmux
 
 # install rails
 sudo gem install rails
