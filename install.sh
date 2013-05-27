@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# check which os we're running
+[[ `uname` == "Darwin" ]] && OS="osx" || OS="linux" # not checking for windows. screw that.
+
+# for text formatting
 underline=`tput smul`
 nounderline=`tput rmul`
 bold=`tput bold`
@@ -93,6 +97,11 @@ then
   rm ~/.oh-my-zsh/themes/andrewk.zsh-theme
   printf "done.\n"
 fi
+if [ "$OS" = "osx" ]
+then
+  rm ~/.osx
+  rm ~/.hushlogin
+fi
 rm ~/.tmux.conf
 
 
@@ -143,11 +152,15 @@ then
   printf "done.\n"
 fi
 
+if [ "$OS" = "osx" ]
+then
+  ln -s ~/dotfiles/osx/.osx ~/
+  ln -s ~/dotfiles/osx/.hushlogin ~/
+fi
+
 printf "ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf ...."
 ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
 printf "done.\n"
-
-
 
 printf "\e[4m%s\e[0m\n" "Initialize vim git submodules"
 cd ~/dotfiles
@@ -155,6 +168,8 @@ printf "git submodule update --init --recursive ...."
 git submodule update --init --recursive
 printf "done.\n"
 cd ~/
+
+if
 
 
 echo "\n\n\nAll done!"

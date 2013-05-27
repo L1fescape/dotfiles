@@ -1,3 +1,6 @@
+# Determine OS
+[[ `uname` == "Darwin" ]] && OS="osx" || OS="linux" # not checking for windows. screw that.
+
 # Path oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -10,7 +13,7 @@ plugins=(git ruby rails vi-mode)
 KEYTIMEOUT=1
 
 # init z (https://github.com/rupa/z)
-. `brew --prefix`/etc/profile.d/z.sh
+[ "$OS" = "osx" ] && . `brew --prefix`/etc/profile.d/z.sh
 
 # init rvm
 source ~/.rvm/scripts/rvm
@@ -27,4 +30,4 @@ source ~/.paths
 source ~/.aliases
 source ~/.functions
 source ~/.bindings
-source ~/.osx
+[ "$OS" = "osx" ] && source ~/.osx;
