@@ -191,11 +191,11 @@ git submodule update --init --recursive
 printf "done.\n"
 cd curdir
 
-# install curl
-$pkgmgmt curl
 
-# install wget
-$pkgmgmt wget
+
+
+# install deps
+$pkgmgmt curl wget python-pip vim z tmux
 
 # check if rvm installed
 if ! which rvm >/dev/null 2>&1
@@ -211,20 +211,8 @@ then
   esac
 fi
 
-# install pip
-$pkgmgmt python-pip
-
 # install virtualenv and virtualenvwrapper
 sudo pip install virtualenv virtualenvwrapper
-
-# install z
-$pkgmgmt z
-
-# install vim
-$pkgmgmt vim
-
-# install tmux
-$pkgmgmt tmux
 
 # install rails
 sudo gem install rails
