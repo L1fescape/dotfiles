@@ -73,6 +73,9 @@ set encoding=utf-8                  " set encoding to utf-8
 set showcmd                         " display incomplete commands
 filetype plugin indent on           " load file type plugins + indentation
 
+"" timeout
+set ttimeout
+set ttimeoutlen=0
 
 "" Powerline
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
