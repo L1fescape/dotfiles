@@ -232,6 +232,14 @@ if [ "$os" = "o" ]; then
   brew tap phinze/homebrew-cask
   brew install brew-cask
 
+  function installcask() {
+    if brew cask info "${@}" | grep "Not installed" > /dev/null; then
+      brew cask install "${@}"
+    else
+      echo "${@} is already installed."
+    fi
+  }
+
   installcask dropbox
   installcask google-chrome
   installcask google-chrome-canary
