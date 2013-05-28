@@ -28,6 +28,20 @@ esac
 [ $os != "o" ] && pkgmgmt="sudo $pkgmgmt"
 
 
+# If osx, check if Homebrew is installed
+if [ "$os" = "o" ]; then
+  which -s brew
+  if [[ $? != 0 ]] ; then
+      # Install Homebrew
+      echo "${underline}Installing Homebrew${nounderline}"
+      ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+  fi
+  echo "${underline}Updating Homebrew${nounderline}"
+  brew update
+  brew install git
+fi
+
+
 # for text formatting
 underline=`tput smul`
 nounderline=`tput rmul`
@@ -189,13 +203,50 @@ cd ~/dotfiles
 printf "git submodule update --init --recursive .... "
 git submodule update --init --recursive
 printf "done.\n"
-cd curdir
+cd $curdir
 
 
 
+# if osx, install things a little differently
+if [ "$os" = "o" ]; then
+  echo "${underline}This is going to take like 10 mins. Go grab a coffee.${nounderline}"
+  brew install readline sqlite gdbm 
+  # install python with easy_install
+  brew install python --universal --framework 
+  # install pip
+  easy_install pip
+  # Install GNU core utilities (those that come with OS X are outdated)
+  brew install coreutils
+  echo "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
+  # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
+  brew install findutils
+  # Install Bash 4
+  brew install bash
+  # Install wget with IRI support
+  brew install wget --enable-iri
+  brew install curl
+  brew install tree
+  brew install lynx
+  brew install node
+  # Install native apps
+  brew tap phinze/homebrew-cask
+  brew install brew-cask
 
-# install deps
-$pkgmgmt curl wget python-pip vim z tmux
+  installcask dropbox
+  installcask google-chrome
+  installcask google-chrome-canary
+  installcask iterm2
+  installcask sublime-text
+  installcask virtualbox
+  installcask vlc
+  # Remove outdated versions from the cellar
+  brew cleanup
+else
+  $pkgmgmt python-pip
+fi
+
+# install shared deps
+$pkgmgmt vim z tmux
 
 # check if rvm installed
 if ! which rvm >/dev/null 2>&1

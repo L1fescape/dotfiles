@@ -8,9 +8,9 @@ function genhash() {
 mkcd() { mkdir -p "$@" && cd "$_"; }
 
 function server() {
-	local port="${1:-8000}"
-	python -m SimpleHTTPServer "$port"
+  local port="${1:-8000}"
   open "http://localhost:${port}/"
+  python -m SimpleHTTPServer "$port"
 }
 
 function spectrum_ls() {

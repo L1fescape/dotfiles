@@ -5,9 +5,6 @@ PATH=$PATH:$HOME/code/tools/adt/sdk/platform-tools
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 source $ZSH/oh-my-zsh.sh
 
-# Cryptic Candy
-export CCETC_ROOT=$HOME/code/cryptic-candy/ccetc
-
 # AWS
 export AWS_HOME=$HOME/code/tools/aws
 export AWS_CREDENTIAL_FILE=$AWS_HOME/aws-credential-file.conf
@@ -31,7 +28,6 @@ export PATH=$homebrew:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUAL_ENV_DISABLE_PROMPT='1' # don't prepend active environment to prompt
 source /usr/local/bin/virtualenvwrapper.sh
-
 
 ## Newrelic Android
 export ANDROID_HOME=$HOME/code/tools/adt/sdk
