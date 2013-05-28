@@ -27,9 +27,9 @@ export PATH="/usr/local/heroku/bin:$PATH"
 homebrew=/usr/local/bin:/usr/local/sbin
 export PATH=$homebrew:$PATH
 
-# virtualenv paths
-export WORKON_HOME=$HOME/.virtualenvs 
-export PROJECT_HOME=$HOME/Devel
+# Virtualenv Settings
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUAL_ENV_DISABLE_PROMPT='1' # don't prepend active environment to prompt
 source /usr/local/bin/virtualenvwrapper.sh
 
 
