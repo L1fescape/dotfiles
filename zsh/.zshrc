@@ -10,7 +10,6 @@ ZSH_THEME="andrewk"
 # Zsh settings
 COMPLETION_WAITING_DOTS="true"
 plugins=(git ruby rails vi-mode)
-KEYTIMEOUT=1
 
 # init z (https://github.com/rupa/z)
 [ "$OS" = "osx" ] && . `brew --prefix`/etc/profile.d/z.sh
@@ -24,6 +23,9 @@ export LANG="en_US"
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "~/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2)" scp sftp ssh
+
+# zsh timeout. needs to be a little further down than then vi-mode plugin because vi-mode overwrites this
+KEYTIMEOUT=1
 
 # Load everything else
 source ~/.paths
