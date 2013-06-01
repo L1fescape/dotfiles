@@ -250,7 +250,7 @@ if [ "$os" = "o" ]; then
   # Remove outdated versions from the cellar
   brew cleanup
 else
-  $pkgmgmt python-pip
+  $pkgmgmt python-pip libgemplugin-ruby
 fi
 
 # install shared deps
