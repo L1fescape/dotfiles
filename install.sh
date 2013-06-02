@@ -38,7 +38,9 @@ if [ "$os" = "o" ]; then
   fi
   echo "${underline}Updating Homebrew${nounderline}"
   brew update
-  brew install git
+  brew install git 
+  # Install wget with IRI support
+  brew install wget --enable-iri
 fi
 
 
@@ -97,93 +99,45 @@ esac
 # Remove old files
 echo "${underline}Removing old files${nounderline}"
 
-printf "rm ~/.bashrc ~/.vimrc .... "
 rm ~/.bashrc ~/.vimrc
-printf "done.\n"
-
-printf "rm -rf ~/.vim .... "
 rm -rf ~/.vim
-printf "done.\n"
-
-printf "rm ~/.gitconfig .... "
 rm ~/.gitconfig
-printf "done.\n"
 
 if [ "$zsh" ]
 then
-  printf "rm ~/.zshrc .... "
   rm ~/.zshrc
-  printf "done.\n"
-
-  printf "rm ~/.oh-my-zsh/themes/andrewk.zsh-theme .... "
   rm ~/.oh-my-zsh/themes/andrewk.zsh-theme
-  printf "done.\n"
 fi
 
 if [ "$os" = "o" ]
 then
-  printf "rm ~/.osx .... "
   rm ~/.osx
-  printf "done.\n"
-
-  printf "rm ~/.hushlogin .... "
   rm ~/.hushlogin
-  printf "done.\n"
 fi
 
 rm ~/.aliases
 rm ~/.functions
 rm ~/.bindings
 rm ~/.paths
-
 rm ~/.tmux.conf
 
 
 
 # Symbolic link files in dotfiles dir to home folder
 printf "\e[4m%s\e[0m\n" "Symlinking new files"
-
-printf "ln -s ~/dotfiles/bash/.bashrc ~/.bashrc .... "
 ln -s ~/dotfiles/bash/.bashrc ~/.bashrc
-printf "done.\n"
-
-printf "ln -s ~/dotfiles/vim/.vimrc ~/.vimrc .... "
 ln -s ~/dotfiles/vim/.vimrc ~/.vimrc
-printf "done.\n"
-
-printf "ln -s ~/dotfiles/vim/.vim ~/.vim .... "
 ln -s ~/dotfiles/vim/.vim ~/.vim
-printf "done.\n"
-
-printf "ln -s ~/dotfiles/github/.gitconfig ~/.gitconfig .... "
 ln -s ~/dotfiles/git/.gitconfig ~/.gitconfig
-printf "done.\n"
 
 if [ "$zsh" ]
 then
-  printf "ln -s ~/dotfiles/zsh/.zshrc ~/.zshrc .... "
   ln -s ~/dotfiles/zsh/.zshrc ~/.zshrc
-  printf "done.\n"
-
-  printf "ln -s ~/dotfiles/zsh/.aliases ~/.aliases .... "
   ln -s ~/dotfiles/zsh/.aliases ~/.aliases
-  printf "done.\n"
-
-  printf "ln -s ~/dotfiles/zsh/.functions ~/.functions .... "
   ln -s ~/dotfiles/zsh/.functions ~/.functions
-  printf "done.\n"
-
-  printf "ln -s ~/dotfiles/zsh/.paths ~/.paths ...."
   ln -s ~/dotfiles/zsh/.paths ~/.paths
-  printf "done.\n"
-  
-  printf "ln -s ~/dotfiles/zsh/.bindings ~/.bindings ...."
   ln -s ~/dotfiles/zsh/.bindings ~/.bindings
-  printf "done.\n"
-
-  printf "ln -s ~/dotfiles/zsh/themes/andrewk.zsh-theme ~/.oh-my-zsh/themes/andrewk.zsh-theme .... "
   ln -s ~/dotfiles/zsh/themes/andrewk.zsh-theme ~/.oh-my-zsh/themes/andrewk.zsh-theme
-  printf "done.\n"
 fi
 
 if [ "$os" = "o" ]
@@ -192,17 +146,13 @@ then
   ln -s ~/dotfiles/osx/.hushlogin ~/
 fi
 
-printf "ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf .... "
 ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
-printf "done.\n"
 
 printf "\e[4m%s\e[0m\n" "Initialize vim git submodules"
 # save current directory so we can go back to it after this
 curdir=`pwd`
 cd ~/dotfiles
-printf "git submodule update --init --recursive .... "
 git submodule update --init --recursive
-printf "done.\n"
 cd $curdir
 
 
@@ -214,7 +164,7 @@ if [ "$os" = "o" ]; then
   # install python with easy_install
   brew install python --universal --framework 
   # install pip
-  easy_install pip
+  sudo easy_install pip
   # Install GNU core utilities (those that come with OS X are outdated)
   brew install coreutils
   echo "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
@@ -222,8 +172,6 @@ if [ "$os" = "o" ]; then
   brew install findutils
   # Install Bash 4
   brew install bash
-  # Install wget with IRI support
-  brew install wget --enable-iri
   brew install curl
   brew install tree
   brew install lynx
@@ -247,6 +195,9 @@ if [ "$os" = "o" ]; then
   installcask sublime-text
   installcask virtualbox
   installcask vlc
+  installcask alfred
+  # Link brew cask apps to Applications dir
+  brew cask linkapps --appdir="/Applications"
   # Remove outdated versions from the cellar
   brew cleanup
 else
@@ -254,7 +205,7 @@ else
 fi
 
 # install shared deps
-$pkgmgmt vim z tmux
+$pkgmgmt z tmux
 
 # check if rvm installed
 if ! which rvm >/dev/null 2>&1
@@ -272,8 +223,5 @@ fi
 
 # install virtualenv and virtualenvwrapper
 sudo pip install virtualenv virtualenvwrapper
-
-# install rails
-sudo gem install rails
 
 echo "\n\n\nAll done!"
