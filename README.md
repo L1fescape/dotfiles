@@ -1,4 +1,4 @@
-## Andrew's Astonishingly Awesome Dotfiles
+## Andrew's Dotfiles
 
 ### OSX Installation
 1. Install Xcode
