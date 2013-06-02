@@ -189,6 +189,7 @@ if [ "$os" = "o" ]; then
   }
 
   installcask dropbox
+  installcask google-drive
   installcask google-chrome
   installcask google-chrome-canary
   installcask iterm2
