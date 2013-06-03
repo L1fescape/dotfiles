@@ -14,3 +14,4 @@
 ### Inspiration
 * Mathias Bynens (https://github.com/mathiasbynens/dotfiles)
 * Paul Irish (https://github.com/paulirish/dotfiles)
+* Mahdi Yusuf (https://github.com/myusuf3/dotfiles)
