@@ -9,7 +9,7 @@ ZSH_THEME="andrewk"
 
 # Zsh settings
 COMPLETION_WAITING_DOTS="true"
-plugins=(git ruby rails vi-mode)
+plugins=(vi-mode git ruby rails)
 
 # init z (https://github.com/rupa/z)
 [ "$OS" = "osx" ] && . `brew --prefix`/etc/profile.d/z.sh
@@ -33,3 +33,4 @@ source ~/.aliases
 source ~/.functions
 source ~/.bindings
 [ "$OS" = "osx" ] && source ~/.osx;
+

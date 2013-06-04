@@ -28,9 +28,3 @@ export PATH=$homebrew:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUAL_ENV_DISABLE_PROMPT='1' # don't prepend active environment to prompt
 source /usr/local/bin/virtualenvwrapper.sh
-
-## Newrelic Android
-export ANDROID_HOME=$HOME/code/tools/adt/sdk
-export NEWRELIC_HOME=$HOME/code/tools/adt/app-addons/newrelic-android-1.347
-export PATH="$PATH:$HOME/code/tools/adt/app-addons/newrelic-android-1.347/bin"
-alias ant='nrandroid-ant '

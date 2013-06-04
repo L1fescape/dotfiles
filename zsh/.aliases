@@ -53,7 +53,11 @@ alias django-start="python manage.py runserver"
 alias gourcedef="gource -1280x720 --time-scale 3.0 --seconds-per-day 1 -o - | ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -preset ultrafast -pix_fmt yuv420p -crf 1 -threads 0 -bf 0 gource.mp4"
 
 # IP addresses
-alias localip="ipconfig getifaddr en0"
+function localip() {
+  IP=`ipconfig getifaddr en0`
+  if [ "$IP" = "" ]; then IP=`ipconfig getifaddr en1`; fi
+  echo "$IP"
+}
 alias globalip="curl ifconfig.me"
 alias gateway="route -n get default | sed -n 4p | cut -c14-"
 alias whois="whois -h whois-servers.net"
