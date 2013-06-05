@@ -108,7 +108,6 @@ then
   ln -s ~/dotfiles/osx/.hushlogin ~/
   # Load osx global settings
   source ~/dotfiles/osx/.osx-init
-  killall Dock
 fi
 
 ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf

@@ -32,3 +32,6 @@ alias chrome-web="chrome --args --disable-web-security"
 # Mac restart apache
 alias apacherestart="sudo apachectl restart"
 alias apacheconfig="sudo apachectl configtest"
+
+# Set your screensaver as your background (can get insanely distracting)
+alias background-screensaver="/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background"
