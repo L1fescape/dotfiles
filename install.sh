@@ -131,7 +131,6 @@ if [ "$os" = "o" ]; then
   brew install findutils
   # Install Bash 4
   brew install bash
-  brew install curl
   brew install tree
   brew install lynx
   brew install node
@@ -140,7 +139,7 @@ if [ "$os" = "o" ]; then
   brew tap phinze/homebrew-cask
   brew install brew-cask
 
-  function installcask() {
+  installcask() {
     if brew cask info "${@}" | grep "Not installed" > /dev/null; then
       brew cask install "${@}"
     else
@@ -168,13 +167,12 @@ fi
 # install virtualenv and virtualenvwrapper
 sudo pip install virtualenv virtualenvwrapper
 
-# install tmux
-$pkgmgmt tmux
+$pkgmgmt tmux curl
 
 # install rvm
-if [ "$os" != "o" ]; then
-  $pkgmgmt libgemplugin-ruby
-fi
-curl -L https://get.rvm.io | bash -s stable --ruby
+#if [ "$os" != "o" ]; then
+#  $pkgmgmt libgemplugin-ruby
+#fi
+#curl -L https://get.rvm.io | bash -s stable --ruby
 
 echo "\n\n\nAll done!"
