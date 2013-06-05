@@ -161,7 +161,7 @@ if [ "$os" = "o" ]; then
   # Remove outdated versions from the cellar
   brew cleanup
 else
-  $pkgmgmt python-pip
+  $pkgmgmt python-pip vim
 fi
 
 # install virtualenv and virtualenvwrapper
