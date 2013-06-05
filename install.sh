@@ -68,12 +68,13 @@ echo "${underline}Removing old files${nounderline}"
 rm ~/.bashrc ~/.vimrc
 rm -rf ~/.vim
 rm ~/.gitconfig
-
-if [ "$zsh" ]
-then
-  rm ~/.zshrc
-  rm ~/.oh-my-zsh/themes/andrewk.zsh-theme
-fi
+rm ~/.zshrc
+rm ~/.oh-my-zsh/themes/andrewk.zsh-theme
+rm ~/.aliases
+rm ~/.functions
+rm ~/.bindings
+rm ~/.paths
+rm ~/.tmux.conf
 
 if [ "$os" = "o" ]
 then
@@ -81,11 +82,6 @@ then
   rm ~/.hushlogin
 fi
 
-rm ~/.aliases
-rm ~/.functions
-rm ~/.bindings
-rm ~/.paths
-rm ~/.tmux.conf
 
 
 
@@ -101,6 +97,7 @@ ln -s ~/dotfiles/zsh/.functions ~/.functions
 ln -s ~/dotfiles/zsh/.paths ~/.paths
 ln -s ~/dotfiles/zsh/.bindings ~/.bindings
 ln -s ~/dotfiles/zsh/themes/andrewk.zsh-theme ~/.oh-my-zsh/themes/andrewk.zsh-theme
+ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
 
 if [ "$os" = "o" ]
 then
@@ -110,7 +107,6 @@ then
   source ~/dotfiles/osx/.osx-init
 fi
 
-ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
 
 printf "\e[4m%s\e[0m\n" "Initialize vim git submodules"
 # save current directory so we can go back to it after this
@@ -123,7 +119,6 @@ cd $curdir
 
 # if osx, install things a little differently
 if [ "$os" = "o" ]; then
-  echo "${underline}This is going to take like 10 mins. Go grab a coffee.${nounderline}"
   brew install readline sqlite gdbm 
   # install python with easy_install
   brew install python --universal --framework 
@@ -167,27 +162,19 @@ if [ "$os" = "o" ]; then
   # Remove outdated versions from the cellar
   brew cleanup
 else
-  $pkgmgmt python-pip libgemplugin-ruby
-fi
-
-# install shared deps
-$pkgmgmt tmux
-
-# check if rvm installed
-if ! which rvm >/dev/null 2>&1
-then
-  echo "Rvm is not installed. Would you like to install it? [Y/n]"
-  read rvm
-  case "$rvm" in
-    "n"|"N"|"no"|"No"|"NO")
-      ;;
-    *)
-      curl -L https://get.rvm.io | bash -s stable --ruby
-      ;;
-  esac
+  $pkgmgmt python-pip
 fi
 
 # install virtualenv and virtualenvwrapper
 sudo pip install virtualenv virtualenvwrapper
+
+# install tmux
+$pkgmgmt tmux
+
+# install rvm
+if [ "$os" != "o" ]; then
+  $pkgmgmt libgemplugin-ruby
+fi
+curl -L https://get.rvm.io | bash -s stable --ruby
 
 echo "\n\n\nAll done!"
