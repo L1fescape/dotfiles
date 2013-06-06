@@ -10,6 +10,7 @@ alias updatedb="sudo /usr/libexec/locate.updatedb" # updatedb for mac
 alias fucking="sudo"
 alias fuck="sudo" # fuck !! > fucking !!
 alias please="sudo"
+alias diff='vim -d'
 #alias ssh="autossh -M 2000"
 
 # Detect which `ls` flavor is in use

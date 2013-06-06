@@ -141,6 +141,9 @@ defaults write com.apple.dock dashboard-in-overlay -bool true
 # Disable Dashboard
 defaults write com.apple.dashboard mcx-disabled -bool true
 
+# Don't automatically rearrange spaces
+defaults write com.apple.dock mru-spaces -bool false
+
 # Hot corners
 # Possible values:
 #  0: no-op
@@ -160,6 +163,16 @@ defaults write com.apple.dock wvous-tl-modifier -int 0
 defaults write com.apple.dock wvous-tr-corner -int 10
 defaults write com.apple.dock wvous-tr-modifier -int 0
 
+# Grab my wallpaper folder
+# TODO
+
+# Set default desktop background
+defaults write com.apple.desktop Background.ChangePath '~/Pictures/wallpaper'
+defaults write com.apple.desktop Background.ChooseFolderPath '~/Pictures/wallpaper'
+defaults write com.apple.desktop Background.CollectionString 'Wallpapers'
+defaults write com.apple.desktop Background.Change 'TimeInterval'
+defaults write com.apple.desktop Background.ChangeTime -int 900
+defaults write com.apple.desktop Background.Random -bool True
 
 ###############################################################################
 # Safari & WebKit                                                             #
