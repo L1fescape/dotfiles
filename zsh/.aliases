@@ -20,6 +20,9 @@ else # OS X `ls`
   colorflag="-G"
 fi
 
+# Get chmod value of a file
+alias chmod-get='stat --format "%a"'
+
 # List all files colorized in long format
 alias l="ls -l ${colorflag}"
 
