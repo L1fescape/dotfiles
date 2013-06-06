@@ -1,5 +1,7 @@
 ## Andrew's Dotfiles
 
+![Super slick](http://f.cl.ly/items/2n2t0J2D021f2b2f0a1Q/Screen%20Shot%202013-06-05%20at%2010.22.31%20PM.png)
+
 ### OSX Installation
 1. Install Xcode
 2. Run Xcode at least once and agree to terms
