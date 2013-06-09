@@ -221,14 +221,6 @@ defaults write com.google.Chrome.canary ExtensionInstallSources -array "https://
 
 
 ###############################################################################
-# System Paths                                                                #
-###############################################################################
-
-# Path for GNU core utilities
-PATH=$PATH:$(brew --prefix coreutils)/libexec/gnubin
-
-
-###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 

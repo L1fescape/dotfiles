@@ -38,3 +38,7 @@ alias apacheconfig="sudo apachectl configtest"
 
 # Set your screensaver as your background (can get insanely distracting)
 alias background-screensaver="/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background"
+
+# Paths
+export PATH=$PATH:$(brew --prefix coreutils)/libexec/gnubin
+export PATH=$PATH:$(brew --prefix git)/libexec/git-core
