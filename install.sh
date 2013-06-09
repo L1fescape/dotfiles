@@ -103,6 +103,8 @@ if [ "$os" = "o" ]
 then
   ln -s ~/dotfiles/osx/.osx ~/
   ln -s ~/dotfiles/osx/.hushlogin ~/
+  # Copy iterm2 settings
+  cp ~/dotfiles/osx/iterm/com.googlecode.iterm2.plist ~/Library/Preferences/
   # Load osx global settings
   source ~/dotfiles/osx/.osx-init
 fi
