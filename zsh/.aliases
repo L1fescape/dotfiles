@@ -4,6 +4,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias http="http"
 alias slime='open -a "Sublime Text 2"'
+alias vi="vim"
 alias :q="exit"
 alias la="cat ~/.zshrc | grep alias"
 alias updatedb="sudo /usr/libexec/locate.updatedb" # updatedb for mac
