@@ -28,3 +28,6 @@ export PATH=$homebrew:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUAL_ENV_DISABLE_PROMPT='1' # don't prepend active environment to prompt
 source /usr/local/bin/virtualenvwrapper.sh
+
+# NPM
+PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/share/npm/bin:$PATH"
