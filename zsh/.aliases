@@ -44,7 +44,7 @@ fi
 
 # `cat` with beautiful colors. requires Pygments installed.
 #                  sudo easy_install Pygments
-alias cat='pygmentize -O style=monokai -f console256 -g'
+alias c='pygmentize -O style=monokai -f console256 -g'
 
 
 # YOLO

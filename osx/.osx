@@ -40,5 +40,5 @@ alias apacheconfig="sudo apachectl configtest"
 alias background-screensaver="/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background"
 
 # Paths
-export PATH=$PATH:$(brew --prefix coreutils)/libexec/gnubin
-export PATH=$PATH:$(brew --prefix git)/libexec/git-core
+#export PATH=$PATH:$(brew --prefix coreutils)/libexec/gnubin
+#export PATH=$PATH:$(brew --prefix git)/libexec/git-core

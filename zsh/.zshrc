@@ -31,3 +31,5 @@ source ~/.functions
 source ~/.bindings
 [ "$OS" = "osx" ] && source ~/.osx;
 
+# Start Oh My Zsh
+source $ZSH/oh-my-zsh.sh
