@@ -6,31 +6,33 @@ nounderline=`tput rmul`
 bold=`tput bold`
 normal=`tput sgr0`
 
+# user must choose a valid os option. loop until they do.
+pkgmgmt=true
+while $pkgmgmt; do
+	# check which os we're running
+	printf "Operating System [ a:arch, d:debian, r:redhat, o:osx ]: "
+	read os
+	printf "\n"
 
-
-# check which os we're running
-printf "Operating System [ a:arch, d:debian, r:redhat, o:osx ]: "
-read os
-printf "\n"
-
-# pick which package manager to use based on os
-case "$os" in
-  "a")
-    pkgmgmt="pacman -S"
-    ;;
-  "d")
-    pkgmgmt="apt-get install"
-    ;;
-  "r")
-    pkgmgmt="yum install"
-    ;;
-  "o")
-    pkgmgmt="brew install"
-    ;;
-  *)
-    pkgmgmt="apt-get install"
-    ;;
-esac
+	# pick which package manager to use based on os
+	case "$os" in
+		"a")
+			pkgmgmt="pacman -S"
+			;;
+		"d")
+			pkgmgmt="apt-get install"
+			;;
+		"r")
+			pkgmgmt="yum install"
+			;;
+		"o")
+			pkgmgmt="brew install"
+			;;
+		*)
+			echo "Please select a valid Operating System."
+			;;
+	esac
+done
 
 # prepend sudo if not osx
 [ $os != "o" ] && pkgmgmt="sudo $pkgmgmt"
