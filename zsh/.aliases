@@ -7,10 +7,13 @@ alias slime='open -a "Sublime Text 2"'
 alias vi="vim"
 alias :q="exit"
 alias la="cat ~/.zshrc | grep alias"
+alias s="ls" # ;s
+alias ks="ls" # I mistype ls often
 alias fucking="sudo"
 alias fuck="sudo" # fuck !! > fucking !!
 alias please="sudo"
 alias diff='vim -d'
+alias roll='curl -L http://bit.ly/10hA8iC | bash'
 #alias ssh="autossh -M 2000"
 
 # Detect which `ls` flavor is in use
