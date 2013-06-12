@@ -7,7 +7,6 @@ alias slime='open -a "Sublime Text 2"'
 alias vi="vim"
 alias :q="exit"
 alias la="cat ~/.zshrc | grep alias"
-alias updatedb="sudo /usr/libexec/locate.updatedb" # updatedb for mac
 alias fucking="sudo"
 alias fuck="sudo" # fuck !! > fucking !!
 alias please="sudo"

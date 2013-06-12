@@ -1,3 +1,6 @@
+# Updatedb
+alias updatedb="sudo /usr/libexec/locate.updatedb"
+
 # Sweet Volume Shortcuts
 alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="osascript -e 'set volume 10'"
