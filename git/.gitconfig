@@ -13,6 +13,7 @@
   ci = commit
   st = status
   br = branch
+	dbr = push origin --delete # delete branch both remotely and locally
   type = cat-file -t
   dump = cat-file -p
 	dl = "!git ll -1"             # Show modified files in last commit
