@@ -48,6 +48,8 @@ fi
 #                  sudo easy_install Pygments
 alias c='pygmentize -O style=monokai -f console256 -g'
 
+# git
+alias github="open https://github.com"
 
 # YOLO
 alias yolo="git add -A && git commit -am '#YOLO' && git push origin master"
