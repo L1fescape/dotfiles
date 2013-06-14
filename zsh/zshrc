@@ -11,11 +11,14 @@ ZSH_THEME="andrewk"
 COMPLETION_WAITING_DOTS="true"
 plugins=(vi-mode git ruby rails)
 
+# 10ms for key sequences (default is 400)
+KEYTIMEOUT=1
+
 # init z (https://github.com/rupa/z)
 [ "$OS" = "osx" ] && . `brew --prefix`/etc/profile.d/z.sh
 
 # init rvm
-source ~/.rvm/scripts/rvm
+#source ~/.rvm/scripts/rvm
 
 # Prefer US English and use UTF-8
 export LC_ALL="en_US.UTF-8"

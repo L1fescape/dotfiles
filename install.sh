@@ -6,6 +6,18 @@ nounderline=`tput rmul`
 bold=`tput bold`
 normal=`tput sgr0`
 
+
+# warn user about overwriting files
+echo "WARNING: This script will remove all current dotfile settings."
+printf "Would you like to continue? [Y/n]: "
+read cont
+printf "\n"
+if [ "$cont" = "n" ]; then
+	echo "Exited."
+	exit
+fi
+
+
 # user must choose a valid os option. loop until they do.
 pkgmgmt=true
 while $pkgmgmt; do
