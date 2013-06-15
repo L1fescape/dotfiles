@@ -5,20 +5,30 @@ function genhash() {
   openssl rand -base64 ${1:-12}
 }
 
+# make directory and then cd into it
 mkcd() { mkdir -p "$@" && cd "$_"; }
 
+
 function server() {
-  local port="${1:-8000}"
-  open "http://localhost:${port}/"
-  python -m SimpleHTTPServer "$port"
+	# needs to be more elegantly written
+	local COMMAND=$1;
+	if [[ $COMMAND = "-o" ]] then;
+		local PORT=${2:-8000}
+		open "http://localhost:${PORT}/"
+	else
+		PORT=${1:-8000}
+	fi
+  python -m SimpleHTTPServer "$PORT"
 }
 
+# list all colors (useful for customizing zsh theme)
 function spectrum_ls() {
   for code in {000..255}; do
     print -P -- "$code: %F{$code}Test%f"
   done
 }
 
+# Used in zsh theme for displaying current virtualenv
 function virtualenv_info {
   [ $VIRTUAL_ENV ] && echo `basename $VIRTUAL_ENV`" "
 }
