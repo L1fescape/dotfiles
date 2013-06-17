@@ -6,6 +6,7 @@ alias http="http"
 alias slime='open -a "Sublime Text 2"'
 alias vi="vim"
 alias :q="exit"
+alias :Q="exit"
 alias la="cat ~/.zshrc | grep alias"
 alias s="ls" # ;s
 alias ks="ls" # I mistype ls often

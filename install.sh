@@ -46,6 +46,7 @@ while $pkgmgmt; do
 	esac
 done
 
+
 # prepend sudo if not osx
 [ $os != "o" ] && pkgmgmt="sudo $pkgmgmt"
 
@@ -64,22 +65,15 @@ if [ "$os" = "o" ]; then
   brew install wget --enable-iri
 fi
 
+
 # install git
 $pkgmgmt git
-
-# Install Zsh
-echo "${underline}Installing Zsh${nounderline}"
-$pkgmgmt zsh
-echo "${underline}Setting zsh as default shell${nounderline}"
-chsh -s /bin/zsh
-echo "${underline}Downloading and installing ohmyzsh${nounderline}"
-wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
 
 
 # Remove old files
 echo "${underline}Removing old files${nounderline}"
-
-rm ~/.bashrc ~/.vimrc
+rm ~/.bashrc 
+rm ~/.vimrc
 rm -rf ~/.vim
 rm ~/.gitconfig
 rm ~/.zshrc
@@ -97,20 +91,39 @@ then
 fi
 
 
+# Choose which shell to use
+printf "Would you like to use zsh? If no, will default to bash. [Y/n]: "
+read shell
+printf "\n"
+case "$shell" in
+	"y"|"Y"|"yes"|"Yes"|"YES")
+		# Install Zsh
+		echo "${underline}Installing Zsh${nounderline}"
+		$pkgmgmt zsh
+		echo "${underline}Setting zsh as default shell${nounderline}"
+		chsh -s /bin/zsh
+		echo "${underline}Downloading and installing ohmyzsh${nounderline}"
+		wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+
+		echo "${underline}Sym linking zsh files${nounderline}"
+		ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
+		ln -s ~/dotfiles/zsh/aliases ~/.aliases
+		ln -s ~/dotfiles/zsh/functions ~/.functions
+		ln -s ~/dotfiles/zsh/paths ~/.paths
+		ln -s ~/dotfiles/zsh/bindings ~/.bindings
+		ln -s ~/dotfiles/zsh/themes/andrewk.zsh-theme ~/.oh-my-zsh/themes/andrewk.zsh-theme
+		;;
+	*)
+		echo "${underline}Sym linking bash files${nounderline}"
+		ln -s ~/dotfiles/bash/bashrc ~/.bashrc
+		;;
+esac
 
 
 # Symbolic link files in dotfiles dir to home folder
-printf "\e[4m%s\e[0m\n" "Symlinking new files"
-ln -s ~/dotfiles/bash/bashrc ~/.bashrc
 ln -s ~/dotfiles/vim/vimrc ~/.vimrc
 ln -s ~/dotfiles/vim/vim ~/.vim
 ln -s ~/dotfiles/git/gitconfig ~/.gitconfig
-ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
-ln -s ~/dotfiles/zsh/aliases ~/.aliases
-ln -s ~/dotfiles/zsh/functions ~/.functions
-ln -s ~/dotfiles/zsh/paths ~/.paths
-ln -s ~/dotfiles/zsh/bindings ~/.bindings
-ln -s ~/dotfiles/zsh/themes/andrewk.zsh-theme ~/.oh-my-zsh/themes/andrewk.zsh-theme
 ln -s ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
 
 if [ "$os" = "o" ]
@@ -180,10 +193,16 @@ else
   $pkgmgmt python-pip vim
 fi
 
+
+
 # install virtualenv and virtualenvwrapper
 sudo pip install virtualenv virtualenvwrapper
 
+
+# install tmux and curl
 $pkgmgmt tmux curl
+
+
 
 # install rvm
 #if [ "$os" != "o" ]; then

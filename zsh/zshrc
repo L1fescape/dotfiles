@@ -11,6 +11,9 @@ ZSH_THEME="andrewk"
 COMPLETION_WAITING_DOTS="true"
 plugins=(vi-mode git ruby rails)
 
+# Start Oh My Zsh
+source $ZSH/oh-my-zsh.sh
+
 # 10ms for key sequences (default is 400)
 KEYTIMEOUT=1
 
@@ -34,5 +37,3 @@ source ~/.functions
 source ~/.bindings
 [ "$OS" = "osx" ] && source ~/.osx;
 
-# Start Oh My Zsh
-source $ZSH/oh-my-zsh.sh
