@@ -153,6 +153,10 @@ if [ "$os" = "o" ]; then
   brew install lynx
   brew install node
   brew install z
+	# Ruby shits
+	brew install ruby-install
+	ruby-install ruby
+	brew install chruby
   # Install native apps
   brew tap phinze/homebrew-cask
   brew install brew-cask
@@ -187,16 +191,8 @@ fi
 # install virtualenv and virtualenvwrapper
 sudo pip install virtualenv virtualenvwrapper
 
-
 # install tmux and curl
 $pkgmgmt tmux curl
 
-
-
-# install rvm
-#if [ "$os" != "o" ]; then
-#  $pkgmgmt libgemplugin-ruby
-#fi
-#curl -L https://get.rvm.io | bash -s stable --ruby
 
 echo "\n\n\nAll done!"

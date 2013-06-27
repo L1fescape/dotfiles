@@ -13,7 +13,7 @@
   ci = commit
   st = status
   br = branch
-	lb = branch -a
+	brl = branch -a
 	dbr = push origin --delete # delete branch both remotely and locally
   type = cat-file -t
   dump = cat-file -p

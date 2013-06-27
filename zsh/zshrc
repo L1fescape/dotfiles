@@ -20,15 +20,15 @@ KEYTIMEOUT=1
 # init z (https://github.com/rupa/z)
 [ "$OS" = "osx" ] && . `brew --prefix`/etc/profile.d/z.sh
 
-# init rvm
-source ~/.rvm/scripts/rvm
-
 # Prefer US English and use UTF-8
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "~/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2)" scp sftp ssh
+
+# rubies
+source /usr/local/opt/chruby/share/chruby/chruby.sh
 
 # Load everything else
 source ~/.paths

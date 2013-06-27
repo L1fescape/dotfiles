@@ -1,5 +1,4 @@
 # Paths
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH
 PATH=$PATH:$HOME/code/tools/mongodb/bin # Add mongo to PATH
 PATH=$PATH:$HOME/code/tools/adt/sdk/platform-tools
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
