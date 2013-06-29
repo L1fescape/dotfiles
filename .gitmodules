@@ -10,3 +10,6 @@
 [submodule "vim/vim/bundle/zencoding"]
 	path = vim/vim/bundle/zencoding
 	url = git@github.com:mattn/zencoding-vim.git
+[submodule "vim/vim/bundle/jade"]
+	path = vim/vim/bundle/jade
+	url = git@github.com:digitaltoad/vim-jade.git
