@@ -77,8 +77,7 @@ function! ToggleMouse()
     echo "Mouse On"
   endif
 endfunction
-map <C-M> :call ToggleMouse()<CR>
-imap <C-M> :call ToggleMouse()<CR>
+nmap <C-M> :call ToggleMouse()<CR>
 set mouse=a                         " Enable mouse by default
 
 " Toggle showing line numbers on and off
@@ -102,6 +101,17 @@ filetype plugin indent on           " load file type plugins + indentation
 "" timeout
 set ttimeout
 set ttimeoutlen=0
+
+" Configure vimclojure bits
+let vimclojure#HighlightBuiltins=1
+let vimclojure#DynamicHighlighting=1
+let vimclojure#ParenRainbow=1
+let vimclojure#WantNailgun = 1
+let vimclojure#NailgunClient = expand($HOME) . "/dev/vimclojure-nailgun/nailgun/ng"
+let vimclojure#SplitPos = "left"
+
+" Recognize ClojureScript files as Clojure
+au BufNewFile,BufRead *.cljs setf clojure
 
 "" Settings for Airline
 let g:airline_theme='light'
