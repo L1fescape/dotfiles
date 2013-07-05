@@ -17,7 +17,7 @@ set ignorecase                      " searches are case insensitive ...
 set smartcase                       " ... unless they contain at least one capital letter
 
 " Don't syntax highlight markdown because it's often wrong
-autocmd! FileType mkd setlocal syn=off
+autocmd! FileType mkd,markdown,md setlocal syn=off
 
 " Indent if we're at the beginning of a line. Else, do completion.
 " Borrowed from @garybernhardt
@@ -67,11 +67,23 @@ set splitbelow
 set splitright
 
 
-" Mouse mode
-" (not best bindings, need to find better ones)
-map <C-M>m :set mouse=<CR>
-map <C-M><C-M> :set mouse=a<CR>
+" Toggle Mouse mode on and off
+function! ToggleMouse()
+  if &mouse == "a"
+    set mouse=
+    echo "Mouse Off"
+  else
+    set mouse=a
+    echo "Mouse On"
+  endif
+endfunction
+map <C-M> :call ToggleMouse()<CR>
+imap <C-M> :call ToggleMouse()<CR>
 set mouse=a                         " Enable mouse by default
+
+" Toggle showing line numbers on and off
+map <C-N> :set number!<CR>
+set number                          " Show line numbers by default
 
 " Swag 
 colorscheme jellybeans
@@ -80,7 +92,6 @@ set cursorline                      " Shows the horizontal cursor line
 set nowrap                          " Don't wrap long lines
 set anti                            " 
 set guifont=Ubuntu\ Mono\ Bold\ 10  " Setting font
-set number                          " Show line numbers
 set laststatus=2                    " Always show the statusline
 set nocompatible                    " choose no compatibility with legacy vi
 syntax on                           " turn syntax highlighting on
@@ -92,6 +103,7 @@ filetype plugin indent on           " load file type plugins + indentation
 set ttimeout
 set ttimeoutlen=0
 
+"" Settings for Airline
 let g:airline_theme='light'
 let g:airline_powerline_fonts=1
 
