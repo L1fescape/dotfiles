@@ -5,14 +5,6 @@ set backspace=indent,eol,start      " backspace through everything in insert mod
 set softtabstop=2                   " respect hard tabs
 set expandtab                       " convert tabs to spaces
 
-
-" Folding
-set foldmethod=indent
-set foldnestmax=10
-set nofoldenable
-set foldlevel=1
-
-
 " Turn off Swap Files
 set noswapfile
 set nobackup
@@ -23,6 +15,31 @@ set hlsearch                        " highlight matches
 set incsearch                       " incremental searching
 set ignorecase                      " searches are case insensitive ...
 set smartcase                       " ... unless they contain at least one capital letter
+
+" Don't syntax highlight markdown because it's often wrong
+autocmd! FileType mkd setlocal syn=off
+
+" Indent if we're at the beginning of a line. Else, do completion.
+" Borrowed from @garybernhardt
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
+
+
+" No Arrow Keys
+" I have this really bad habbit of using arrow keys for everything. I know, I know.
+" Time to change that.
+map <Left> <Nop>
+map <Right> <Nop>
+map <Up> <Nop>
+map <Down> <Nop>
 
 
 "" Mappings
@@ -75,10 +92,8 @@ filetype plugin indent on           " load file type plugins + indentation
 set ttimeout
 set ttimeoutlen=0
 
-"" Powerline
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-set t_Co=256
-let g:Powerline_symbols = 'unicode'
+let g:airline_theme='light'
+let g:airline_powerline_fonts=1
 
 " Call Pathogen
 call pathogen#infect()

@@ -153,10 +153,6 @@ if [ "$os" = "o" ]; then
   brew install lynx
   brew install node
   brew install z
-	# Ruby shits
-	brew install ruby-install
-	ruby-install ruby
-	brew install chruby
   # Install native apps
   brew tap phinze/homebrew-cask
   brew install brew-cask
@@ -186,7 +182,13 @@ else
   $pkgmgmt python-pip vim
 fi
 
+# vimpager
+$pkgmgmt vimpager
 
+# Ruby shits
+$pkgmgmt ruby-install
+ruby-install ruby
+$pkgmgmt chruby
 
 # install virtualenv and virtualenvwrapper
 sudo pip install virtualenv virtualenvwrapper

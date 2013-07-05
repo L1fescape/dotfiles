@@ -3,8 +3,6 @@
 	email = akennedy2292@gmail.com
 [github]
 	user = L1fescape
-[core]
-	excludesfile = /Users/andrewk/.gitignore_global
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 	pu = push
@@ -46,4 +44,5 @@
   changed = green
   untracked = cyan
 [diff]
+[merge]
   tool = vimdiff
