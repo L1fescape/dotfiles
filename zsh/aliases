@@ -41,9 +41,6 @@ alias la="ls -la ${colorflag}"
 # List only directories
 alias lsd='ls -l | grep "^d"'
 
-# Always use color output for `ls`
-alias ls="command ls -G"
-
 # `cat` with beautiful colors. requires Pygments installed.
 #                  sudo easy_install Pygments
 alias c='pygmentize -O style=monokai -f console256 -g'

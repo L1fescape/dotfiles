@@ -28,8 +28,7 @@ export LANG="en_US"
 [ -e "~/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2)" scp sftp ssh
 
 # ruby
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-chruby ruby-2.0
+[ -e "/usr/local/opt/chruby/share/chruby/chruby.sh" ] && source /usr/local/opt/chruby/share/chruby/chruby.sh
 
 # Load everything else
 source ~/.paths
