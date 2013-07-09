@@ -3,7 +3,7 @@
 Now with multi-os support! 
 
 ### How to Install
-<code>git clone https://github.com/L1fescape/dotfiles.git && sh dotfiles/install.sh</code>
+<code>git clone https://github.com/L1fescape/dotfiles.git && sh dotfiles/scripts/install.sh</code>
 
 ### Installed Software
 Programs that will be installed by running the install script.
