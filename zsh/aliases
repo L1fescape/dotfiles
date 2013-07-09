@@ -35,7 +35,7 @@ alias chmod-get='stat --format "%a"'
 alias l="ls -l ${colorflag}"
 
 # List all files colorized in long format, including dot files
-alias la="ls -la ${colorflag}"
+alias la="ls -lptra ${colorflag}"
 
 
 # List only directories
@@ -65,6 +65,7 @@ function localip() {
   echo "$IP"
 }
 alias globalip="curl ifconfig.me"
+alias externalip="globalip"
 alias gateway="route -n get default | sed -n 4p | cut -c14-"
 alias whois="whois -h whois-servers.net"
 
@@ -84,3 +85,12 @@ alias httpdump="sudo tcpdump -i en0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET
 
 # Chrome Dev tools
 alias devtools-phone="adb forward tcp:9222 localabstract:chrome_devtools_remote"
+
+# Port Forwarding
+function portForward() {
+  firstServer="$1"
+  firstPort="${2:-3307}"
+  secondServer="${3:-localhost}"
+  secondPort="${4:-3306}"
+  ssh -L $firstPort:$secondServer:$secondPort $firstServer -f -N
+}
