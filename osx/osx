@@ -48,3 +48,18 @@ alias network-diagnostics="open /System/Library/CoreServices/Wi-Fi\ Diagnostics.
 # Paths
 #export PATH=$PATH:$(brew --prefix coreutils)/libexec/gnubin
 #export PATH=$PATH:$(brew --prefix git)/libexec/git-core
+
+# iTunes (borowwed from https://gist.github.com/rkumar/503162)
+alias itunes-play="osascript -e 'tell application \"iTunes\" to play'"
+alias itunes-pause="osascript -e 'tell application \"iTunes\" to pause'"
+alias itunes-next="osascript -e 'tell application \"iTunes\" to next track'"
+alias itunes-prev="osascript -e 'tell application \"iTunes\" to previous track'"
+function itunes-state() {
+  state=`osascript -e 'tell application "iTunes" to player state as string'`;
+  echo "iTunes is currently $state.";
+  if [ $state = "playing" ]; then
+    artist=`osascript -e 'tell application "iTunes" to artist of current track as string'`;
+    track=`osascript -e 'tell application "iTunes" to name of current track as string'`;
+    echo "Current track $artist:  $track";
+  fi
+}

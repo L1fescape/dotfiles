@@ -1,5 +1,5 @@
 " Tabs and Spaces
-set nowrap                          " don't wrap lines
+set wrap                            " wrap lines
 set tabstop=2 shiftwidth=2          " a tab is two spaces
 set backspace=indent,eol,start      " backspace through everything in insert mode
 set softtabstop=2                   " respect hard tabs
@@ -47,6 +47,7 @@ nmap <F2> :NERDTreeToggle<CR>       " mapping f2 to NERDTreeToggle
 noremap <F3> :GundoToggle<CR>       " mapping f3 to Gundo
 set pastetoggle=<F1>
 
+map <C-W> :set wrap!<cr>
 
 " Splits
 "" switching splits
@@ -88,7 +89,6 @@ set number                          " Show line numbers by default
 colorscheme jellybeans
 set term=screen-256color
 set cursorline                      " Shows the horizontal cursor line
-set nowrap                          " Don't wrap long lines
 set anti                            " 
 set guifont=Ubuntu\ Mono\ Bold\ 10  " Setting font
 set laststatus=2                    " Always show the statusline
