@@ -70,7 +70,7 @@ alias gateway="route -n get default | sed -n 4p | cut -c14-"
 alias whois="whois -h whois-servers.net"
 
 # Flush Directory Service cache
-alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
+alias dnsflush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 
 # MAC Address
 alias getmac="ifconfig en0 | grep ether | cut -c8-"
