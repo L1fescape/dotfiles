@@ -29,17 +29,18 @@ alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"
 alias dockaddspace="defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'; killall Dock"
 
 # Start MySQL Mac
-alias startmysql="mysql.server start"
+alias mysql-start="mysql.server start"
+alias mysql-stop="mysql.server stop"
 
 # Chrome tricks
 alias chrome="open /Applications/Google\ Chrome.app/"
 alias chrome-web="chrome --args --disable-web-security"
 
 # Mac restart apache
-alias apacherestart="sudo apachectl restart"
-alias apachestart="sudo apachectl start"
-alias apachestop="sudo apachectl stop"
-alias apacheconfig="sudo apachectl configtest"
+alias apache-restart="sudo apachectl restart"
+alias apache-start="sudo apachectl start"
+alias apache-stop="sudo apachectl stop"
+alias apache-config="sudo apachectl configtest"
 
 # Set your screensaver as your background (can get insanely distracting)
 alias background-screensaver="/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background"
@@ -65,3 +66,7 @@ function itunes-state() {
     echo "Current track $artist:  $track";
   fi
 }
+
+# CUPS printing service
+alias cups-on="cupsctl WebInterface=yes"
+alias cups-off="cupsctl WebInterface=no"
