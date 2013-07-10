@@ -1,3 +1,17 @@
+" Swag 
+colorscheme jellybeans              " Set colors
+set term=screen-256color            " 
+set cursorline                      " Shows the horizontal cursor line
+set anti                            " 
+set guifont=Ubuntu\ Mono\ Bold\ 10  " Setting font
+set laststatus=2                    " Always show the statusline
+set nocompatible                    " choose no compatibility with legacy vi
+syntax on                           " turn syntax highlighting on
+set encoding=utf-8                  " set encoding to utf-8
+set showcmd                         " display incomplete commands
+filetype plugin indent on           " load file type plugins + indentation
+set clipboard=unnamedplus
+
 " Tabs and Spaces
 set wrap                            " wrap lines
 set tabstop=2 shiftwidth=2          " a tab is two spaces
@@ -34,15 +48,15 @@ inoremap <s-tab> <c-n>
 
 
 " No Arrow Keys
-" I have this really bad habbit of using arrow keys for everything. I know, I know.
-" Time to change that.
+" I have this really bad habbit of using arrow keys for everything. 
+" I know, I know. Time to change that.
 map <Left> <Nop>
 map <Right> <Nop>
 map <Up> <Nop>
 map <Down> <Nop>
 
 
-"" Mappings
+" Mappings
 nmap <F2> :NERDTreeToggle<CR>       " mapping f2 to NERDTreeToggle
 noremap <F3> :GundoToggle<CR>       " mapping f3 to Gundo
 set pastetoggle=<F1>
@@ -84,19 +98,6 @@ set mouse=a                         " Enable mouse by default
 " Toggle showing line numbers on and off
 map <C-N> :set number!<CR>
 set number                          " Show line numbers by default
-
-" Swag 
-colorscheme jellybeans
-set term=screen-256color
-set cursorline                      " Shows the horizontal cursor line
-set anti                            " 
-set guifont=Ubuntu\ Mono\ Bold\ 10  " Setting font
-set laststatus=2                    " Always show the statusline
-set nocompatible                    " choose no compatibility with legacy vi
-syntax on                           " turn syntax highlighting on
-set encoding=utf-8                  " set encoding to utf-8
-set showcmd                         " display incomplete commands
-filetype plugin indent on           " load file type plugins + indentation
 
 "" timeout
 set ttimeout
