@@ -3,14 +3,22 @@
 Now with multi-os support! 
 
 ### How to Install
-<code>git clone https://github.com/L1fescape/dotfiles.git && sh dotfiles/scripts/install.sh</code>
+
+By default, dotfiles will install into <code>~/dotfiles</code>. To change this, set the environment 
+variable <code>DOTFILE_DIRECTORY</code> to the directory you want your dotfiles installed. Ex <code>
+export DOTFILE_DIRECTORY=~/.my-sweet-dotfiles</code>. After that, run <code>sh install/bootstrap</code> 
+to install everything.
+
+If you just want to setup gitconfig, run <code>sh install/git</code>.
+
+If you just want to copy over vim, tmux, and zsh settings, run <code>sh install/symlink</code>.
 
 ### Installed Software
-Programs that will be installed by running the install script.
+The following programs and packages will be installed by running the <code>bootstrap</code> script.
 
-#### All Operating Systems (via pacman, apt-get, homebrew, etc)
+#### Programs
+##### All Operating Systems
 
-* git
 * zsh
 * wget
 * pip
@@ -20,8 +28,9 @@ Programs that will be installed by running the install script.
 * ruby-install
 * chruby
 * vimpager
+* vagrant
 
-#### OSX only:
+##### OSX only
 
 * coreutils
 * findutils
@@ -29,10 +38,6 @@ Programs that will be installed by running the install script.
 * tree
 * lynx
 * z
-* vagrant
-
-#### Brew Cask (OSX only):
-
 * Dropbox
 * Google Chrome
 * Google Chrome Canary
@@ -43,12 +48,13 @@ Programs that will be installed by running the install script.
 * VLC
 * alfred
 
-#### Pip:
+#### Packages
+##### Pip
 
 * virtualenv
 * virtualenvwrapper
 
-#### Node packages:
+##### Node
 
 * bower
 * grunt-cli

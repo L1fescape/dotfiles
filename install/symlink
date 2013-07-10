@@ -51,12 +51,6 @@ link $dd/vim/vimrc ~/.vimrc
 link $dd/vim/vim ~/.vim
 link $dd/tmux/tmux.conf ~/.tmux.conf
 
-# check if generated gitconfig exists. if it doesn't, generate it.
-if ! [ -f $dd/git/gitconfig.symlink ]; then
-  sh $di/git
-fi
-link $dd/git/gitconfig.symlink ~/.gitconfig
-
 if [ "$os" = "o" ]
 then
   link $dd/osx/osx ~/.osx
