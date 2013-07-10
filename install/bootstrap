@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # dotfile directory
 dd=${DOTFILE_DIRECTORY:-~/dotfiles}

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # dotfile directory
 dd=${DOTFILE_DIRECTORY:-~/dotfiles}
@@ -9,7 +9,8 @@ di="$dd/install"
 . $di/functions
 
 # determine which os
-if [ "$(uname -s)" == "Darwin" ]; then
+if [ "$(uname -s)" == "Darwin" ]
+then
   os="o"
 else
   os="d"
@@ -28,12 +29,8 @@ rm ~/.functions
 rm ~/.bindings
 rm ~/.paths
 rm ~/.tmux.conf
-
-if [ "$os" = "o" ]
-then
-  rm ~/.osx
-  rm ~/.hushlogin
-fi
+rm ~/.osx
+rm ~/.hushlogin
 
 # Sym link new files
 info "Sym linking zsh files"

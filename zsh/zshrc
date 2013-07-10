@@ -31,9 +31,9 @@ export LANG="en_US"
 [ -e "/usr/local/opt/chruby/share/chruby/chruby.sh" ] && source /usr/local/opt/chruby/share/chruby/chruby.sh
 
 # Load everything else
-source ~/.paths
-source ~/.aliases
-source ~/.functions
-source ~/.bindings
-[ "$OS" = "osx" ] && source ~/.osx;
+. ~/.paths
+. ~/.aliases
+. ~/.functions
+. ~/.bindings
+[ "$OS" = "osx" ] && . ~/.osx;
 

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # dotfile directory
 dd=${DOTFILE_DIRECTORY:-~/dotfiles}
@@ -8,21 +8,18 @@ di="$dd/install"
 . $di/functions
 
 setup_gitconfig () {
-  if ! [ -f $dd/git/gitconfig.symlink ]
-  then
-    info 'setup gitconfig'
+  info 'setup gitconfig'
 
-    user ' - What is your github author name?'
-    read -e git_authorname
-    user ' - What is your github author email?'
-    read -e git_authoremail
+  user ' - What is your github author name?'
+  read -e git_authorname
+  user ' - What is your github author email?'
+  read -e git_authoremail
 
-    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" $dd/git/gitconfig.symlink.example > $dd/git/gitconfig.symlink
+  sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" $dd/git/gitconfig.symlink.example > $dd/git/gitconfig.symlink
 
-    link $dd/git/gitconfig.symlink ~/.gitconfig
+  link $dd/git/gitconfig.symlink ~/.gitconfig
 
-    success 'gitconfig'
-  fi
+  success 'gitconfig'
 }
 
 # run the config

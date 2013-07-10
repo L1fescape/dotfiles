@@ -6,12 +6,12 @@ Now with multi-os support!
 
 By default, dotfiles will install into <code>~/dotfiles</code>. To change this, set the environment 
 variable <code>DOTFILE_DIRECTORY</code> to the directory you want your dotfiles installed. Ex <code>
-export DOTFILE_DIRECTORY=~/.my-sweet-dotfiles</code>. After that, run <code>sh install/bootstrap</code> 
+export DOTFILE_DIRECTORY=~/.my-sweet-dotfiles</code>. After that, run <code>bash install/bootstrap</code> 
 to install everything.
 
-If you just want to setup gitconfig, run <code>sh install/git</code>.
+If you just want to setup gitconfig, run <code>bash install/git</code>.
 
-If you just want to copy over vim, tmux, and zsh settings, run <code>sh install/symlink</code>.
+If you just want to copy over vim, tmux, and zsh settings, run <code>bash install/symlink</code>.
 
 ### Installed Software
 The following programs and packages will be installed by running the <code>bootstrap</code> script.
