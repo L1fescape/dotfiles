@@ -8,7 +8,7 @@ di="$dd/install"
 # import helper functions
 . $di/functions
 
-install_dotfiles () {
+prompt_warning () {
   # warn user about overwriting files
   info "WARNING: This script will remove all current dotfile settings. \n"
   info "Would you like to continue? [Y/n]: "
@@ -18,7 +18,9 @@ install_dotfiles () {
     echo "Exited."
     exit
   fi
+}
 
+install_dotfiles () {
   info 'Installing dotfiles'
 
   # sym link files
@@ -167,8 +169,9 @@ install_programs () {
 
 
 # let's do this!
-install_dotfiles
+prompt_warning
 install_programs
 install_submodules
+install_dotfiles
 
 success "All done!"
