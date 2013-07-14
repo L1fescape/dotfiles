@@ -44,7 +44,7 @@ function! InsertTabWrapper()
         return "\<c-p>"
     endif
 endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr> " map tabwrapper to tab key
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 
 
@@ -99,7 +99,8 @@ set mouse=a                         " Enable mouse by default
 " Numbers
 map <C-N> :set number!<CR>          " Toggle showing line numbers on and off
 set number                          " Show line numbers by default
-nnoremap <F3> :NumbersToggle<CR>    " mapping for numbers plugin
+nnoremap <F4> :NumbersToggle<CR>    " mapping for numbers plugin
+let g:enable_numbers = 0            " turn off numbers plugin by default
 
 "" timeout
 set ttimeout
