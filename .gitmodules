@@ -1,21 +1,21 @@
-[submodule "vim/vim/bundle/nerdtree"]
-	path = vim/vim/bundle/nerdtree
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "vim/vim/bundle/gundo"]
-	path = vim/vim/bundle/gundo
+[submodule "vim/bundle/gundo"]
+	path = vim/bundle/gundo
 	url = http://github.com/sjl/gundo.vim.git
-[submodule "vim/vim/bundle/zencoding"]
-	path = vim/vim/bundle/zencoding
+[submodule "vim/bundle/zencoding"]
+	path = vim/bundle/zencoding
 	url = https://github.com/mattn/zencoding-vim.git
-[submodule "vim/vim/bundle/jade"]
-	path = vim/vim/bundle/jade
+[submodule "vim/bundle/jade"]
+	path = vim/bundle/jade
 	url = https://github.com/digitaltoad/vim-jade.git
-[submodule "vim/vim/bundle/airline"]
-	path = vim/vim/bundle/airline
+[submodule "vim/bundle/airline"]
+	path = vim/bundle/airline
 	url = https://github.com/bling/vim-airline.git
-[submodule "vim/vim/bundle/fugitive"]
-	path = vim/vim/bundle/fugitive
+[submodule "vim/bundle/fugitive"]
+	path = vim/bundle/fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "vim/vim/bundle/vimclojure"]
-	path = vim/vim/bundle/vimclojure
+[submodule "vim/bundle/vimclojure"]
+	path = vim/bundle/vimclojure
 	url = https://github.com/vim-scripts/VimClojure.git

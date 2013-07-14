@@ -45,7 +45,7 @@ link $dd/bash/bashrc ~/.bashrc
 
 # Symbolic link files in dotfiles dir to home folder
 link $dd/vim/vimrc ~/.vimrc
-link $dd/vim/vim ~/.vim
+link $dd/vim ~/.vim
 link $dd/tmux/tmux.conf ~/.tmux.conf
 
 if [ "$os" = "o" ]
