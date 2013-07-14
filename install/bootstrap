@@ -28,17 +28,11 @@ install_dotfiles () {
 
   # setup gitconfig
   . $di/git
-}
 
-install_submodules () {
-  info "Initializing submodules \n"
-  # save current directory so we can go back to it after this
-  curdir=`pwd`
-  cd $dd
-  git submodule update --init --recursive
-  cd $curdir
+  # setup vim
+  git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+  vim +BundleInstall +qall
 }
-
 
 install_programs () {
   # user must choose a valid os option. loop until they do.
@@ -171,7 +165,6 @@ install_programs () {
 # let's do this!
 prompt_warning
 install_programs
-install_submodules
 install_dotfiles
 
 success "All done!"

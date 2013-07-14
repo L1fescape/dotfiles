@@ -1,16 +1,18 @@
+" Vundle
+source ~/.vim/bundles.vim
+
 " Swag 
-colorscheme jellybeans              " Set colors
-set term=screen-256color            " 
-set cursorline                      " Shows the horizontal cursor line
+colorscheme jellybeans              " set colors
+set term=screen-256color            " full color support
+set cursorline                      " shows the horizontal cursor line
 set anti                            " 
-set guifont=Ubuntu\ Mono\ Bold\ 10  " Setting font
-set laststatus=2                    " Always show the statusline
+set guifont=Ubuntu\ Mono\ Bold\ 10  " set font
+set laststatus=2                    " always show the statusline
 set nocompatible                    " choose no compatibility with legacy vi
 syntax on                           " turn syntax highlighting on
 set encoding=utf-8                  " set encoding to utf-8
 set showcmd                         " display incomplete commands
 filetype plugin indent on           " load file type plugins + indentation
-set clipboard=unnamedplus
 
 " Tabs and Spaces
 set wrap                            " wrap lines
@@ -30,8 +32,7 @@ set incsearch                       " incremental searching
 set ignorecase                      " searches are case insensitive ...
 set smartcase                       " ... unless they contain at least one capital letter
 
-" Don't syntax highlight markdown because it's often wrong
-autocmd! FileType mkd,markdown,md setlocal syn=off
+autocmd! FileType mkd,markdown,md setlocal syn=off " Don't syntax highlight markdown because it's often wrong
 
 " Indent if we're at the beginning of a line. Else, do completion.
 " Borrowed from @garybernhardt
@@ -43,7 +44,7 @@ function! InsertTabWrapper()
         return "\<c-p>"
     endif
 endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <tab> <c-r>=InsertTabWrapper()<cr> " map tabwrapper to tab key
 inoremap <s-tab> <c-n>
 
 
@@ -61,7 +62,7 @@ nmap <F2> :NERDTreeToggle<CR>       " mapping f2 to NERDTreeToggle
 noremap <F3> :GundoToggle<CR>       " mapping f3 to Gundo
 set pastetoggle=<F1>
 
-map <C-W> :set wrap!<cr>
+map <C-W> :set wrap!<cr>            " toggle wrap
 
 " Splits
 "" switching splits
@@ -95,15 +96,16 @@ endfunction
 nmap <C-M> :call ToggleMouse()<CR>
 set mouse=a                         " Enable mouse by default
 
-" Toggle showing line numbers on and off
-map <C-N> :set number!<CR>
+" Numbers
+map <C-N> :set number!<CR>          " Toggle showing line numbers on and off
 set number                          " Show line numbers by default
+nnoremap <F3> :NumbersToggle<CR>    " mapping for numbers plugin
 
 "" timeout
 set ttimeout
 set ttimeoutlen=0
 
-" Configure vimclojure bits
+" Configure vimclojure
 let vimclojure#HighlightBuiltins=1
 let vimclojure#DynamicHighlighting=1
 let vimclojure#ParenRainbow=1
@@ -111,9 +113,6 @@ let vimclojure#ParenRainbow=1
 " Recognize ClojureScript files as Clojure
 au BufNewFile,BufRead *.cljs setf clojure
 
-"" Settings for Airline
+" Settings for Airline
 let g:airline_theme='light'
 let g:airline_powerline_fonts=1
-
-" Call Pathogen
-call pathogen#infect()
