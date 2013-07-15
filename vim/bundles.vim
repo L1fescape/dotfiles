@@ -15,5 +15,6 @@ Bundle 'sjl/gundo.vim'
 Bundle 'mattn/zencoding-vim'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'vim-scripts/VimClojure'
+Bundle 'terryma/vim-multiple-cursors'
 
 filetype plugin indent on

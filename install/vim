@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# dotfile directory
+dd=${DOTFILE_DIRECTORY:-~/dotfiles}
+# dotfile install directory
+di="$dd/install"
+# import functions for text formatting
+. $di/functions
+
+setup_vim () {
+  info 'setup vim'
+
+  git clone https://github.com/gmarik/vundle.git $dd/vim/bundle/vundle
+  vim +BundleInstall +qall
+
+  success 'vim setup'
+}
+
+# run the config
+setup_vim
