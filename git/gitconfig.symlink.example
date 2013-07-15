@@ -3,8 +3,6 @@
   email = AUTHOREMAIL
 [alias]
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
-  pu = push
-  pl = pull
   co = checkout
   ci = commit
   st = status
@@ -13,10 +11,10 @@
   dbr = push origin --delete # delete branch both remotely and locally
   type = cat-file -t
   dump = cat-file -p
-  dl = "!git ll -1"             # Show modified files in last commit
-  dlc = diff --cached HEAD^     # Show a diff last commit
-  f = "!git ls-files | grep -i" # Find a file path in codebase
-  gr = grep -Ii                 # Search/grep entire codebase for a string
+  dl = "!git ll -1"                 # Show modified files in last commit
+  dlc = diff --cached HEAD^         # Show a diff last commit
+  f = "!git ls-files | grep -i"     # Find a file path in codebase
+  gr = grep -Ii                     # Search/grep entire codebase for a string
   la = "!git config -l | grep alias | cut -c 7-" # list all aliases (because we all forget things ... like this command)
   assume = update-index --assume-unchanged # Assume a file as unchanged
   unassume = update-index --no-assume-unchanged # Unassume a file
@@ -24,7 +22,9 @@
   sl = stash list
   sa = stash apply
   ss = stash save
+  sp = stash pop
   d = difftool
+  hub = "!echo `git config remote.origin.url`"
 [color]
   # Use colors in Git commands that are capable of colored output when outputting to the terminal
   ui = auto
