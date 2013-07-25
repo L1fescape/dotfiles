@@ -81,7 +81,11 @@ alias sniff="sudo ngrep -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
 # Chrome Dev tools
-alias devtools-phone="adb forward tcp:9222 localabstract:chrome_devtools_remote"
+function devtools-phone () {
+  port="${1:-9222}"
+  adb forward tcp:$port localabstract:chrome_devtools_remote
+  echo "Now listening on port $port"
+}
 
 # Forward a port on a remote server to your local machine. Now with popping!
 function portForward() {
