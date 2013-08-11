@@ -7,7 +7,8 @@ alias slime='open -a "Sublime Text 2"'
 alias vi="vim"
 alias :q="exit"
 alias :Q="exit"
-alias lista="cat ~/.aliases | grep alias"
+alias lsal="cat ~/.aliases | grep alias"
+alias lsfun="cat ~/.aliases | grep function; cat ~/.functions | grep function"
 alias s="ls" # ;s
 alias ks="ls" # I mistype ls often
 alias fucking="sudo"
@@ -79,30 +80,3 @@ function setmac() {
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
-
-# Chrome Dev tools
-function devtools-phone () {
-  port="${1:-9222}"
-  adb forward tcp:$port localabstract:chrome_devtools_remote
-  echo "Now listening on port $port"
-}
-
-# Forward a port on a remote server to your local machine. Now with popping!
-function portForward() {
-  # With `portForward pop`, the ssh portforwarding instance with the lowest pid
-  # (process id) will be killed. 
-  # TODO: Currently no check to see if there is at least one forwarded port. 
-  #       Not really a problem, will just yell at you.
-  # TODO: Naively pops off connetion. Anything with 'ssh -L' will match. 
-  if [[ "$1" == "pop" ]]
-  then
-    process=`ps ax | grep "ssh -L" | cut -d' ' -f 1 | head -1`
-    kill -9 $process
-  else
-    firstServer="$1"
-    firstPort="${2:-3307}"
-    secondServer="${3:-localhost}"
-    secondPort="${4:-3306}"
-    ssh -L $firstPort:$secondServer:$secondPort $firstServer -f -N
-  fi
-}
