@@ -32,3 +32,43 @@ function spectrum_ls() {
 function virtualenv_info {
   [ $VIRTUAL_ENV ] && echo `basename $VIRTUAL_ENV`" "
 }
+# Chrome Dev tools
+function devtools-phone () {
+  port="${1:-9222}"
+  adb forward tcp:$port localabstract:chrome_devtools_remote
+  echo "Now listening on port $port"
+}
+
+# Forward a port on a remote server to your local machine. Now with popping!
+function portForward() {
+  # With `portForward pop`, the ssh portforwarding instance with the lowest pid
+  # (process id) will be killed. 
+  # TODO: Currently no check to see if there is at least one forwarded port. 
+  #       Not really a problem, will just yell at you.
+  # TODO: Naively pops off connetion. Anything with 'ssh -L' will match. 
+  if [[ "$1" == "pop" ]]
+  then
+    process=`ps ax | grep "ssh -L" | cut -d' ' -f 1 | head -1`
+    kill -9 $process
+  else
+    firstServer="$1"
+    firstPort="${2:-3307}"
+    secondServer="${3:-localhost}"
+    secondPort="${4:-3306}"
+    ssh -L $firstPort:$secondServer:$secondPort $firstServer -f -N
+  fi
+}
+
+# kill all processes that match a certain name via grep
+# `killname node` kills all processes that match `node`
+# TODO: don't kill the last process in the list, which is grep being run via
+#       killname. by the time it gets to killing off that process, it will 
+#       no longer exist.
+function killname() {
+  processes=`ps ax | grep $1 | cut -d' ' -f 1 | awk '{printf $0 ", ";}'`
+  while [[ -n $processes ]] ; do
+    p=${processes%%,*}
+    processes=${processes#* }
+    kill -9 $p
+  done
+}
