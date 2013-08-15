@@ -15,6 +15,7 @@ alias fuck="sudo" # fuck !! > fucking !!
 alias please="sudo"
 alias diff='vim -d'
 alias roll='curl -L http://bit.ly/10hA8iC | bash'
+alias t='tmux'
 #alias ssh="autossh -M 2000"
 #
 export PAGER=vimpager
@@ -90,6 +91,9 @@ function devtools-phone () {
   adb forward tcp:$port localabstract:chrome_devtools_remote
   echo "Now listening on port $port"
 }
+
+# iOS simulator
+alias simulator='open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app'
 
 # Forward a port on a remote server to your local machine. Now with popping!
 function portForward() {

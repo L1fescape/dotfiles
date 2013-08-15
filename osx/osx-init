@@ -42,6 +42,9 @@ launchctl unload -w /System/Library/LaunchDaemons/com.apple.UserNotificationCent
 # Check for software updates daily, not just once per week
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
+# Disable dictionary. Seriously this is freaking annoying.
+defaults write com.apple.spotlight DictionaryLookupEnabled NO
+
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
