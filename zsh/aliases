@@ -16,16 +16,8 @@ alias fuck="sudo" # fuck !! > fucking !!
 alias please="sudo"
 alias diff='vim -d'
 alias roll='curl -L http://bit.ly/10hA8iC | bash'
-<<<<<<< HEAD
 alias t='tmux'
-#alias ssh="autossh -M 2000"
-#
-export PAGER=vimpager
-alias less=$PAGER
-alias zless=$PAGER
-=======
 alias less="vimpager"
->>>>>>> b1df08a42ca5d5078fbc04662291d520017819de
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
