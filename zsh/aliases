@@ -16,7 +16,10 @@ alias fuck="sudo" # fuck !! > fucking !!
 alias please="sudo"
 alias diff='vim -d'
 alias roll='curl -L http://bit.ly/10hA8iC | bash'
+alias tmux='tmux -2' # fix for tmux with 256 colors in ubuntu
+alias t='tmux'
 alias less="vimpager"
+alias xclip="xclip -selection c"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -80,3 +83,6 @@ function setmac() {
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+
+# iOS simulator
+alias simulator='open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app'
