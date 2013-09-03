@@ -27,13 +27,9 @@ export LANG="en_US"
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "~/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2)" scp sftp ssh
 
-# ruby
-[ -e "/usr/local/opt/chruby/share/chruby/chruby.sh" ] && source /usr/local/opt/chruby/share/chruby/chruby.sh
-
 # Load everything else
 . ~/.paths
 . ~/.aliases
 . ~/.functions
 . ~/.bindings
 [ "$OS" = "osx" ] && . ~/.osx;
-
