@@ -17,6 +17,9 @@ source $ZSH/oh-my-zsh.sh
 # 10ms for key sequences (default is 400)
 KEYTIMEOUT=1
 
+# rm * without asking for confirmation
+setopt rmstarsilent
+
 # init z (https://github.com/rupa/z)
 [ "$OS" = "osx" ] && . `brew --prefix`/etc/profile.d/z.sh
 
