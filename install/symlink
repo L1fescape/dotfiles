@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # dotfile directory
-dd=${DOTFILE_DIRECTORY:-~/dotfiles}
+dd=${DOTFILE_DIRECTORY:-~/.dotfiles}
 # dotfile install directory
 di="$dd/install"
 

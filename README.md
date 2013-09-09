@@ -4,17 +4,22 @@ Now with multi-os support!
 
 ### How to Install
 
-By default, dotfiles will install into <code>~/dotfiles</code>. To change this, set the environment 
+By default, dotfiles will install into <code>~/.dotfiles</code>. To change this, set the environment 
 variable <code>DOTFILE_DIRECTORY</code> to the directory you want your dotfiles installed. Ex <code>
-export DOTFILE_DIRECTORY=~/.my-sweet-dotfiles</code>. After that, run <code>bash install/bootstrap</code> 
-to install everything.
+export DOTFILE_DIRECTORY=~/my-sweet-dotfiles</code>. 
+
+```
+git clone https://gitihub.com/L1fescape/dotfiles ~/.dotfiles
+cd ~/.dotfiles
+bash install/bootstrap
+```
 
 If you just want to setup gitconfig, run <code>bash install/git</code>.
 
 If you just want to copy over vim, tmux, and zsh settings, run <code>bash install/symlink</code>.
 
 ### Installed Software
-The following programs and packages will be installed by running the <code>bootstrap</code> script.
+The following programs and packages will be installed by running the <code>install/bootstrap</code> script.
 
 #### Programs
 ##### All Operating Systems
@@ -65,8 +70,7 @@ The following programs and packages will be installed by running the <code>boots
 ### How to Update
 
 As of right now, run <code>scripts/symlink.sh</code>. That will unlink all the old dotfiles and link the
-new ones (sometimes I change the names). Working on a better method but it's not a priority. Pull requests
-welcome!
+new ones. Working on a better method but it's not a priority. Pull requests welcome!
 
 ### Acknowledgements
 * [Mathias Bynens](https://github.com/mathiasbynens) ([dotfiles](https://github.com/mathiasbynens/dotfiles))
@@ -74,3 +78,4 @@ welcome!
 * [Mahdi Yusuf](https://github.com/myusuf3) ([dotfiles](https://github.com/myusuf3/dotfiles))
 * [Nicolas Gallagher](https://github.com/necolas) ([dotfiles](https://github.com/necolas/dotfiles))
 * [Gary Bernhardt](https://github.com/garybernhardt) ([dotfiles](https://github.com/garybernhardt/dotfiles))
+* [Zach Holman](https://github.com/holman) ([dotfiles](https://github.com/holman/dotfiles))
