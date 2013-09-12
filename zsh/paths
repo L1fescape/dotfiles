@@ -1,3 +1,4 @@
+PATH=~/.dotfiles/bin:$PATH
 # Paths
 PATH=$PATH:$HOME/code/tools/mongodb/bin # Add mongo to PATH
 PATH=$PATH:$HOME/code/tools/adt/sdk/platform-tools

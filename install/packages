@@ -5,6 +5,12 @@ sudo pip install virtualenv
 sudo pip install virtualenvwrapper 
 sudo pip install httpie
 
+# install node modules (depending on your setup, this might need sudo)
+npm install -g bower
+npm install -g grunt-cli
+npm install -g yo
+
+
 # install ruby gems
 sudo gem install rails
 sudo gem install jekyll
