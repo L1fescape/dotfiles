@@ -8,15 +8,21 @@ By default, dotfiles will install into <code>~/.dotfiles</code>. To change this,
 variable <code>DOTFILE_DIRECTORY</code> to the directory you want your dotfiles installed. Ex <code>
 export DOTFILE_DIRECTORY=~/my-sweet-dotfiles</code>. 
 
+Then run this:
+
 ```
 git clone https://gitihub.com/L1fescape/dotfiles ~/.dotfiles
 cd ~/.dotfiles
 bash install/bootstrap
 ```
 
-If you just want to setup gitconfig, run <code>bash install/git</code>.
+To only setup gitconfig, run <code>bash install/git</code>.
 
-If you just want to copy over vim, tmux, and zsh settings, run <code>bash install/symlink</code>.
+To only copy over settings (vim, tmux, zsh, etc.), run <code>bash install/symlink</code>.
+
+To only install programs, run <code>bash install/programs</code>.
+
+To only install packages, run <code>bash install/packages</code>.
 
 ### Installed Software
 The following programs and packages will be installed by running the <code>install/bootstrap</code> script.

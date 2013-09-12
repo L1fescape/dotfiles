@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# install python packages
+sudo pip install virtualenv 
+sudo pip install virtualenvwrapper 
+sudo pip install httpie
+
+# install ruby gems
+sudo gem install rails
+sudo gem install jekyll
