@@ -31,6 +31,7 @@ rm ~/.paths
 rm ~/.tmux.conf
 rm ~/.osx
 rm ~/.hushlogin
+rm -rf ~/.irssi
 
 # Sym link new files
 info "Sym linking zsh files"
@@ -42,6 +43,8 @@ link $dd/zsh/bindings ~/.bindings
 link $dd/zsh/themes/andrewk.zsh-theme ~/.oh-my-zsh/themes/andrewk.zsh-theme
 link $dd/bash/bashrc ~/.bashrc
 
+# Copy over .irssi configs, don't symlink them
+cp -r $dd/irssi ~/.irssi
 
 # Symbolic link files in dotfiles dir to home folder
 link $dd/vim/vimrc ~/.vimrc

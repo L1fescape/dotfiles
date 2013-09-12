@@ -13,6 +13,8 @@
 # at a time. Once I've finished a todo, I just delete the file. That's it.
 #
 # Millions of dollars later and `touch` wins.
+# 
+# Note: This was stolen with <3 from @holman (https://github.com/holman/dotfiles/blob/master/bin/todo)
 set -e
 
 # Run our new web 2.0 todo list application and raise millions of VC dollars.

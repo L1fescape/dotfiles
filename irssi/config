@@ -1,3 +1,6 @@
+# Note: If you're using OSX with Iterm2, check this out: http://stackoverflow.com/questions/196357/making-iterm-to-translate-meta-key-in-the-same-way-as-in-other-oses
+
+
 servers = (
   {
     address = "mobirc.bjornhd.com";
