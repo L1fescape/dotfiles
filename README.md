@@ -1,7 +1,7 @@
 # Kennedy's Dotfiles
 > Now with multi-os support! 
 
-When jumping from system to system, your dotfiles are the breifcase you bring along with you containing bow ties, toothpaste, your favorite sweater, etc. They're familiar and help you get shit done.  
+When jumping from system to system, your dotfiles are the bow ties, toothpaste, your favorite sweater, etc. you bring with you ensuring you look stellar, are comfortable in your home away from home, and help you get shit done. 
 
 
 
@@ -85,7 +85,7 @@ The following packages will be installed by running <code>install/packages</code
 
 - **bin/**: Anything in `bin/` will get added to your `$PATH` and be made available everywhere.
 - **bash/**: Contains all settings for the Bash unix shell.
-- **fonts/**: Sweet typography to make your terminal look fine.
+- **fonts/**: Sweet typography to make your terminal look fine. Right now I'm using Droid Sans Mono for Powerline.
 - **git/**: Git settings, huzzah!
 - **install/**: Scripts for getting the settings in here on that sexy machine of yours.
 - **irssi/**: Configs for my favorite IRC client.

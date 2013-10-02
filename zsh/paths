@@ -20,4 +20,5 @@ alias start-virtualenv="source /usr/local/bin/virtualenvwrapper.sh"
 export PATH=$PATH:/usr/local/share/npm/bin/
 
 # Ruby
-alias start-chruby="source /usr/local/share/chruby/chruby.sh"
+source /usr/local/share/chruby/chruby.sh
+chruby 2.0
