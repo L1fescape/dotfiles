@@ -20,6 +20,19 @@ set tabstop=2 shiftwidth=2          " a tab is two spaces
 set backspace=indent,eol,start      " backspace through everything in insert mode
 set softtabstop=2                   " respect hard tabs
 set expandtab                       " convert tabs to spaces
+" allow toggling between local and default mode
+function ToggleTab()
+  if &expandtab
+    set shiftwidth=4
+    set softtabstop=0
+    set noexpandtab
+  else
+    set shiftwidth=2
+    set softtabstop=2
+    set expandtab
+  endif
+endfunction
+nmap <C-T> :call ToggleTab()<CR>
 
 " Turn off Swap Files
 set noswapfile
