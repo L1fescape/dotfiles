@@ -111,6 +111,10 @@ let vimclojure#HighlightBuiltins=1
 let vimclojure#DynamicHighlighting=1
 let vimclojure#ParenRainbow=1
 
+" Ctrl-Space eval selection
+vnoremap <C-Space> :Eval<cr>
+vmap <C-@> <C-Space>
+
 " Recognize ClojureScript files as Clojure
 au BufNewFile,BufRead *.cljs setf clojure
 
