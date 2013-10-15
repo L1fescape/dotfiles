@@ -1,4 +1,4 @@
-PATH=~/.dotfiles/bin:$PATH
+PATH=~/.dotfiles/bin:~/bin:$PATH
 # Paths
 PATH=$PATH:$HOME/code/tools/mongodb/bin # Add mongo to PATH
 PATH=$PATH:$HOME/code/tools/adt/sdk/platform-tools
@@ -22,3 +22,6 @@ export PATH=$PATH:/usr/local/share/npm/bin/
 # Ruby
 source /usr/local/share/chruby/chruby.sh
 chruby 2.0
+
+# MySQL
+export PATH=$PATH:/usr/local/mysql/bin

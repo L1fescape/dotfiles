@@ -9,7 +9,7 @@ ZSH_THEME="andrewk"
 
 # Zsh settings
 COMPLETION_WAITING_DOTS="true"
-plugins=(vi-mode git)
+plugins=( git )
 
 # Start Oh My Zsh
 source $ZSH/oh-my-zsh.sh
