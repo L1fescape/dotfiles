@@ -11,6 +11,7 @@ alias lsal="cat ~/.aliases | grep alias"
 alias lsfun="cat ~/.aliases | grep function; cat ~/.functions | grep function"
 alias s="ls" # ;s
 alias ks="ls" # I mistype ls often
+alias sl="ls"
 alias fucking="sudo"
 alias fuck="sudo" # fuck !! > fucking !!
 alias please="sudo"
@@ -69,6 +70,9 @@ alias globalip="curl ifconfig.me"
 alias externalip="globalip"
 alias gateway="route -n get default | sed -n 4p | cut -c14-"
 alias whois="whois -h whois-servers.net"
+
+alias arp-local="arp-scan --interface=en0 --localnet"
+alias arp-local2="arp-scan --interface=en0 192.168.1.1/24"
 
 # Flush Directory Service cache
 alias dnsflush="dscacheutil -flushcache && killall -HUP mDNSResponder"

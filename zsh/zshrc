@@ -2,14 +2,14 @@
 [[ `uname` == "Darwin" ]] && OS="osx" || OS="linux" # not checking for windows. screw that.
 
 # Path oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+ZSH=$HOME/.dotfiles/zsh/oh-my-zsh
 
 # Set name of the theme to load.
 ZSH_THEME="andrewk"
 
 # Zsh settings
 COMPLETION_WAITING_DOTS="true"
-plugins=( git )
+plugins=(vi-mode git)
 
 # Start Oh My Zsh
 source $ZSH/oh-my-zsh.sh
