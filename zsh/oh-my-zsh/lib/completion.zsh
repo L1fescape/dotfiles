@@ -35,7 +35,6 @@ cdpath=(.)
 [ -r ~/.ssh/config ] && _ssh_config=($(cat ~/.ssh/config | sed -ne 's/Host[=\t ]//p')) || _ssh_config=()
 hosts=(
   "$_ssh_config[@]"
-  "$_ssh_hosts[@]"
   "$HOST"
   localhost
 )
