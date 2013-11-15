@@ -20,6 +20,9 @@ alias roll='curl -L http://bit.ly/10hA8iC | bash'
 alias tmux='tmux -2' # fix for tmux with 256 colors in ubuntu
 alias t='tmux'
 alias less="vimpager"
+
+alias makegist="pbpaste | gist | pbcopy"
+alias makepate="pbpaste | pastebin -f - | pbcopy"
 alias xclip="xclip -selection c"
 
 # Detect which `ls` flavor is in use

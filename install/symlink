@@ -23,7 +23,6 @@ rm ~/.vimrc
 rm -rf ~/.vim
 rm ~/.gitconfig
 rm ~/.zshrc
-rm ~/.oh-my-zsh/themes/andrewk.zsh-theme
 rm ~/.aliases
 rm ~/.functions
 rm ~/.bindings
@@ -40,7 +39,6 @@ link $dd/zsh/aliases ~/.aliases
 link $dd/zsh/functions ~/.functions
 link $dd/zsh/paths ~/.paths
 link $dd/zsh/bindings ~/.bindings
-link $dd/zsh/themes/andrewk.zsh-theme ~/.oh-my-zsh/themes/andrewk.zsh-theme
 link $dd/bash/bashrc ~/.bashrc
 
 # Copy over .irssi configs, don't symlink them
