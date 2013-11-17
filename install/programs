@@ -81,7 +81,6 @@ if [ "$os" = "o" ]; then
   brew install tree
   brew install lynx
   brew install node
-  brew install z
   # Install native apps
   brew tap phinze/homebrew-cask
   brew install brew-cask
@@ -113,9 +112,6 @@ if [ "$os" = "o" ]; then
 else
   $pkgmgmt python-pip vim
 fi
-
-# vimpager
-$pkgmgmt vimpager
 
 # Ruby shits
 $pkgmgmt ruby-install
