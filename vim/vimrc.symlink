@@ -16,6 +16,7 @@ syntax on                           " turn syntax highlighting on
 set encoding=utf-8                  " set encoding to utf-8
 set showcmd                         " display incomplete commands
 filetype plugin indent on           " load file type plugins + indentation
+set fileformats+=dos
 
 " Tabs and Spaces
 set wrap                            " wrap lines

@@ -33,26 +33,26 @@ rm ~/.hushlogin
 rm -rf ~/.irssi
 
 # Sym link new files
-info "Sym linking zsh files"
-link $dd/zsh/zshrc ~/.zshrc
-link $dd/zsh/aliases ~/.aliases
-link $dd/zsh/functions ~/.functions
-link $dd/zsh/paths ~/.paths
-link $dd/zsh/bindings ~/.bindings
-link $dd/bash/bashrc ~/.bashrc
+info "Sym linking shell files"
+link $dd/shell/zsh/zshrc.symlink ~/.zshrc
+link $dd/shell/aliases.symlink ~/.aliases
+link $dd/shell/functions.symlink ~/.functions
+link $dd/shell/paths.symlink ~/.paths
+link $dd/shell/bindings.symlink ~/.bindings
+link $dd/shell/bash/bashrc.symlink ~/.bashrc
 
 # Copy over .irssi configs, don't symlink them
 cp -r $dd/irssi ~/.irssi
 
 # Symbolic link files in dotfiles dir to home folder
-link $dd/vim/vimrc ~/.vimrc
+link $dd/vim/vimrc.symlink ~/.vimrc
 link $dd/vim ~/.vim
-link $dd/tmux/tmux.conf ~/.tmux.conf
+link $dd/tmux/tmux.conf.symlink ~/.tmux.conf
 
 if [ "$os" = "o" ]
 then
-  link $dd/osx/osx ~/.osx
-  link $dd/osx/hushlogin ~/.hushlogin
+  link $dd/osx/osx.symlink ~/.osx
+  link $dd/osx/hushlogin.symlink ~/.hushlogin
   # Copy iterm2 settings
   cp $dd/osx/iterm/com.googlecode.iterm2.plist ~/Library/Preferences/
 fi
