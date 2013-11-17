@@ -5,7 +5,7 @@
 ZSH=$HOME/.dotfiles/shell/zsh
 
 # Set name of the theme to load.
-ZSH_THEME="andrewk"
+ZSH_THEME="pure"
 
 # Zsh settings
 COMPLETION_WAITING_DOTS="true"

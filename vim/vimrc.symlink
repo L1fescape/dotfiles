@@ -5,7 +5,7 @@ source ~/.vim/bundles.vim
 map <C-S> :so $MYVIMRC<cr>
 
 " Swag 
-colorscheme jellybeans              " set colors
+colorscheme Tomorrow-Night-Eighties " set colors
 set term=screen-256color            " full color support
 set cursorline                      " shows the horizontal cursor line
 set anti                            " 

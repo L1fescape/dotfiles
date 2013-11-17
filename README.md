@@ -127,3 +127,4 @@ new ones. Working on a better method but it's not a priority. Pull requests welc
 - [Mahdi Yusuf](https://github.com/myusuf3) ([dotfiles](https://github.com/myusuf3/dotfiles))
 - [Nicolas Gallagher](https://github.com/necolas) ([dotfiles](https://github.com/necolas/dotfiles))
 - [Gary Bernhardt](https://github.com/garybernhardt) ([dotfiles](https://github.com/garybernhardt/dotfiles))
+- [Sindre Sorhus](https://github.com/sindresorhus)
