@@ -21,7 +21,6 @@ info "Removing old files"
 rm ~/.bashrc 
 rm ~/.vimrc
 rm -rf ~/.vim
-rm ~/.gitconfig
 rm ~/.zshrc
 rm ~/.aliases
 rm ~/.functions
