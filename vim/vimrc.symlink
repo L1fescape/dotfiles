@@ -77,7 +77,7 @@ inoremap <s-tab> <c-n>
 " Mappings
 nmap <F1> :NERDTreeToggle<CR>       " mapping f1 to NERDTreeToggle
 noremap <F2> :GundoToggle<CR>       " mapping f2 to Gundo
-set pastetoggle=<C-P>
+set pastetoggle=<C-Q>
 
 " Splits
 "" switching splits

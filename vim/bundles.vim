@@ -18,5 +18,6 @@ Bundle 'vim-scripts/VimClojure'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-fireplace'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'kien/ctrlp.vim'
 
 filetype plugin indent on
