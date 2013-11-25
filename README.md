@@ -31,34 +31,52 @@ The following programs will be installed by running <code>install/programs</code
 
 ##### All Operating Systems
 
-- zsh
-- wget
-- pip
-- node
-- tmux
-- curl
-- ruby-install
-- chruby
-- vimpager
-- vagrant
+<table>
+<tr>
+  <td>zsh</td>
+  <td>wget</td>
+  <td>pip</td>
+</tr>
+<tr>
+  <td>node</td>
+  <td>tmux</td>
+  <td>curl</td>
+</tr>
+<tr>
+  <td>ruby-install</td>
+  <td>chruby</td>
+  <td>vagrant</td>
+</tr>
+</table>
 
 ##### OSX only
 
-- coreutils
-- findutils
-- bash
-- tree
-- lynx
-- z
-- Dropbox
-- Google Chrome
-- Google Chrome Canary
-- Google Drive
-- iterm2
-- sublime text
-- Virtual Box
-- VLC
-- alfred
+<table>
+<tr>
+  <td>coreutils</td>
+  <td>findutils</td>
+  <td>bash</td>
+</tr>
+<tr>
+  <td>tree</td>
+  <td>lynx</td>
+  <td>Dropbox</td>
+</tr>
+<tr>
+  <td>Google Chrome</td>
+  <td>Google Chrome Canary</td>
+  <td>Google Drive</td>
+</tr>
+<tr>
+  <td>iterm2</td>
+  <td>sublime text</td>
+  <td>Virtual Box</td>
+</tr>
+<tr>
+  <td>VLC</td>
+  <td>alfred</td>
+</tr>
+</table>
 
 The following packages will be installed by running <code>install/packages</code>:
 
@@ -84,15 +102,14 @@ The following packages will be installed by running <code>install/packages</code
 ### Components
 
 - **bin/**: Anything in `bin/` will get added to your `$PATH` and be made available everywhere.
-- **bash/**: Contains all settings for the Bash unix shell.
 - **fonts/**: Sweet typography to make your terminal look fine. Right now I'm using Droid Sans Mono for Powerline.
 - **git/**: Git settings, huzzah!
 - **install/**: Scripts for getting the settings in here on that sexy machine of yours.
 - **irssi/**: Configs for my favorite IRC client.
 - **osx/**: OSX specific configs and scripts.
+- **shell/**: Contains all settings for Zsh and Bash.
 - **tmux/**: Terminal multiplexer. Colors and keybinding settings for that.
 - **vim/**: Configs for making my favorite text-editor boss.
-- **zsh/**: The best unix shell around. Functions, aliases, path settings, etc.
 
 
 
@@ -110,3 +127,4 @@ new ones. Working on a better method but it's not a priority. Pull requests welc
 - [Mahdi Yusuf](https://github.com/myusuf3) ([dotfiles](https://github.com/myusuf3/dotfiles))
 - [Nicolas Gallagher](https://github.com/necolas) ([dotfiles](https://github.com/necolas/dotfiles))
 - [Gary Bernhardt](https://github.com/garybernhardt) ([dotfiles](https://github.com/garybernhardt/dotfiles))
+- [Sindre Sorhus](https://github.com/sindresorhus)

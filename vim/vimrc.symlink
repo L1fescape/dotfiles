@@ -1,8 +1,11 @@
 " Vundle
 source ~/.vim/bundles.vim
 
+" Reload VimRC
+map <C-S> :so $MYVIMRC<cr>
+
 " Swag 
-colorscheme jellybeans              " set colors
+colorscheme Tomorrow-Night-Eighties " set colors
 set term=screen-256color            " full color support
 set cursorline                      " shows the horizontal cursor line
 set anti                            " 
@@ -13,9 +16,11 @@ syntax on                           " turn syntax highlighting on
 set encoding=utf-8                  " set encoding to utf-8
 set showcmd                         " display incomplete commands
 filetype plugin indent on           " load file type plugins + indentation
+set fileformats+=dos
 
 " Tabs and Spaces
 set wrap                            " wrap lines
+map <C-W>W :set wrap!<CR>           " toggle wrap
 set tabstop=2 shiftwidth=2          " a tab is two spaces
 set backspace=indent,eol,start      " backspace through everything in insert mode
 set softtabstop=2                   " respect hard tabs
@@ -33,6 +38,15 @@ function ToggleTab()
   endif
 endfunction
 nmap <C-T> :call ToggleTab()<CR>
+
+" Creating tabs and toggling
+nmap ,t :tabnew<CR>
+nmap ,j :tabp<CR>
+nmap ,k :tabn<CR>
+nmap ,m :tabn<CR>
+nmap ,h :tabfirst<CR>
+nmap ,l :tablast<CR>
+nmap ,n :NERDTreeToggle<CR>
 
 " Turn off Swap Files
 set noswapfile
@@ -60,22 +74,10 @@ endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 
-
-" No Arrow Keys
-" I have this really bad habbit of using arrow keys for everything. 
-" I know, I know. Time to change that.
-map <Left> <Nop>
-map <Right> <Nop>
-map <Up> <Nop>
-map <Down> <Nop>
-
-
 " Mappings
-nmap <F2> :NERDTreeToggle<CR>       " mapping f2 to NERDTreeToggle
-noremap <F3> :GundoToggle<CR>       " mapping f3 to Gundo
-set pastetoggle=<F1>
-
-map <C-W> :set wrap!<cr>            " toggle wrap
+nmap <F1> :NERDTreeToggle<CR>       " mapping f1 to NERDTreeToggle
+noremap <F2> :GundoToggle<CR>       " mapping f2 to Gundo
+set pastetoggle=<C-P>
 
 " Splits
 "" switching splits
@@ -84,17 +86,16 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 "" resizing splits
-map = <c-w>+
-map - <c-w>-
-map + <c-w><
-map _ <c-w>>
+nnoremap = <c-w>+
+nnoremap - <c-w>-
+nnoremap + <c-w><
+nnoremap _ <c-w>>
 "" new splits
-map <Bar> <c-w>v
-map \ <c-w>n
+nnoremap <Bar> <c-w>v
+nnoremap \ <c-w>n
 "" open new splits to right and bottom
 set splitbelow
 set splitright
-
 
 " Toggle Mouse mode on and off
 function! ToggleMouse()

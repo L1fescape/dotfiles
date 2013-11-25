@@ -25,3 +25,6 @@ chruby 2.0
 
 # MySQL
 export PATH=$PATH:/usr/local/mysql/bin
+
+# Grails
+export PATH=$PATH:$HOME/code/mob/panera/grails/bin

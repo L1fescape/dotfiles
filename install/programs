@@ -61,14 +61,6 @@ info "Installing Zsh \n"
 $pkgmgmt zsh
 info "Setting zsh as default shell \n"
 chsh -s /bin/zsh
-info "Downloading and installing ohmyzsh \n"
-# wget isn't installed on osx by default
-if [ "$os" = "o" ]; then
-  # Install wget with IRI support
-  brew install wget --enable-iri
-fi
-wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
-
 
 # if osx, install things a little differently
 if [ "$os" = "o" ]; then
@@ -77,6 +69,8 @@ if [ "$os" = "o" ]; then
   brew install python --universal --framework 
   # install pip
   sudo easy_install pip
+  # Install wget with IRI support
+  brew install wget --enable-iri
   # Install GNU core utilities (those that come with OS X are outdated)
   brew install coreutils
   echo "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
@@ -87,7 +81,6 @@ if [ "$os" = "o" ]; then
   brew install tree
   brew install lynx
   brew install node
-  brew install z
   # Install native apps
   brew tap phinze/homebrew-cask
   brew install brew-cask
@@ -119,9 +112,6 @@ if [ "$os" = "o" ]; then
 else
   $pkgmgmt python-pip vim
 fi
-
-# vimpager
-$pkgmgmt vimpager
 
 # Ruby shits
 $pkgmgmt ruby-install
