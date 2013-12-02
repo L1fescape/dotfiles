@@ -4,3 +4,4 @@ git/gitconfig.symlink
 vim/doc/*
 vim/bundle
 npm-debug.log
+cache

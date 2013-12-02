@@ -24,6 +24,9 @@ setopt rmstarsilent
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
 
+# Set default editor
+export EDITOR='vim'
+
 # Load everything else
 . ~/.paths
 . ~/.aliases
