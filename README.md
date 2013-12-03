@@ -10,7 +10,7 @@ When jumping from system to system, your dotfiles are the bow ties, toothpaste, 
 Run this:
 
 ```
-git clone https://gitihub.com/L1fescape/dotfiles ~/.dotfiles
+git clone https://github.com/L1fescape/dotfiles ~/.dotfiles
 cd ~/.dotfiles
 bash install/bootstrap
 ```
