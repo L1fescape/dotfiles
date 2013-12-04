@@ -72,3 +72,9 @@ function killname() {
     kill -9 $p
   done
 }
+
+# open results of grep in vim tabs
+function vimgrep() {
+  results=($(grep -rn $1 . | awk '{ split($1,a,":"); print a[1] }' | sort | uniq ))
+  vim -p $results;
+}
