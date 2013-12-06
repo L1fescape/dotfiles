@@ -113,10 +113,5 @@ else
   $pkgmgmt python-pip vim
 fi
 
-# Ruby shits
-$pkgmgmt ruby-install
-ruby-install ruby
-$pkgmgmt chruby
-
 # install tmux and curl
 $pkgmgmt tmux curl

@@ -31,7 +31,15 @@ prompt_pure_cmd_exec_time() {
         local stop=$(date +%s)
         local start=${cmd_timestamp:-$stop}
         integer elapsed=$stop-$start
-        (($elapsed > ${PURE_CMD_MAX_EXEC_TIME:=5})) && echo ${elapsed}s
+        
+        h=$(($elapsed/3600))
+        m=$((($elapsed/60)%60))
+        s=$(($elapsed%60))
+        time=$([ "$h" -gt 0 ] && echo "$h""h " || echo "")
+        time+=$([ "$m" -gt 0 ] && echo "$m""m " || echo "")
+        time+=$(echo "$s""s")
+
+        (($elapsed > ${PURE_CMD_MAX_EXEC_TIME:=5})) && echo ${time}
 }
 
 prompt_pure_preexec() {
@@ -55,7 +63,7 @@ prompt_pure_precmd() {
         # git info
         vcs_info
 
-        local prompt_pure_preprompt='\n%F{blue}%~%F{242}$vcs_info_msg_0_`prompt_pure_git_dirty` $prompt_pure_username%f %F{yellow}`prompt_pure_cmd_exec_time`%f'
+        local prompt_pure_preprompt='\n%F{blue}%~%F{242}%{$FG[010]%}$(virtualenv_info)%F{242}$vcs_info_msg_0_`prompt_pure_git_dirty` $prompt_pure_username%f %F{yellow}`prompt_pure_cmd_exec_time`%f'
         print -P $prompt_pure_preprompt
 
         # check async if there is anything to pull

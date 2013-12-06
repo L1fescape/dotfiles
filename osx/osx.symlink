@@ -70,3 +70,7 @@ function itunes-state() {
 # CUPS printing service
 alias cups-on="cupsctl WebInterface=yes"
 alias cups-off="cupsctl WebInterface=no"
+
+# Chruby
+source /usr/local/share/chruby/chruby.sh
+chruby 2.0

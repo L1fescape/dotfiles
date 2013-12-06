@@ -2,7 +2,6 @@ PATH=~/.dotfiles/bin:~/bin:$PATH
 # Paths
 PATH=$PATH:$HOME/code/tools/mongodb/bin # Add mongo to PATH
 PATH=$PATH:$HOME/code/tools/adt/sdk/platform-tools
-[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -14,14 +13,10 @@ export PATH=$homebrew:$PATH
 # Virtualenv Settings
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUAL_ENV_DISABLE_PROMPT='1' # don't prepend active environment to prompt
-alias start-virtualenv="source /usr/local/bin/virtualenvwrapper.sh"
+source /usr/local/bin/virtualenvwrapper.sh
 
 # NPM Paths
 export PATH=$PATH:/usr/local/share/npm/bin/
-
-# Ruby
-source /usr/local/share/chruby/chruby.sh
-chruby 2.0
 
 # MySQL
 export PATH=$PATH:/usr/local/mysql/bin

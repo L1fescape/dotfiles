@@ -30,7 +30,7 @@ function spectrum_ls() {
 
 # Used in zsh theme for displaying current virtualenv
 function virtualenv_info {
-  [ $VIRTUAL_ENV ] && echo `basename $VIRTUAL_ENV`" "
+  [ $VIRTUAL_ENV ] && echo " "`basename $VIRTUAL_ENV`
 }
 # Chrome Dev tools
 function devtools-phone () {
@@ -75,6 +75,8 @@ function killname() {
 
 # open results of grep in vim tabs
 function vimgrep() {
-  results=($(grep -rn $1 . | awk '{ split($1,a,":"); print a[1] }' | sort | uniq ))
-  vim -p $results;
+  #results=($(grep -rn $1 . | awk '{ split($1,a,":"); print a[1] }' | sort | uniq ))
+  #vim -p $results;
+  vim -p `grep -rl $1 .`
+  #vim +6 bootstrap.css +"tabnew +3 main.css" +"tabnew +7 main.css"
 }
