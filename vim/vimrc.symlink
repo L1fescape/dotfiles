@@ -40,13 +40,12 @@ endfunction
 nmap <C-T> :call ToggleTab()<CR>
 
 " Creating tabs and toggling
-nmap ,t :tabnew<CR>
-nmap ,j :tabp<CR>
-nmap ,k :tabn<CR>
-nmap ,m :tabn<CR>
-nmap ,h :tabfirst<CR>
-nmap ,l :tablast<CR>
-nmap ,n :NERDTreeToggle<CR>
+nmap L :tabn<CR>
+nmap H :tabp<CR>
+nmap ,n :tabnew<CR>
+
+" Who uses semi colon anyway?
+nnoremap ; :
 
 " Turn off Swap Files
 set noswapfile
