@@ -37,12 +37,12 @@ function ToggleTab()
     set expandtab
   endif
 endfunction
-nmap <C-T> :call ToggleTab()<CR>
+nmap ,t :call ToggleTab()<CR>
 
 " Creating tabs and toggling
 nmap L :tabn<CR>
 nmap H :tabp<CR>
-nmap ,n :tabnew<CR>
+nmap <C-T> :tabnew<CR>
 
 " Who uses semi colon anyway?
 nnoremap ; :

@@ -59,6 +59,12 @@ function portForward() {
   fi
 }
 
+function socks() {
+  server="$1"
+  port="${2:-1080}"
+  ssh -N -D $server:$port localhost
+}
+
 # kill all processes that match a certain name via grep
 # `killname node` kills all processes that match `node`
 # TODO: don't kill the last process in the list, which is grep being run via
