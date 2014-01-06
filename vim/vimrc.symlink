@@ -17,6 +17,7 @@ set encoding=utf-8                  " set encoding to utf-8
 set showcmd                         " display incomplete commands
 filetype plugin indent on           " load file type plugins + indentation
 set fileformats+=dos
+match Error /\%81v.\+/              " higlight text longer than 80 columns
 
 " Tabs and Spaces
 set wrap                            " wrap lines
@@ -76,7 +77,7 @@ inoremap <s-tab> <c-n>
 " Mappings
 nmap <F1> :NERDTreeToggle<CR>       " mapping f1 to NERDTreeToggle
 noremap <F2> :GundoToggle<CR>       " mapping f2 to Gundo
-set pastetoggle=<C-Q>
+set pastetoggle=<F3>
 
 " Splits
 "" switching splits
@@ -91,7 +92,7 @@ nnoremap + <c-w><
 nnoremap _ <c-w>>
 "" new splits
 nnoremap <Bar> <c-w>v
-nnoremap \ <c-w>n
+nnoremap \ <c-w>s
 "" open new splits to right and bottom
 set splitbelow
 set splitright
