@@ -48,15 +48,39 @@ alias background-screensaver="/System/Library/Frameworks/ScreenSaver.framework/R
 # Mac Network Utilities
 alias network-diagnostics="open /System/Library/CoreServices/Wi-Fi\ Diagnostics.app"
 
-# Paths
-#export PATH=$PATH:$(brew --prefix coreutils)/libexec/gnubin
-#export PATH=$PATH:$(brew --prefix git)/libexec/git-core
+# iTunes (borowwed from https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/osx/osx.plugin.zsh)
+function itunes() {
+  local opt=$1
+  shift
+  case "$opt" in
+    launch|play|pause|stop|rewind|resume|quit)
+      ;;
+    mute)
+      opt="set mute to true"
+      ;;
+    unmute)
+      opt="set mute to false"
+      ;;
+    next|previous)
+      opt="$opt track"
+      ;;
+    ""|-h|--help)
+      echo "Usage: itunes <option>"
+      echo "option:"
+      echo "\tlaunch|play|pause|stop|rewind|resume|quit"
+      echo "\tmute|unmute\tcontrol volume set"
+      echo "\tnext|previous\tplay next or previous track"
+      echo "\thelp\tshow this message and exit"
+      return 0
+      ;;
+    *)
+      print "Unkonwn option: $opt"
+      return 1
+      ;;
+  esac
+  osascript -e "tell application \"iTunes\" to $opt"
+}
 
-# iTunes (borowwed from https://gist.github.com/rkumar/503162)
-alias itunes-play="osascript -e 'tell application \"iTunes\" to play'"
-alias itunes-pause="osascript -e 'tell application \"iTunes\" to pause'"
-alias itunes-next="osascript -e 'tell application \"iTunes\" to next track'"
-alias itunes-prev="osascript -e 'tell application \"iTunes\" to previous track'"
 function itunes-state() {
   state=`osascript -e 'tell application "iTunes" to player state as string'`;
   echo "iTunes is currently $state.";
