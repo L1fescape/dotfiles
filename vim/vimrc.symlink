@@ -17,7 +17,7 @@ set encoding=utf-8                  " set encoding to utf-8
 set showcmd                         " display incomplete commands
 filetype plugin indent on           " load file type plugins + indentation
 set fileformats+=dos
-match Error /\%81v.\+/              " higlight text longer than 80 columns
+"match Error /\%81v.\+/              " higlight text longer than 80 columns
 
 " Tabs and Spaces
 set wrap                            " wrap lines
@@ -131,6 +131,9 @@ vmap <C-@> <C-Space>
 
 " Recognize ClojureScript files as Clojure
 au BufNewFile,BufRead *.cljs setf clojure
+
+" Recognize Go files
+au BufRead,BufNewFile *.go set filetype=go
 
 " Settings for Airline
 let g:airline_theme='light'
