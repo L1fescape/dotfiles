@@ -18,6 +18,9 @@ set showcmd                         " display incomplete commands
 filetype plugin indent on           " load file type plugins + indentation
 set fileformats+=dos
 "match Error /\%81v.\+/              " higlight text longer than 80 columns
+hi clear SpellBad
+hi SpellBad cterm=underline
+map <F5> :set spell! spelllang=en_us<CR>
 
 " Tabs and Spaces
 set wrap                            " wrap lines
@@ -77,7 +80,7 @@ inoremap <s-tab> <c-n>
 " Mappings
 nmap <F1> :NERDTreeToggle<CR>       " mapping f1 to NERDTreeToggle
 noremap <F2> :GundoToggle<CR>       " mapping f2 to Gundo
-set pastetoggle=<F3>
+set pastetoggle=<C-O>
 
 " Splits
 "" switching splits
