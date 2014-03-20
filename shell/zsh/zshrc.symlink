@@ -33,3 +33,8 @@ export EDITOR='vim'
 . ~/.functions
 . ~/.bindings
 [ "$OS" = "osx" ] && . ~/.osx;
+
+# Load machine-specific env vars
+if [ -d "$HOME/.env" ]; then
+  for i in $HOME/.env/* ; do source $i ; done
+fi
