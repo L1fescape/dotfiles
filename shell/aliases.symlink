@@ -79,7 +79,7 @@ alias arp-local="arp-scan --interface=en0 --localnet"
 alias arp-local2="arp-scan --interface=en0 192.168.1.1/24"
 
 # Flush Directory Service cache
-alias dnsflush="dscacheutil -flushcache && killall -HUP mDNSResponder"
+alias dnsflush="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 
 # MAC Address
 alias getmac="ifconfig en0 | grep ether | cut -c8-"
