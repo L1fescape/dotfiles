@@ -19,5 +19,6 @@ Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-fireplace'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
+Bundle 'jistr/vim-nerdtree-tabs'
 
 filetype plugin indent on

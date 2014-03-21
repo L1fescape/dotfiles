@@ -25,6 +25,7 @@
   sp = stash pop
   d = difftool
   hub = "!echo `git config remote.origin.url`"
+  dif = "!git diff | vim -"
 [color]
   # Use colors in Git commands that are capable of colored output when outputting to the terminal
   ui = auto

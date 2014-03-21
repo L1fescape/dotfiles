@@ -29,6 +29,15 @@ set tabstop=2 shiftwidth=2          " a tab is two spaces
 set backspace=indent,eol,start      " backspace through everything in insert mode
 set softtabstop=2                   " respect hard tabs
 set expandtab                       " convert tabs to spaces
+nnoremap QQ :QuitTab<cr>
+command! QuitTab call s:QuitTab()
+function! s:QuitTab()
+  try
+    tabclose
+  catch /E784/ " Can't close last tab
+    qall
+  endtry
+endfunction
 " allow toggling between local and default mode
 function ToggleTab()
   if &expandtab
@@ -102,6 +111,7 @@ function! NERDTreeQuit()
     endif
 endfunction
 autocmd WinEnter * call NERDTreeQuit()
+map ,n :call NERDTreeTabsToggle()<CR>
 
 noremap <F2> :GundoToggle<CR>       " mapping f2 to Gundo
 set pastetoggle=<C-O>
