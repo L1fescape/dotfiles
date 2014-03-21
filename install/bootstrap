@@ -40,9 +40,6 @@ install_programs () {
 
   # install programs
   . $di/programs
-  
-  # install packages
-  . $di/packages
 }
 
 
