@@ -20,6 +20,3 @@ export PATH=$PATH:/usr/local/share/npm/bin/
 
 # MySQL
 export PATH=$PATH:/usr/local/mysql/bin
-
-# Grails
-export PATH=$PATH:$HOME/code/mob/panera/grails/bin
