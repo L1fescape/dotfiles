@@ -22,6 +22,12 @@ hi clear SpellBad
 hi SpellBad cterm=underline
 map <F5> :set spell! spelllang=en_us<CR>
 
+" make quitting easier
+:command WQ wq
+:command Wq wq
+:command W w
+:command Q q
+
 " Tabs and Spaces
 set wrap                            " wrap lines
 map <C-W>W :set wrap!<CR>           " toggle wrap
