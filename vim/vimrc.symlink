@@ -77,6 +77,9 @@ set incsearch                       " incremental searching
 set ignorecase                      " searches are case insensitive ...
 set smartcase                       " ... unless they contain at least one capital letter
 
+"" Ctrl P settings
+let g:ctrlp_custom_ignore = '\v[\/]\.?(git|hg|svn|node_modules)$'
+
 autocmd! FileType mkd,markdown,md setlocal syn=off " Don't syntax highlight markdown because it's often wrong
 
 " Indent if we're at the beginning of a line. Else, do completion.
