@@ -86,3 +86,8 @@ function vimgrep() {
   vim -p `grep -rl $1 .`
   #vim +6 bootstrap.css +"tabnew +3 main.css" +"tabnew +7 main.css"
 }
+
+function keyme() {
+  file=${1:-~/.ssh/id_rsa.pub}
+  cat $file
+}
