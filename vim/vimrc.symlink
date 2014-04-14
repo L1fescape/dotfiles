@@ -2,7 +2,7 @@
 source ~/.vim/bundles.vim
 
 " Reload VimRC
-map <C-S> :so $MYVIMRC<cr>
+map <C-S> :so ~/.vimrc<CR>
 
 " Swag 
 colorscheme Tomorrow-Night-Eighties " set colors
@@ -121,6 +121,7 @@ function! NERDTreeQuit()
 endfunction
 autocmd WinEnter * call NERDTreeQuit()
 map ,n :call NERDTreeTabsToggle()<CR>
+let nerdtree_tabs_open_on_console_startup=1
 
 noremap <F2> :GundoToggle<CR>       " mapping f2 to Gundo
 set pastetoggle=<C-O>
