@@ -1,8 +1,10 @@
 " Vundle
 source ~/.vim/bundles.vim
 
+
 " Reload VimRC
 map <C-S> :so ~/.vimrc<CR>
+
 
 " Swag 
 colorscheme Tomorrow-Night-Eighties " set colors
@@ -22,11 +24,13 @@ hi clear SpellBad
 hi SpellBad cterm=underline
 map <F5> :set spell! spelllang=en_us<CR>
 
+
 " make quitting easier
 :command WQ wq
 :command Wq wq
 :command W w
 :command Q q
+
 
 " Tabs and Spaces
 set wrap                            " wrap lines
@@ -47,7 +51,7 @@ endfunction
 " allow toggling between local and default mode
 function ToggleTab()
   if &expandtab
-    set shiftwidth=4
+    set shiftwidth=2
     set softtabstop=0
     set noexpandtab
   else
@@ -58,18 +62,22 @@ function ToggleTab()
 endfunction
 nmap ,t :call ToggleTab()<CR>
 
+
 " Creating tabs and toggling
 nmap L :tabn<CR>
 nmap H :tabp<CR>
 nmap <C-T> :tabnew<CR>
 
+
 " Who uses semi colon anyway?
 nnoremap ; :
+
 
 " Turn off Swap Files
 set noswapfile
 set nobackup
 set nowb 
+
 
 "" Searching
 set hlsearch                        " highlight matches
@@ -77,10 +85,10 @@ set incsearch                       " incremental searching
 set ignorecase                      " searches are case insensitive ...
 set smartcase                       " ... unless they contain at least one capital letter
 
+
 "" Ctrl P settings
 let g:ctrlp_custom_ignore = '\v[\/]\.?(git|hg|svn|node_modules)$'
 
-autocmd! FileType mkd,markdown,md setlocal syn=off " Don't syntax highlight markdown because it's often wrong
 
 " Indent if we're at the beginning of a line. Else, do completion.
 " Borrowed from @garybernhardt
@@ -97,6 +105,7 @@ inoremap <s-tab> <c-n>
 
 " NerdTree
 nmap <F1> :NERDTreeToggle<CR>       " mapping f1 to NERDTreeToggle
+"" Close NERDTree if it's the only remaining window
 function! NERDTreeQuit()
     redir => buffersoutput
     silent buffers
@@ -120,11 +129,11 @@ function! NERDTreeQuit()
     endif
 endfunction
 autocmd WinEnter * call NERDTreeQuit()
-map ,n :call NERDTreeTabsToggle()<CR>
-let nerdtree_tabs_open_on_console_startup=1
+let nerdtree_tabs_open_on_console_startup=1 " open NERDTree on startup
 
 noremap <F2> :GundoToggle<CR>       " mapping f2 to Gundo
-set pastetoggle=<C-O>
+set pastetoggle=<C-O>               " toggle paste mode with Ctrl-O
+
 
 " Splits
 "" switching splits
@@ -144,6 +153,7 @@ nnoremap \ <c-w>s
 set splitbelow
 set splitright
 
+
 " Toggle Mouse mode on and off
 function! ToggleMouse()
   if &mouse == "a"
@@ -157,31 +167,46 @@ endfunction
 nmap <C-M> :call ToggleMouse()<CR>
 set mouse=a                         " Enable mouse by default
 
+
 " Numbers
 map <C-N> :set number!<CR>          " Toggle showing line numbers on and off
 set number                          " Show line numbers by default
 nnoremap <F4> :NumbersToggle<CR>    " mapping for numbers plugin
 let g:enable_numbers = 0            " turn off numbers plugin by default
 
+
 "" timeout
 set ttimeout
 set ttimeoutlen=0
+
 
 " Configure vimclojure
 let vimclojure#HighlightBuiltins=1
 let vimclojure#DynamicHighlighting=1
 let vimclojure#ParenRainbow=1
 
+
 " Ctrl-Space eval selection
 vnoremap <C-Space> :Eval<cr>
 vmap <C-@> <C-Space>
 
-" Recognize ClojureScript files as Clojure
-au BufNewFile,BufRead *.cljs setf clojure
 
-" Recognize Go files
+" Fileetypes
+autocmd! FileType mkd,markdown,md setlocal syn=off " Don't syntax highlight markdown because it's often wrong
+"" Recognize ClojureScript files as Clojure
+au BufNewFile,BufRead *.cljs setf clojure
+"" Recognize Go files
 au BufRead,BufNewFile *.go set filetype=go
+
 
 " Settings for Airline
 let g:airline_theme='light'
 let g:airline_powerline_fonts=1
+
+
+" Read in any marchine-specific vim settings
+if isdirectory(expand('$HOME/.env'))
+  for f in split(glob('$HOME/.env/*.vim'), '\n')
+    exe 'source' f
+  endfor
+endif
