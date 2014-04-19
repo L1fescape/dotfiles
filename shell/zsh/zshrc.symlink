@@ -36,5 +36,5 @@ export EDITOR='vim'
 
 # Load machine-specific env vars
 if [ -d "$HOME/.env" ]; then
-  for i in $HOME/.env/* ; do source $i ; done
+  for i in $HOME/.env/*.sh ; do source $i ; done
 fi
