@@ -78,7 +78,7 @@ set ignorecase                      " searches are case insensitive ...
 set smartcase                       " ... unless they contain at least one capital letter
 
 "" Ctrl P settings
-let g:ctrlp_custom_ignore = '\v[\/]\.?(git|hg|svn|node_modules)$'
+let g:ctrlp_custom_ignore = '\v[\/]\.?(git|hg|svn|node_modules|_site)$'
 
 autocmd! FileType mkd,markdown,md setlocal syn=off " Don't syntax highlight markdown because it's often wrong
 
