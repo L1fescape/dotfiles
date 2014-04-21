@@ -10,7 +10,9 @@ mkcd() { mkdir -p "$@" && cd "$_"; }
 
 
 function server() {
-	# needs to be more elegantly written
+	# needs to be more elegantly written. basically just default to 
+	# port 8000 if no por is given. if the 'o' flag is passed, also
+	# open the server in a browser.
 	local COMMAND=$1;
 	if [[ $COMMAND = "-o" ]] then;
 		local PORT=${2:-8000}
@@ -18,7 +20,34 @@ function server() {
 	else
 		PORT=${1:-8000}
 	fi
-  python -m SimpleHTTPServer "$PORT"
+  # determine python version. one way to do this is:
+  #
+  # pyversion=`python -c 'import sys; print("%i" % (sys.hexversion<0x03000000))'`
+  # if [ $pyversion -eq 0 ]; then
+  #     python3 -m http.server "$PORT"
+  # else 
+  #     python -m SimpleHTTPServer "$PORT"
+  # fi
+  #
+  # I thought for a while launching a python interpreter was slow so I found another way:
+  #
+  # pyversion=`python --version`
+  # pyversion=`echo ${pyversion#* } | head -c 1`
+  # if [ $pyversion -eq 3 ]; then
+  #     python3 -m http.server "$PORT"
+  # else 
+  #     python -m SimpleHTTPServer "$PORT"
+  # fi
+  #
+  # I like the first one more. Also turns out `python -c 'import sys; print("%i" % (sys.hexversion<0x03000000))'`
+  # doesn't launch an interpreter, just compailes it and evaluates it. The slowness is from python 3 importing
+  # the http.server package. Python 2 appears to be faster at this. 
+  pyversion=`python -c 'import sys; print("%i" % (sys.hexversion<0x03000000))'`
+  if [ $pyversion -eq 0 ]; then
+      python3 -m http.server "$PORT"
+  else 
+      python -m SimpleHTTPServer "$PORT"
+  fi
 }
 
 # list all colors (useful for customizing zsh theme)

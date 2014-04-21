@@ -2,8 +2,12 @@
 source ~/.vim/bundles.vim
 
 
+" Set leader character
+let mapleader=","
+
+
 " Reload VimRC
-map <C-S> :so ~/.vimrc<CR>
+nmap <C-S> :so ~/.vimrc<CR>
 
 
 " Swag 
@@ -18,11 +22,12 @@ syntax on                           " turn syntax highlighting on
 set encoding=utf-8                  " set encoding to utf-8
 set showcmd                         " display incomplete commands
 filetype plugin indent on           " load file type plugins + indentation
-set fileformats+=dos
 "match Error /\%81v.\+/              " higlight text longer than 80 columns
 hi clear SpellBad
 hi SpellBad cterm=underline
-map <F5> :set spell! spelllang=en_us<CR>
+map <leader>s :set spell! spelllang=en_us<CR>
+map <leader>p :set list!<CR>
+
 
 
 " make quitting easier
@@ -34,7 +39,7 @@ map <F5> :set spell! spelllang=en_us<CR>
 
 " Tabs and Spaces
 set wrap                            " wrap lines
-map <C-W>W :set wrap!<CR>           " toggle wrap
+map <leader>w :set wrap!<CR>        " toggle wrap
 set tabstop=2 shiftwidth=2          " a tab is two spaces
 set backspace=indent,eol,start      " backspace through everything in insert mode
 set softtabstop=2                   " respect hard tabs
@@ -60,8 +65,7 @@ function ToggleTab()
     set expandtab
   endif
 endfunction
-nmap ,t :call ToggleTab()<CR>
-
+nmap <leader>t :call ToggleTab()<CR>
 
 " Creating tabs and toggling
 nmap L :tabn<CR>
@@ -104,7 +108,7 @@ inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 
 " NerdTree
-nmap <F1> :NERDTreeToggle<CR>       " mapping f1 to NERDTreeToggle
+nmap <leader>t :NERDTreeToggle<CR>       " mapping f1 to NERDTreeToggle
 "" Close NERDTree if it's the only remaining window
 function! NERDTreeQuit()
     redir => buffersoutput
@@ -128,19 +132,22 @@ function! NERDTreeQuit()
         quitall
     endif
 endfunction
+"" NERDTree autocommands
 autocmd WinEnter * call NERDTreeQuit()
+autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | wincmd p | endif " give current file focus instead of NERDTree
+"" NERDTree settings
 let nerdtree_tabs_open_on_console_startup=1 " open NERDTree on startup
 
-noremap <F2> :GundoToggle<CR>       " mapping f2 to Gundo
-set pastetoggle=<C-O>               " toggle paste mode with Ctrl-O
+noremap <leader>u :GundoToggle<CR>       " mapping f2 to Gundo
+set pastetoggle=<leader>o               " toggle paste mode with Ctrl-O
 
 
 " Splits
 "" switching splits
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap <leader>j <C-W><C-J>
+nnoremap <leader>k <C-W><C-K>
+nnoremap <leader>l <C-W><C-L>
+nnoremap <leader>h <C-W><C-H>
 "" resizing splits
 nnoremap = <c-w>+
 nnoremap - <c-w>-
@@ -164,12 +171,12 @@ function! ToggleMouse()
     echo "Mouse On"
   endif
 endfunction
-nmap <C-M> :call ToggleMouse()<CR>
+nmap <leader>m :call ToggleMouse()<CR>
 set mouse=a                         " Enable mouse by default
 
 
 " Numbers
-map <C-N> :set number!<CR>          " Toggle showing line numbers on and off
+map <leader>n :set number!<CR>      " Toggle showing line numbers on and off
 set number                          " Show line numbers by default
 nnoremap <F4> :NumbersToggle<CR>    " mapping for numbers plugin
 let g:enable_numbers = 0            " turn off numbers plugin by default
@@ -189,7 +196,6 @@ let vimclojure#ParenRainbow=1
 " Ctrl-Space eval selection
 vnoremap <C-Space> :Eval<cr>
 vmap <C-@> <C-Space>
-
 
 " Fileetypes
 autocmd! FileType mkd,markdown,md setlocal syn=off " Don't syntax highlight markdown because it's often wrong
