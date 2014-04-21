@@ -26,7 +26,6 @@ filetype plugin indent on           " load file type plugins + indentation
 hi clear SpellBad
 hi SpellBad cterm=underline
 map <leader>s :set spell! spelllang=en_us<CR>
-map <leader>p :set list!<CR>
 
 
 
@@ -106,6 +105,34 @@ function! InsertTabWrapper()
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
+" Set tabstop, softtabstop and shiftwidth to the same value
+command! -nargs=* Stab call Stab()
+function! Stab()
+  let l:tabstop = 1 * input('set tabstop = softtabstop = shiftwidth = ')
+  if l:tabstop > 0
+    let &l:sts = l:tabstop
+    let &l:ts = l:tabstop
+    let &l:sw = l:tabstop
+  endif
+  call SummarizeTabs()
+endfunction
+  
+function! SummarizeTabs()
+  try
+    echohl ModeMsg
+    echon 'tabstop='.&l:ts
+    echon ' shiftwidth='.&l:sw
+    echon ' softtabstop='.&l:sts
+    if &l:et
+      echon ' expandtab'
+    else
+      echon ' noexpandtab'
+    endif
+  finally
+    echohl None
+  endtry
+endfunction
+
 
 " NerdTree
 nmap <leader>t :NERDTreeToggle<CR>       " mapping f1 to NERDTreeToggle
@@ -138,8 +165,8 @@ autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | wincmd p | endif " 
 "" NERDTree settings
 let nerdtree_tabs_open_on_console_startup=1 " open NERDTree on startup
 
-noremap <leader>u :GundoToggle<CR>       " mapping f2 to Gundo
-set pastetoggle=<leader>o               " toggle paste mode with Ctrl-O
+noremap <leader>u :GundoToggle<CR>        " mapping f2 to Gundo
+set pastetoggle=<leader>p                 " toggle paste
 
 
 " Splits
