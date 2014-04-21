@@ -75,7 +75,7 @@ function ToggleTab()
     set expandtab
   endif
 endfunction
-nmap <leader>t :call ToggleTab()<CR>
+nmap <leader><space> :call ToggleTab()<CR>
 
 " Creating tabs and toggling
 nmap L :tabn<CR>
@@ -172,8 +172,9 @@ function! NERDTreeQuit()
 endfunction
 "" NERDTree autocommands
 autocmd WinEnter * call NERDTreeQuit()
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
+autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | wincmd p | endif " give current file focus instead of NERDTree
+"" NERDTree settings
+let nerdtree_tabs_open_on_console_startup=1 " open NERDTree on startup
 
 
 noremap <leader>u :GundoToggle<CR>        " mapping for Gundo
