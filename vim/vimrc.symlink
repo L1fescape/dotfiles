@@ -188,13 +188,13 @@ nnoremap <leader>k <C-W><C-K>
 nnoremap <leader>l <C-W><C-L>
 nnoremap <leader>h <C-W><C-H>
 "" resizing splits
-nnoremap = <c-w>+
-nnoremap - <c-w>-
-nnoremap + <c-w><
-nnoremap _ <c-w>>
+nnoremap <leader>= <c-w>+
+nnoremap <leader>- <c-w>-
+nnoremap <leader>+ <c-w><
+nnoremap <leader>_ <c-w>>
 "" new splits
-nnoremap <Bar> <c-w>v
-nnoremap \ <c-w>s
+nnoremap <leader><Bar> <c-w>v
+nnoremap <leader>\ <c-w>s
 "" open new splits to right and bottom
 set splitbelow
 set splitright
