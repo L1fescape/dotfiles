@@ -16,7 +16,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT='1' # don't prepend active environment to prom
 alias start-virtualenv="source /usr/local/bin/virtualenvwrapper.sh"
 
 # NPM Paths
-export PATH=$PATH:/usr/local/share/npm/bin/
+export PATH=$PATH:/usr/local/share/npm/bin
 
 # MySQL
 export PATH=$PATH:/usr/local/mysql/bin
