@@ -1,6 +1,9 @@
 # Determine OS
 [[ `uname` == "Darwin" ]] && OS="osx" || OS="linux" # not checking for windows. screw that.
 
+# Disable software flow control (i.e. <ctrl>-s and <ctrl>-q)
+stty -ixon
+
 # Path oh-my-zsh configuration.
 ZSH=$HOME/.dotfiles/shell/zsh
 
