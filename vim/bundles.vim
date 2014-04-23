@@ -20,5 +20,7 @@ Bundle 'tpope/vim-fireplace'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
 Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'pangloss/vim-javascript'
+Bundle 'tpope/vim-surround'
 
 filetype plugin indent on

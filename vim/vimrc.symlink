@@ -14,7 +14,7 @@ nmap <C-S> :so ~/.vimrc<CR>
 colorscheme Tomorrow-Night-Eighties " set colors
 set term=screen-256color            " full color support
 set cursorline                      " shows the horizontal cursor line
-set anti                            " 
+set anti                            " enable anti-aliased fonts 
 set guifont=Ubuntu\ Mono\ Bold\ 10  " set font
 set laststatus=2                    " always show the statusline
 set nocompatible                    " choose no compatibility with legacy vi
@@ -22,10 +22,21 @@ syntax on                           " turn syntax highlighting on
 set encoding=utf-8                  " set encoding to utf-8
 set showcmd                         " display incomplete commands
 filetype plugin indent on           " load file type plugins + indentation
-"match Error /\%81v.\+/              " higlight text longer than 80 columns
 hi clear SpellBad
 hi SpellBad cterm=underline
 map <leader>s :set spell! spelllang=en_us<CR>
+map <leader>c :call ToggleColorColumn()<CR>
+let g:togglecolumn_is_on = 0
+function! ToggleColorColumn()
+	if g:togglecolumn_is_on
+		let g:togglecolumn_is_on = 0
+		set colorcolumn=
+	else
+		let g:togglecolumn_is_on = 1
+		set colorcolumn=80
+	endif
+endfunction
+
 
 
 
@@ -43,7 +54,7 @@ set tabstop=2 shiftwidth=2          " a tab is two spaces
 set backspace=indent,eol,start      " backspace through everything in insert mode
 set softtabstop=2                   " respect hard tabs
 set expandtab                       " convert tabs to spaces
-nnoremap QQ :QuitTab<cr>
+nnoremap QQ :QuitTab<CR>
 command! QuitTab call s:QuitTab()
 function! s:QuitTab()
   try
@@ -64,7 +75,7 @@ function ToggleTab()
     set expandtab
   endif
 endfunction
-nmap <leader>t :call ToggleTab()<CR>
+nmap <leader><space> :call ToggleTab()<CR>
 
 " Creating tabs and toggling
 nmap L :tabn<CR>
@@ -165,7 +176,8 @@ autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | wincmd p | endif " 
 "" NERDTree settings
 let nerdtree_tabs_open_on_console_startup=1 " open NERDTree on startup
 
-noremap <leader>u :GundoToggle<CR>        " mapping f2 to Gundo
+
+noremap <leader>u :GundoToggle<CR>        " mapping for Gundo
 set pastetoggle=<leader>p                 " toggle paste
 
 
@@ -176,13 +188,13 @@ nnoremap <leader>k <C-W><C-K>
 nnoremap <leader>l <C-W><C-L>
 nnoremap <leader>h <C-W><C-H>
 "" resizing splits
-nnoremap = <c-w>+
-nnoremap - <c-w>-
-nnoremap + <c-w><
-nnoremap _ <c-w>>
+nnoremap <leader>= <c-w>+
+nnoremap <leader>- <c-w>-
+nnoremap <leader>+ <c-w><
+nnoremap <leader>_ <c-w>>
 "" new splits
-nnoremap <Bar> <c-w>v
-nnoremap \ <c-w>s
+nnoremap <leader><Bar> <c-w>v
+nnoremap <leader>\ <c-w>s
 "" open new splits to right and bottom
 set splitbelow
 set splitright

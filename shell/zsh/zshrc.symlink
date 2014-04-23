@@ -9,6 +9,7 @@ ZSH=$HOME/.dotfiles/shell/zsh
 
 # Set name of the theme to load.
 ZSH_THEME="pure"
+PURE_GIT_PULL=0
 
 # Zsh settings
 COMPLETION_WAITING_DOTS="true"
