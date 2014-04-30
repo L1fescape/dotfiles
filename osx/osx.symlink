@@ -98,3 +98,8 @@ alias cups-off="cupsctl WebInterface=no"
 # Chruby
 source /usr/local/share/chruby/chruby.sh
 chruby 2.0
+
+# dnsmasq
+alias start-dnsmasq="sudo launchctl stop homebrew.mxcl.dnsmasq"
+alias stop-dnsmasq="sudo launchctl start homebrew.mxcl.dnsmasq"
+alias restart-dnsmasq="stop-dnsmasq; start-dnsmasq"
