@@ -242,6 +242,9 @@ autocmd! FileType mkd,markdown,md setlocal syn=off " Don't syntax highlight mark
 au BufNewFile,BufRead *.cljs setf clojure
 "" Recognize Go files
 au BufRead,BufNewFile *.go set filetype=go
+"" Set less as css
+autocmd BufRead,BufNewFile *.less,*.scss,*.css set filetype=css omnifunc=csscomplete#CompleteCSS
+autocmd BufRead,BufNewFile *.handlebars set filetype=html
 
 
 " Settings for Airline
