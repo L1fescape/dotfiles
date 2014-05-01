@@ -21,6 +21,7 @@ alias tmux='tmux -2' # fix for tmux with 256 colors in ubuntu
 alias t='tmux'
 alias ta='tmux attach'
 alias gitm='git pull origin master'
+alias 'ps?'='ps ax | grep '
 function readme() {
   readmefile="${1:-README.md}"
   pandoc -s -f markdown -t man "$readmefile" | groff -T utf8 -man | less

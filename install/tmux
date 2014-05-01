@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# dotfile directory
+dd=${DOTFILE_DIRECTORY:-~/.dotfiles}
+# dotfile install directory
+di="$dd/install"
+
+# import helper functions
+. $di/functions $@
+
+backup_tmux () {
+  info 'Backing up tmux settings.'
+
+  unlink ~/.tmux.conf
+  mv ~/.tmux.conf $backup_dir 
+
+  success 'Backing up tmux settings.'
+}
+
+install_tmux () {
+  info 'Installing tmux settings.'
+
+  if $symlink; then
+    ln -s $dd/tmux/tmux.conf ~/.tmux.conf
+    ln -s $dd/tmux/tmux ~/.tmux
+  else
+    cp $dd/tmux/tmux.conf ~/.tmux.conf
+    cp -r $dd/tmux/tmux ~/.tmux
+  fi
+
+  success 'Installing tmux settings.'
+}
+
+backup_tmux
+install_tmux

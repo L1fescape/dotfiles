@@ -5,16 +5,43 @@ dd=${DOTFILE_DIRECTORY:-~/.dotfiles}
 # dotfile install directory
 di="$dd/install"
 # import functions for text formatting
-. $di/functions
+. $di/functions $@
 
-setup_vim () {
+vim_backup () {
+  info 'backup vim'
+
+  unlink ~/.vimrc
+  mv ~/.vimrc $backup_dir 
+  unlink ~/.vim
+  mv ~/.vim $backup_dir 
+
+  success 'vim backup'
+}
+
+vim_setup () {
   info 'setup vim'
 
-  git clone https://github.com/gmarik/vundle.git $dd/vim/bundle/vundle
-  vim +BundleInstall +qall
+  if $symlink; then
+    ln -s $dd/vim/.vimrc ~/.vimrc
+    ln -s $dd/vim/.vim ~/.vim
+  else
+    cp $dd/vim/.vimrc ~/.vimrc
+    cp $dd/vim/.vim ~/.vim
+  fi
 
   success 'vim setup'
 }
 
+vim_vundle () {
+  git clone https://github.com/gmarik/vundle.git $dd/vim/bundle/vundle
+  vim +BundleInstall +qall
+}
+
+
 # run the config
-setup_vim
+if $vundle_only; then
+  vim_vundle
+else
+  vim_setup
+  vim_vundle
+fi

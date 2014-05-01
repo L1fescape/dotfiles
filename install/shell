@@ -1,0 +1,82 @@
+#!/bin/bash
+
+# dotfile directory
+dd=${DOTFILE_DIRECTORY:-~/.dotfiles}
+# dotfile install directory
+di="$dd/install"
+# import functions for text formatting
+. $di/functions $@
+
+
+shell_backup () {
+  info 'backing up shell configs'
+
+  unlink ~/.bashrc
+  mv ~/.bashrc $backup_dir 
+  unlink ~/.zshrc
+  mv ~/.zshrc $backup_dir 
+  unlink ~/.zsh
+  mv ~/.zsh $backup_dir 
+
+  unlink ~/.aliases
+  mv ~/.aliases $backup_dir
+  unlink ~/.bindings
+  mv ~/.bindings $backup_dir
+  unlink ~/.functions
+  mv ~/.functions $backup_dir
+  unlink ~/.paths
+  mv ~/.paths $backup_dir
+
+  success 'backing up shell configs'
+}
+
+
+shell_setup () {
+  info 'setup shell aliases, bindings, functions, and paths'
+
+  if $symlink; then
+    ln -s $dd/shell/aliases ~/.aliases
+    ln -s $dd/shell/bindings ~/.bindings
+    ln -s $dd/shell/functions ~/.functions
+    ln -s $dd/shell/paths ~/.paths
+  else
+    cp $dd/shell/aliases ~/.aliases
+    cp $dd/shell/bindings ~/.bindings
+    cp $dd/shell/functions ~/.functions
+    cp $dd/shell/paths ~/.paths
+  fi
+
+  success 'zsh shell files'
+}
+
+shell_setup_zsh () {
+  info 'setup zsh'
+
+  if $symlink; then
+    ln -s $dd/shell/zsh/zshrc ~/.zshrc
+    ln -s $dd/shell/zsh ~/.zsh
+  else
+    cp $dd/shell/zsh/zshrc ~/.zshrc
+    cp $dd/shell/zsh ~/.zsh
+  fi
+
+  success 'zsh setup'
+}
+
+shell_setup_bash () {
+  info 'setup bash'
+
+  if $symlink; then
+    ln -s $dd/shell/bash/bashrc ~/.bashrc
+  else
+    cp $dd/shell/bash/bashrc ~/.bashrc
+  fi
+
+  success 'bash setup'
+}
+
+# run the config
+shell_backup
+shell_setup
+shell_setup_zsh
+shell_setup_bash
