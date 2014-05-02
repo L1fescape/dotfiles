@@ -9,6 +9,7 @@
   br = branch
   brl = branch -a
   dbr = push origin --delete # delete branch both remotely and locally
+  unadd = reset HEAD
   type = cat-file -t
   dump = cat-file -p
   dl = "!git ll -1"                 # Show modified files in last commit
