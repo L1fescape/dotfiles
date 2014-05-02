@@ -148,7 +148,7 @@ endfunction
 
 
 " NerdTree
-nmap <leader>t :NERDTreeToggle<CR>       " mapping f1 to NERDTreeToggle
+nmap <leader>t :NERDTreeToggle<CR>
 "" Close NERDTree if it's the only remaining window
 function! NERDTreeQuit()
     redir => buffersoutput
