@@ -1,105 +1,51 @@
-# Kennedy's Dotfiles
-> Now with multi-os support! 
+# Dotfiles
 
-When jumping from system to system, your dotfiles ensure you look stellar, are comfortable in your home away from home, and help you get shit done.
+These are configs I like for programs I use often. Feel free to contribute!
 
-
-
-### How to Install
-
-Run this:
+## How to Install
 
 ```
 git clone https://github.com/akenn/dotfiles ~/.dotfiles
 cd ~/.dotfiles
-bash install/bootstrap
 ```
 
-To only setup gitconfig, run <code>bash install/git</code>.
+Then to install everything:
+```
+. install/all
+```
 
-To only copy over settings (vim, tmux, zsh, etc.), run <code>bash install/symlink</code>.
+To only install git and git settings:
+```
+. install/git
+```
 
-To only install programs, run <code>bash install/programs</code>.
+To only install zsh and zsh settings:
+```
+. install/zsh
+```
 
-To only install packages, run <code>bash install/packages</code>.
+To only install vim and vim settings:
+```
+. install/vim
+```
 
+To only install tmux and tmux settings:
+```
+. install/tmux
+```
 
+Optionally each one of the above commands can accept a `--symlink` flag to symbolically link it rather than copying it over. 
 
-### Installed Software
+For example:
+```
+. install/tmux --symlink
+```
 
-The following programs will be installed by running <code>install/programs</code>:
-
-##### All Operating Systems
-
-<table>
-<tr>
-  <td>zsh</td>
-  <td>wget</td>
-  <td>pip</td>
-</tr>
-<tr>
-  <td>node</td>
-  <td>tmux</td>
-  <td>curl</td>
-</tr>
-<tr>
-  <td>ruby-install</td>
-  <td>chruby</td>
-  <td>vagrant</td>
-</tr>
-</table>
-
-##### OSX only
-
-<table>
-<tr>
-  <td>coreutils</td>
-  <td>findutils</td>
-  <td>bash</td>
-</tr>
-<tr>
-  <td>tree</td>
-  <td>lynx</td>
-  <td>Dropbox</td>
-</tr>
-<tr>
-  <td>Google Chrome</td>
-  <td>Google Chrome Canary</td>
-  <td>Google Drive</td>
-</tr>
-<tr>
-  <td>iterm2</td>
-  <td>sublime text</td>
-  <td>Virtual Box</td>
-</tr>
-<tr>
-  <td>VLC</td>
-  <td>alfred</td>
-</tr>
-</table>
-
-The following packages will be installed by running <code>install/packages</code>:
-
-#### Packages
-##### Pip
-
-- virtualenv
-- virtualenvwrapper
-- httpie
-
-##### Node
-
-- bower
-- grunt-cli
-- yo
-
-##### Ruby
-
-- Rails
-- Jekyll
+will link `~/.dotfiles/tmux/tmux.conf` to `~/.tmux.conf`. This is useful for updating dotfiles since a simple `git pull` inside your dotfile directory will update everything.
 
 
-### Components
+
+## Components
 
 - **bin/**: Anything in `bin/` will get added to your `$PATH` and be made available everywhere.
 - **fonts/**: Sweet typography to make your terminal look fine. Right now I'm using Droid Sans Mono for Powerline.
@@ -113,14 +59,14 @@ The following packages will be installed by running <code>install/packages</code
 
 
 
-### How to Update
+## How to Update
 
 As of right now, run <code>scripts/symlink.sh</code>. That will unlink all the old dotfiles and link the
 new ones. Working on a better method but it's not a priority. Pull requests welcome!
 
 
 
-### Acknowledgements
+## Acknowledgements
 - [Mathias Bynens](https://github.com/mathiasbynens) ([dotfiles](https://github.com/mathiasbynens/dotfiles))
 - [Zach Holman](https://github.com/holman) ([dotfiles](https://github.com/holman/dotfiles))
 - [Paul Irish](https://github.com/paulirish) ([dotfiles](https://github.com/paulirish/dotfiles))
