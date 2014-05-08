@@ -35,15 +35,15 @@ shell_setup () {
   info 'setup shell aliases, bindings, functions, and paths'
 
   if $symlink; then
-    ln -s $dd/shell/aliases ~/.aliases
-    ln -s $dd/shell/bindings ~/.bindings
-    ln -s $dd/shell/functions ~/.functions
-    ln -s $dd/shell/paths ~/.paths
+    ln -s $dd/shell/aliases.sh ~/.aliases
+    ln -s $dd/shell/bindings.sh ~/.bindings
+    ln -s $dd/shell/functions.sh ~/.functions
+    ln -s $dd/shell/paths.sh ~/.paths
   else
-    cp $dd/shell/aliases ~/.aliases
-    cp $dd/shell/bindings ~/.bindings
-    cp $dd/shell/functions ~/.functions
-    cp $dd/shell/paths ~/.paths
+    cp $dd/shell/aliases.sh ~/.aliases
+    cp $dd/shell/bindings.sh ~/.bindings
+    cp $dd/shell/functions.sh ~/.functions
+    cp $dd/shell/paths.sh ~/.paths
   fi
 
   success 'zsh shell files'
