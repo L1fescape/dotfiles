@@ -1,3 +1,5 @@
+#!/bin/bash
+
 PATH=~/.dotfiles/bin:~/bin:$PATH
 # Paths
 PATH=$PATH:$HOME/code/tools/mongodb/bin # Add mongo to PATH

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Functions
 function genhash() {
   openssl rand -base64 ${1:-12}
@@ -12,7 +14,8 @@ function server() {
 	# port 8000 if no por is given. if the 'o' flag is passed, also
 	# open the server in a browser.
 	local COMMAND=$1;
-	if [[ $COMMAND = "-o" ]] then;
+	if [ $COMMAND = "-o" ];
+  then
 		local PORT=${2:-8000}
 		open "http://localhost:${PORT}/"
 	else
