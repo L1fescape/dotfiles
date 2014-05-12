@@ -22,4 +22,3 @@ shopt -s checkwinsize
 . ~/.aliases
 . ~/.functions
 . ~/.paths
-. ~/.bindings
