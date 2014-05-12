@@ -11,39 +11,45 @@ cd ~/.dotfiles
 
 Then to install everything:
 ```
-. install/all
+bash install/install
 ```
+
+### Configs
 
 To only install git and git settings:
 ```
-. install/git
+bash install/git
 ```
 
-To only install zsh and zsh settings:
+To only install bash and zsh settings:
 ```
-. install/zsh
+bash install/shell
 ```
 
 To only install vim and vim settings:
 ```
-. install/vim
+bash install/vim
 ```
 
 To only install tmux and tmux settings:
 ```
-. install/tmux
+bash install/tmux
 ```
 
 Optionally each one of the above commands can accept a `--symlink` flag to symbolically link it rather than copying it over. 
 
 For example:
 ```
-. install/tmux --symlink
+bash install/tmux --symlink
 ```
 
 will link `~/.dotfiles/tmux/tmux.conf` to `~/.tmux.conf`. This is useful for updating dotfiles since a simple `git pull` inside your dotfile directory will update everything.
 
+### Programs
 
+```
+bash install/programs
+```
 
 ## Components
 

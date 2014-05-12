@@ -23,3 +23,38 @@ link () {
   ln -s $1 $2
   success "linked $1 to $2"
 }
+
+
+# Default settings
+backup_dir=$dd/backups/$(date +\%D)
+backup=false
+symlink=false
+vundle_only=false
+
+# Parse options
+for i in "$@"
+do
+case $i in
+    -s|--symlink)
+    symlink=true
+    shift
+    ;;
+    -b|--backup)
+    backup=true
+    shift
+    ;;
+    -d=*|--backup-dir=*)
+    backup_dir="${i#*=}"
+    shift
+    ;;
+    -v|--vundle)
+    vundle_only=true
+    shift
+    ;;
+    *)
+            # unknown option
+    ;;
+esac
+done
+
+mkdir -p $backup_dir

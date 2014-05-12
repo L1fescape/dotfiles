@@ -6,11 +6,13 @@ dd=${DOTFILE_DIRECTORY:-~/.dotfiles}
 di="$dd/install"
 
 # import helper functions
-. $di/functions
+. $di/functions $@
+
 
 prompt_warning () {
   # warn user about overwriting files
-  info "WARNING: This script will remove all current dotfile settings. \n"
+  info "WARNING: This script will replace all current dotfile settings. \n"
+  info "         Old settings will be moved to '$backup_dir'. \n"
   info "Would you like to continue? [Y/n]: "
   read cont
   printf "\n"
@@ -20,23 +22,25 @@ prompt_warning () {
   fi
 }
 
+
 install_dotfiles () {
   info 'Installing dotfiles'
 
-  # sym link files
-  . $di/symlink
+  # setup git
+  . $di/git $@
 
-  # setup gitconfig
-  . $di/git
+  # setup shell
+  . $di/shell $@
 
   # setup vim
-  . $di/vim
-  git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-  vim +BundleInstall +qall
+  . $di/vim $@
+
+  # setup tmux
+  . $di/tmux $@
 }
 
 install_programs () {
-  info 'Installing Programs'
+  info 'Installing Programs \n'
 
   # install programs
   . $di/programs
@@ -45,7 +49,7 @@ install_programs () {
 
 # let's do this!
 prompt_warning
+install_dotfiles $@
 install_programs
-install_dotfiles
 
 success "All done!"

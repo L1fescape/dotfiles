@@ -1,6 +1,4 @@
 # Functions
-let randnum=$RANDOM%12660
-
 function genhash() {
   openssl rand -base64 ${1:-12}
 }

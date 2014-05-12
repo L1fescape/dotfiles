@@ -5,7 +5,12 @@ dd=${DOTFILE_DIRECTORY:-~/.dotfiles}
 # dotfile install directory
 di="$dd/install"
 # import functions for text formatting
-. $di/functions
+. $di/functions $@
+
+backup_gitconfig () {
+  unlink ~/.gitconfig
+  mv ~/.gitconfig $backup_dir 
+}
 
 setup_gitconfig () {
   info 'setup gitconfig'
@@ -15,13 +20,16 @@ setup_gitconfig () {
   user ' - What is your github author email?'
   read -e git_authoremail
 
-  sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" $dd/git/gitconfig.symlink.example > $dd/git/gitconfig.symlink
+  sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" $dd/git/gitconfig.example > $dd/git/gitconfig
 
-  rm ~/.gitconfig
-  link $dd/git/gitconfig.symlink ~/.gitconfig
+  if $symlink; then
+    ln -s $dd/git/gitconfig ~/.gitconfig
+  else
+    cp $dd/git/gitconfig ~/.gitconfig
+  fi
 
   success 'gitconfig'
 }
 
-# run the config
+backup_gitconfig
 setup_gitconfig

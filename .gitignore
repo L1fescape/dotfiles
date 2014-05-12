@@ -1,7 +1,8 @@
 .DS_Store
 .netrwhist
-git/gitconfig.symlink
+git/gitconfig
 vim/doc/*
 vim/bundle
+backups/
 npm-debug.log
 cache
