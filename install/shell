@@ -4,35 +4,35 @@
 dd=${DOTFILE_DIRECTORY:-~/.dotfiles}
 # dotfile install directory
 di="$dd/install"
-# import functions for text formatting
+# import settings and functions for text formatting
 . $di/functions $@
 
 
-shell_backup () {
-  info 'backing up shell configs'
+shell_remove () {
+  info 'removing shell configs'
 
-  unlink ~/.bashrc
-  mv ~/.bashrc $backup_dir 
-  unlink ~/.zshrc
-  mv ~/.zshrc $backup_dir 
-  unlink ~/.zsh
-  mv ~/.zsh $backup_dir 
+  files=( .bashrc .zshrc .zsh .aliases .zsh_bindings .functions .paths )
+  for i in "${files[@]}"
+  do
+    unlink ~/$i &>/dev/null
+    if $backup; then
+      mv ~/$i $backup_dir &>/dev/null
+      success 'backed up $i'
+    else
+      rm ~/$i &>/dev/null
+    fi
+  done
 
-  unlink ~/.aliases
-  mv ~/.aliases $backup_dir
-  unlink ~/.zsh_bindings
-  mv ~/.zsh_bindings $backup_dir
-  unlink ~/.functions
-  mv ~/.functions $backup_dir
-  unlink ~/.paths
-  mv ~/.paths $backup_dir
-
-  success 'backing up shell configs'
+  if $backup; then
+    success 'removed and backed up shell configs'
+  else
+    success 'removed shell configs'
+  fi
 }
 
 
 shell_setup () {
-  info 'setup shell aliases, bindings, functions, and paths'
+  info 'installing shell aliases, bindings, functions, and paths'
 
   if $symlink; then
     ln -s $dd/shell/aliases.sh ~/.aliases
@@ -46,11 +46,11 @@ shell_setup () {
     cp $dd/shell/paths.sh ~/.paths
   fi
 
-  success 'zsh shell files'
+  success 'installed shell aliases, bindings, functions, and paths'
 }
 
 shell_setup_zsh () {
-  info 'setup zsh'
+  info 'setting up zsh'
 
   if $symlink; then
     ln -s $dd/shell/zsh/zshrc ~/.zshrc
@@ -60,11 +60,11 @@ shell_setup_zsh () {
     cp $dd/shell/zsh ~/.zsh
   fi
 
-  success 'zsh setup'
+  success 'set up zsh'
 }
 
 shell_setup_bash () {
-  info 'setup bash'
+  info 'setting up bash'
 
   if $symlink; then
     ln -s $dd/shell/bash/bashrc ~/.bashrc
@@ -72,11 +72,13 @@ shell_setup_bash () {
     cp $dd/shell/bash/bashrc ~/.bashrc
   fi
 
-  success 'bash setup'
+  success 'set up bash'
 }
 
 # run the config
-shell_backup
-shell_setup
-shell_setup_zsh
-shell_setup_bash
+shell_remove
+if ! $uninstall; then
+  shell_setup
+  shell_setup_zsh
+  shell_setup_bash
+fi

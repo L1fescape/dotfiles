@@ -7,13 +7,13 @@ di="$dd/install"
 # import functions for text formatting
 . $di/functions $@
 
-vim_backup () {
+remove_vim () {
   info 'backup vim'
 
-  unlink ~/.vimrc
-  mv ~/.vimrc $backup_dir 
-  unlink ~/.vim
-  mv ~/.vim $backup_dir 
+  unlink ~/.vimrc &>/dev/null
+  mv ~/.vimrc $backup_dir &>/dev/null
+  unlink ~/.vim &>/dev/null
+  mv ~/.vim $backup_dir &>/dev/null
 
   success 'vim backup'
 }
@@ -22,11 +22,11 @@ vim_setup () {
   info 'setup vim'
 
   if $symlink; then
-    ln -s $dd/vim/.vimrc ~/.vimrc
-    ln -s $dd/vim/.vim ~/.vim
+    ln -s $dd/vim/vimrc ~/.vimrc
+    ln -s $dd/vim ~/.vim
   else
-    cp $dd/vim/.vimrc ~/.vimrc
-    cp $dd/vim/.vim ~/.vim
+    cp $dd/vim/vimrc ~/.vimrc
+    cp $dd/vim ~/.vim
   fi
 
   success 'vim setup'
@@ -37,11 +37,13 @@ vim_vundle () {
   vim +BundleInstall +qall
 }
 
-
 # run the config
 if $vundle_only; then
   vim_vundle
 else
-  vim_setup
-  vim_vundle
+  remove_vim
+  if ! $uninstall; then
+    vim_setup
+    vim_vundle
+  fi
 fi

@@ -26,21 +26,23 @@ link () {
 
 
 # Default settings
+
 backup_dir=$dd/backups/$(date +\%D)
 backup=false
-symlink=false
+symlink=true
 vundle_only=false
+uninstall=false
 
 # Parse options
 for i in "$@"
 do
 case $i in
-    -s|--symlink)
-    symlink=true
+    -s=*|--symlink=*)
+    symlink="${i#*=}"
     shift
     ;;
-    -b|--backup)
-    backup=true
+    -b=*|--backup=*)
+    backup="${i#*=}"
     shift
     ;;
     -d=*|--backup-dir=*)
@@ -49,6 +51,10 @@ case $i in
     ;;
     -v|--vundle)
     vundle_only=true
+    shift
+    ;;
+    -u|--uninstall)
+    uninstall=true
     shift
     ;;
     *)

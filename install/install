@@ -4,8 +4,7 @@
 dd=${DOTFILE_DIRECTORY:-~/.dotfiles}
 # dotfile install directory
 di="$dd/install"
-
-# import helper functions
+# import settings and functions for text formatting
 . $di/functions $@
 
 
@@ -44,6 +43,15 @@ install_programs () {
 
   # install programs
   . $di/programs
+
+  cp -r $dd/irssi ~/.irssi
+  if [ "$os" = "o" ]
+  then
+    link $dd/osx/osx ~/.osx
+    link $dd/osx/hushlogin ~/.hushlogin
+    # Copy iterm2 settings
+    cp $dd/osx/iterm/com.googlecode.iterm2.plist ~/Library/Preferences/
+  fi
 }
 
 

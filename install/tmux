@@ -4,15 +4,16 @@
 dd=${DOTFILE_DIRECTORY:-~/.dotfiles}
 # dotfile install directory
 di="$dd/install"
-
-# import helper functions
+# import settings and functions for text formatting
 . $di/functions $@
 
-backup_tmux () {
+remove_tmux () {
   info 'Backing up tmux settings.'
 
-  unlink ~/.tmux.conf
-  mv ~/.tmux.conf $backup_dir 
+  unlink ~/.tmux.conf &>/dev/null
+  if $backup; then
+    mv ~/.tmux.conf $backup_dir &>/dev/null 
+  fi
 
   success 'Backing up tmux settings.'
 }
@@ -31,5 +32,7 @@ install_tmux () {
   success 'Installing tmux settings.'
 }
 
-backup_tmux
-install_tmux
+remove_tmux
+if ! $uninstall; then
+  install_tmux
+fi

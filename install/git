@@ -4,12 +4,14 @@
 dd=${DOTFILE_DIRECTORY:-~/.dotfiles}
 # dotfile install directory
 di="$dd/install"
-# import functions for text formatting
+# import settings and functions for text formatting
 . $di/functions $@
 
-backup_gitconfig () {
+remove_gitconfig () {
   unlink ~/.gitconfig
-  mv ~/.gitconfig $backup_dir 
+  if $backup; then
+    mv ~/.gitconfig $backup_dir
+  fi
 }
 
 setup_gitconfig () {
@@ -31,5 +33,7 @@ setup_gitconfig () {
   success 'gitconfig'
 }
 
-backup_gitconfig
-setup_gitconfig
+remove_gitconfig
+if ! $uninstall; then
+  setup_gitconfig
+fi
