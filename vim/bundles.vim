@@ -7,7 +7,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'myusuf3/numbers.vim'
 Bundle 'tpope/vim-fugitive'
-Bundle 'pangloss/vim-javascript'
 Bundle 'jakar/vim-json'
 Bundle 'bling/vim-airline'
 Bundle 'scrooloose/nerdtree'
