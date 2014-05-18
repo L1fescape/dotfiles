@@ -6,5 +6,5 @@ else
   toggle=on; 
 fi
 
-@ tmux set-option -w mode-mouse $toggle &> /dev/null; 
+tmux set-option -w mode-mouse $toggle &> /dev/null; 
 tmux display "Mouse : $toggle";
