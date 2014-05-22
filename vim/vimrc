@@ -1,16 +1,59 @@
 " Vundle
 source ~/.vim/bundles.vim
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set to auto read when a file is changed from the outside
+set autoread
 
-" Set leader character
-let mapleader=","
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
 
+" Fast saving and quitting
+nmap <leader>w :w<cr>
+nmap <leader>W :w<cr>
+nmap <leader>q :q<cr>
+nmap <leader>Q :q!<cr>
+
+" :W sudo saves the file 
+" (useful for handling the permission-denied error)
+command W w !sudo tee % > /dev/null
 
 " Reload VimRC
 nmap <C-S> :so ~/.vimrc<CR>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => VIM user interface
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Turn on the WiLd menu
+set wildmenu
 
-" Swag 
+" Ignore compiled files
+set wildignore=*.o,*~,*.pyc
+if has("win16") || has("win32")
+    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+else
+    set wildignore+=.git\*,.hg\*,.svn\*
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Moving around, tabs, windows and buffers
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Treat long lines as break lines (useful when moving around in them)
+map j gj
+map k gk
+
+" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
+map <space> /
+map <c-space> ?
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Colors and Fonts
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 colorscheme Tomorrow-Night-Eighties " set colors
 set term=screen-256color            " full color support
 set cursorline                      " shows the horizontal cursor line
@@ -38,18 +81,8 @@ function! ToggleColorColumn()
 endfunction
 
 
-
-
-" make quitting easier
-:command WQ wq
-:command Wq wq
-:command W w
-:command Q q
-
-
 " Tabs and Spaces
 set wrap                            " wrap lines
-map <leader>w :set wrap!<CR>        " toggle wrap
 set tabstop=2 shiftwidth=2          " a tab is two spaces
 set backspace=indent,eol,start      " backspace through everything in insert mode
 set softtabstop=2                   " respect hard tabs
