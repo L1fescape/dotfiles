@@ -15,7 +15,6 @@ export PATH=$homebrew:$PATH
 # Virtualenv Settings
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUAL_ENV_DISABLE_PROMPT='1' # don't prepend active environment to prompt
-alias start-virtualenv="source /usr/local/bin/virtualenvwrapper.sh"
 
 # NPM Paths
 export PATH=$PATH:/usr/local/share/npm/bin
