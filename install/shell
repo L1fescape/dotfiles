@@ -66,8 +66,10 @@ shell_setup_bash () {
 
   if $symlink; then
     ln -s $dd/shell/bash/bashrc ~/.bashrc
+    ln -s $dd/shell/bash ~/.bash
   else
     cp $dd/shell/bash/bashrc ~/.bashrc
+    cp -r $dd/shell/bash ~/.bash
   fi
 
   success 'set up bash'

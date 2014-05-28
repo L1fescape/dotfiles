@@ -1,8 +1,26 @@
 # Check for an interactive session
 [ -z "$PS1" ] && return
 
-#256 colors
+# Colors
 export TERM="xterm-256color"
+
+## colored grep
+export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='1;33'
+
+## colored ls
+export LSCOLORS='Gxfxcxdxdxegedabagacad'
+
+# Theme
+export BASH_THEME="pure"
+export BASH_DIR="${HOME}/.bash"
+
+## Load colors first so they can be use in base theme
+source "${BASH_DIR}/themes/colors.theme.bash"
+source "${BASH_DIR}/themes/base.theme.bash"
+
+## Load theme
+source "$BASH_DIR/themes/$BASH_THEME/$BASH_THEME.theme.bash"
 
 # set vi mode
 set -o vi
