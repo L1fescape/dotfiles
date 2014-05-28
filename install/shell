@@ -32,21 +32,19 @@ shell_remove () {
 
 
 shell_setup () {
-  info 'installing shell aliases, bindings, functions, and paths'
+  info 'installing shell aliases, functions, and paths'
 
   if $symlink; then
     ln -s $dd/shell/aliases.sh ~/.aliases
-    ln -s $dd/shell/zsh/bindings.sh ~/.zsh_bindings
     ln -s $dd/shell/functions.sh ~/.functions
     ln -s $dd/shell/paths.sh ~/.paths
   else
     cp $dd/shell/aliases.sh ~/.aliases
-    cp $dd/shell/zsh/bindings.sh ~/.zsh_bindings
     cp $dd/shell/functions.sh ~/.functions
     cp $dd/shell/paths.sh ~/.paths
   fi
 
-  success 'installed shell aliases, bindings, functions, and paths'
+  success 'installed shell aliases, functions, and paths'
 }
 
 shell_setup_zsh () {

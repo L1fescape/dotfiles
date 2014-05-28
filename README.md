@@ -80,3 +80,4 @@ new ones. Working on a better method but it's not a priority. Pull requests welc
 - [Nicolas Gallagher](https://github.com/necolas) ([dotfiles](https://github.com/necolas/dotfiles))
 - [Gary Bernhardt](https://github.com/garybernhardt) ([dotfiles](https://github.com/garybernhardt/dotfiles))
 - [Sindre Sorhus](https://github.com/sindresorhus)
+- [Amir Salihefendic](https://github.com/amix) ([vimrc](https://github.com/amix/vimrc))
