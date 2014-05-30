@@ -10,13 +10,13 @@ let mapleader = ","
 let g:mapleader = ","
 
 " Fast saving and quitting
+command W w
 nmap <leader>w :w<cr>
-nmap <leader>W :w<cr>
 nmap <leader>q :q<cr>
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
-command W w !sudo tee % > /dev/null
+cnoremap sudow w !sudo tee % >/dev/null
 
 " Reload VimRC
 nmap <C-S> :so ~/.vimrc<CR>
