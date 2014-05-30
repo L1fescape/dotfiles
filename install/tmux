@@ -23,10 +23,10 @@ install_tmux () {
 
   if $symlink; then
     ln -s $dd/tmux/tmux.conf ~/.tmux.conf
-    ln -s $dd/tmux/tmux ~/.tmux
+    ln -s $dd/tmux ~/.tmux
   else
     cp $dd/tmux/tmux.conf ~/.tmux.conf
-    cp -r $dd/tmux/tmux ~/.tmux
+    cp -r $dd/tmux ~/.tmux
   fi
 
   success 'Installing tmux settings.'
