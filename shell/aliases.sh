@@ -21,7 +21,7 @@ alias diff='vim -d'
 alias roll='curl -L http://bit.ly/10hA8iC | bash'
 alias tmux='tmux -2' # fix for tmux with 256 colors in ubuntu
 alias t='tmux'
-alias ta='tmux attach'
+alias ta='tmux attach || tmux'
 alias gitm='git pull origin master'
 alias 'ps?'='ps ax | grep '
 function readme() {
