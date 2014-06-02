@@ -22,5 +22,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'pangloss/vim-javascript'
 Bundle 'tpope/vim-surround'
+Bundle 'FuzzyFinder'
+Bundle 'L9'
 
 filetype plugin indent on

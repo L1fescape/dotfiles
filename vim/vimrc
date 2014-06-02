@@ -215,9 +215,16 @@ function! NERDTreeQuit()
 endfunction
 "" NERDTree autocommands
 autocmd WinEnter * call NERDTreeQuit()
-autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | wincmd p | endif " give current file focus instead of NERDTree
+" autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | wincmd p | endif " give current file focus instead of NERDTree
 "" NERDTree settings
-let nerdtree_tabs_open_on_console_startup=1 " open NERDTree on startup
+let nerdtree_tabs_open_on_console_startup=0 " open NERDTree on startup
+
+
+" fuzzyfinder
+map <leader>f :FufFile **/<CR>
+map <leader>b :FufBuffer **/<CR>
+"FuzzyFinder should ignore all files in .gitignore
+let ignorefile = ".gitignore"
 
 
 noremap <leader>u :GundoToggle<CR>        " mapping for Gundo
