@@ -24,3 +24,6 @@ export PATH=$PATH:/usr/local/mysql/bin
 
 # Go Paths
 export GOPATH=$HOME/.go
+
+# Android dev tools
+export PATH=$PATH:$HOME/code/android-sdk/platform-tools
