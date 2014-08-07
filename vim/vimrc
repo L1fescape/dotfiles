@@ -222,21 +222,19 @@ let nerdtree_tabs_open_on_console_startup=0 " open NERDTree on startup
 
 " fuzzyfinder
 let ignore = '\v\~$|\.?(git|hg|svn|node_modules|_site|dist)'
-let g:fuf_coveragefile_exclude = ignore
-let g:fuf_file_exclude = ignore
-let g:fuf_dir_exclude = ignore
 let ignorefile = ".gitignore"
 if filereadable(ignorefile)
 
-  let ignore = '\v\~$'
   for line in readfile(ignorefile)
     let line = substitute(line, '\.', '\\.', 'g')
     let line = substitute(line, '\*', '.*', 'g')
     let ignore .= '|^' . line
   endfor
 
-  let g:fuf_coveragefile_exclude = ignore
 endif
+let g:fuf_coveragefile_exclude = ignore
+let g:fuf_file_exclude = ignore
+let g:fuf_dir_exclude = ignore
 map <leader>f :FufFile **/<CR>
 map <leader>b :FufBuffer **/<CR>
 
@@ -314,6 +312,8 @@ autocmd BufRead,BufNewFile *.handlebars set filetype=html
 let g:airline_theme='light'
 let g:airline_powerline_fonts=1
 
+
+let g:rainbow_active = 1
 
 " Read in any marchine-specific vim settings
 if isdirectory(expand('$HOME/.env'))

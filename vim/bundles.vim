@@ -24,5 +24,6 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'tpope/vim-surround'
 Bundle 'FuzzyFinder'
 Bundle 'L9'
+Bundle 'oblitum/rainbow'
 
 filetype plugin indent on
