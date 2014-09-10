@@ -5,42 +5,46 @@ These are configs I like for programs I use often. Feel free to contribute!
 ## How to Install
 
 ```
+# clone the repo
 git clone https://github.com/akenn/dotfiles ~/.dotfiles
+# change directory to the newly cloned repo
 cd ~/.dotfiles
+# make all install scripts executable. this is optional. run via sh or bash if you don't want to do this.
+chmod +x install/*
 ```
 
 Then to install everything:
 ```
-bash install/install
+./install/install
 ```
 
 ### Configs
 
 To only install git and git settings:
 ```
-bash install/git
+./install/git
 ```
 
 To only install bash and zsh settings:
 ```
-bash install/shell
+./install/shell
 ```
 
 To only install vim and vim settings:
 ```
-bash install/vim
+./install/vim
 ```
 
 To only install tmux and tmux settings:
 ```
-bash install/tmux
+./install/tmux
 ```
 
 Optionally each one of the above commands can accept a `--symlink` flag to symbolically link it rather than copying it over. 
 
 For example:
 ```
-bash install/tmux --symlink
+./install/tmux --symlink
 ```
 
 will link `~/.dotfiles/tmux/tmux.conf` to `~/.tmux.conf`. This is useful for updating dotfiles since a simple `git pull` inside your dotfile directory will update everything.
@@ -48,7 +52,7 @@ will link `~/.dotfiles/tmux/tmux.conf` to `~/.tmux.conf`. This is useful for upd
 ### Programs
 
 ```
-bash install/programs
+./install/programs
 ```
 
 ## Components
