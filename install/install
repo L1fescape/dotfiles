@@ -57,7 +57,7 @@ install_programs () {
 
 # let's do this!
 prompt_warning
-install_dotfiles $@
 install_programs
+install_dotfiles $@
 
 success "All done!"
