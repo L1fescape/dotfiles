@@ -144,7 +144,7 @@ nnoremap <CR> :noh<CR><CR>          " This unsets the 'last search pattern' regi
 
 
 "" Ctrl P settings
-let g:ctrlp_custom_ignore = '\v[\/]\.?(git|hg|svn|node_modules|_site|dist)$'
+let g:ctrlp_custom_ignore = '\v[\/]\.?(git|hg|svn|_site|dist)$'
 
 
 " Indent if we're at the beginning of a line. Else, do completion.

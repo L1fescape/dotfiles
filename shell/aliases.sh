@@ -62,7 +62,7 @@ alias c='pygmentize -O style=monokai -f console256 -g'
 alias github="open https://github.com"
 
 # YOLO
-alias yolo="git add -A && git commit -am '#YOLO' && git push origin master"
+alias yolo="git add -A && git commit -am '#YOLO' && git push origin master --force"
 
 # Django
 alias django-new="django-admin.py startproject"
