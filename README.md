@@ -7,74 +7,26 @@ These are configs I like for programs I use often. Feel free to contribute!
 ```
 # clone the repo
 git clone https://github.com/akenn/dotfiles ~/.dotfiles
+
 # change directory to the newly cloned repo
 cd ~/.dotfiles
-# make all install scripts executable. this is optional. run via sh or bash if you don't want to do this.
-chmod +x install/*
+
+# install everything!
+sh install.sh
 ```
 
-Then to install everything:
-```
-./install/install
-```
-
-### Configs
-
-To only install git and git settings:
-```
-./install/git
-```
-
-To only install bash and zsh settings:
-```
-./install/shell
-```
-
-To only install vim and vim settings:
-```
-./install/vim
-```
-
-To only install tmux and tmux settings:
-```
-./install/tmux
-```
-
-Optionally each one of the above commands can accept a `--symlink` flag to symbolically link it rather than copying it over. 
-
-For example:
-```
-./install/tmux --symlink
-```
-
-will link `~/.dotfiles/tmux/tmux.conf` to `~/.tmux.conf`. This is useful for updating dotfiles since a simple `git pull` inside your dotfile directory will update everything.
-
-### Programs
-
-```
-./install/programs
-```
+**Note:** running `sh install.sh` is just a glorified `cp` and isn't mandatory.
+Feel free do dig into each section of these configs and rip out what you want. 
 
 ## Components
 
-- **bin/**: Anything in `bin/` will get added to your `$PATH` and be made available everywhere.
-- **fonts/**: Sweet typography to make your terminal look fine. Right now I'm using Droid Sans Mono for Powerline.
+- **fonts/**: Sweet typography to make your terminal look fine.
 - **git/**: Git settings, huzzah!
-- **install/**: Scripts for getting the settings in here on that sexy machine of yours.
 - **irssi/**: Configs for my favorite IRC client.
 - **osx/**: OSX specific configs and scripts.
 - **shell/**: Contains all settings for Zsh and Bash.
 - **tmux/**: Terminal multiplexer. Colors and keybinding settings for that.
 - **vim/**: Configs for making my favorite text-editor boss.
-
-
-
-## How to Update
-
-As of right now, run <code>scripts/symlink.sh</code>. That will unlink all the old dotfiles and link the
-new ones. Working on a better method but it's not a priority. Pull requests welcome!
-
-
 
 ## Acknowledgements
 - [Mathias Bynens](https://github.com/mathiasbynens) ([dotfiles](https://github.com/mathiasbynens/dotfiles))
