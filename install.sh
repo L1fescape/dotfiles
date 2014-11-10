@@ -216,13 +216,8 @@ shell_bash_install () {
 tmux_install () {
   info 'Installing tmux settings.'
 
-  if $symlink; then
-    ln -s $dd/tmux/tmux.conf ~/.tmux.conf
-    ln -s $dd/tmux ~/.tmux
-  else
-    cp $dd/tmux/tmux.conf ~/.tmux.conf
-    cp -r $dd/tmux ~/.tmux
-  fi
+  cp $dd/tmux/tmux.conf ~/.tmux.conf
+  cp -r $dd/tmux ~/.tmux
 
   success 'Installing tmux settings.'
 }
