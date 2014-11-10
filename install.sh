@@ -233,7 +233,7 @@ vim_install () {
   cp $dd/vim/vimrc ~/.vimrc
   cp -r $dd/vim ~/.vim
   
-  git clone https://github.com/gmarik/vundle.git $dd/vim/bundle/vundle
+  git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
   vim +BundleInstall +qall
 
   success 'vim setup'
