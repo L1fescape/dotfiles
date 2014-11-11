@@ -21,8 +21,8 @@ cnoremap sudow w !sudo tee % >/dev/null
 " Reload VimRC
 nmap <C-S> :so ~/.vimrc<CR>
 
-" Turn on the WiLd menu
-set wildmenu
+" Turn on the WiLd menu for command completion
+set wildmode=longest:list,full
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
@@ -64,18 +64,27 @@ syntax enable
 " shows the horizontal cursor line
 set cursorline
 
-
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
-set laststatus=2                    " always show the statusline
-set nocompatible                    " choose no compatibility with legacy vi
-syntax on                           " turn syntax highlighting on
-set showcmd                         " display incomplete commands
-filetype plugin indent on           " load file type plugins + indentation
-hi clear SpellBad
+" always show the statusline
+set laststatus=2
+
+" turn syntax highlighting on
+syntax on
+
+" load file type plugins + indentation
+filetype plugin indent on 
+
+" settings for showing grammatical errors
 hi SpellBad cterm=underline
+hi clear SpellBad
 map <leader>s :set spell! spelllang=en_us<CR>
+
+:nmap \l :setlocal number!<CR>
+:nmap \o :set paste!<CR>
+
+
 map <leader>c :call ToggleColorColumn()<CR>
 let g:togglecolumn_is_on = 0
 function! ToggleColorColumn()
@@ -314,6 +323,10 @@ let g:airline_powerline_fonts=1
 
 
 let g:rainbow_active = 1
+
+
+" Settings for Vim Gutter
+exe 'hi! SignColumn guibg=NONE ctermbg=235'
 
 " Read in any marchine-specific vim settings
 if isdirectory(expand('$HOME/.env'))
