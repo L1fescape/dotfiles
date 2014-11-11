@@ -146,8 +146,8 @@ programs_install () {
   cp -r $dd/irssi ~/.irssi
   if [ "$os" = "o" ]
   then
-    link $dd/osx/osx ~/.osx
-    link $dd/osx/hushlogin ~/.hushlogin
+    cp -r $dd/osx/osx.sh ~/.osx
+    cp $dd/osx/hushlogin ~/.hushlogin
     # Copy iterm2 settings
     cp $dd/osx/iterm/com.googlecode.iterm2.plist ~/Library/Preferences/
   fi
