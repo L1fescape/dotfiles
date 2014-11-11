@@ -4,8 +4,11 @@
 # Disable software flow control (i.e. <ctrl>-s and <ctrl>-q)
 stty -ixon
 
+# Path to shell dir
+DD=$HOME/.dotfiles
+
 # Path oh-my-zsh configuration.
-ZSH=$HOME/.dotfiles/shell/zsh
+ZSH=$DD/shell/zsh
 
 # Set name of the theme to load.
 ZSH_THEME="pure"
@@ -56,10 +59,10 @@ zle -N edit-command-line
 bindkey -M vicmd 'v' edit-command-line
 
 # Load everything else
-. ~/.paths
-. ~/.aliases
-. ~/.functions
-[ "$OS" = "osx" ] && . ~/.osx;
+. $DD/shell/paths.sh
+. $DD/shell/aliases.sh
+. $DD/shell/functions.sh
+[ "$OS" = "osx" ] && . $DD/osx/osx.sh;
 
 # Load machine-specific env vars
 if [ -d "$HOME/.env" ]; then
