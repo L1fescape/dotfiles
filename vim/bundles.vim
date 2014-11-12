@@ -26,5 +26,6 @@ Bundle 'FuzzyFinder'
 Bundle 'L9'
 Bundle 'oblitum/rainbow'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'lambdatoast/elm.vim'
 
 filetype plugin indent on
