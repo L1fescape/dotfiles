@@ -1,25 +1,27 @@
+" Settings and Key bindings
+" =========================
+
 " Vundle
 source ~/.vim/bundles.vim
 
 " Set to auto read when a file is changed from the outside
 set autoread
 
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
+" set the leader key
 let mapleader = ","
 let g:mapleader = ","
 
-" Fast saving and quitting
+" make saving and quitting easier
 command W w
 nmap <leader>w :w<cr>
 nmap <leader>q :q<cr>
 
-" :W sudo saves the file 
+" save file as sudo 
 " (useful for handling the permission-denied error)
 cnoremap sudow w !sudo tee % >/dev/null
 
 " Reload VimRC
-nmap <C-S> :so ~/.vimrc<CR>
+nmap <leader>r :so ~/.vimrc<CR>
 
 " Turn on the WiLd menu for command completion
 set wildmode=longest:list,full
@@ -81,22 +83,14 @@ hi SpellBad cterm=underline
 hi clear SpellBad
 map <leader>s :set spell! spelllang=en_us<CR>
 
-:nmap \l :setlocal number!<CR>
-:nmap \o :set paste!<CR>
+" toggle line numbers
+nmap \l :setlocal number!<CR>
 
+" toggle paste
+nmap \p :set paste!<CR>
 
-map <leader>c :call ToggleColorColumn()<CR>
-let g:togglecolumn_is_on = 0
-function! ToggleColorColumn()
-	if g:togglecolumn_is_on
-		let g:togglecolumn_is_on = 0
-		set colorcolumn=
-	else
-		let g:togglecolumn_is_on = 1
-		set colorcolumn=80
-	endif
-endfunction
-
+" toggle column at 80 characters
+nmap \c :call ToggleColorColumn()<CR>
 
 " Tabs and Spaces
 set wrap                            " wrap lines
@@ -104,28 +98,7 @@ set tabstop=2 shiftwidth=2          " a tab is two spaces
 set backspace=indent,eol,start      " backspace through everything in insert mode
 set softtabstop=2                   " respect hard tabs
 set expandtab                       " convert tabs to spaces
-nnoremap QQ :QuitTab<CR>
-command! QuitTab call s:QuitTab()
-function! s:QuitTab()
-  try
-    tabclose
-  catch /E784/ " Can't close last tab
-    qall
-  endtry
-endfunction
-" allow toggling between local and default mode
-function ToggleTab()
-  if &expandtab
-    set shiftwidth=2
-    set softtabstop=0
-    set noexpandtab
-  else
-    set shiftwidth=2
-    set softtabstop=2
-    set expandtab
-  endif
-endfunction
-nmap <leader><space> :call ToggleTab()<CR>
+nmap \t :call ToggleTab()<CR>
 
 " Creating tabs and toggling
 nmap L :tabn<CR>
@@ -133,9 +106,8 @@ nmap H :tabp<CR>
 nmap <C-T> :tabnew<CR>
 
 
-" Who uses semi colon anyway?
+" Who uses semi colon in command mode anyway?
 nnoremap ; :
-
 
 " Turn off Swap Files
 set noswapfile
@@ -151,10 +123,89 @@ set smartcase                       " ... unless they contain at least one capit
 nnoremap <CR> :noh<CR><CR>          " This unsets the 'last search pattern' register by hitting return
 
 
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
 
-"" Ctrl P settings
-let g:ctrlp_custom_ignore = '\v[\/]\.?(git|hg|svn|_site|dist)$'
 
+" Splits
+"" switching splits
+nnoremap <leader>j <C-W><C-J>
+nnoremap <leader>k <C-W><C-K>
+nnoremap <leader>l <C-W><C-L>
+nnoremap <leader>h <C-W><C-H>
+"" resizing splits
+nnoremap <leader>= <c-w>+
+nnoremap <leader>- <c-w>-
+nnoremap <leader>+ <c-w><
+nnoremap <leader>_ <c-w>>
+"" new splits
+nnoremap <leader><Bar> <c-w>v
+nnoremap <leader>\ <c-w>s
+"" open new splits to right and bottom
+set splitbelow
+set splitright
+
+nmap <leader>m :call ToggleMouse()<CR>
+set mouse=a                         " Enable mouse by default
+
+" Numbers
+map <leader>n :set number!<CR>      " Toggle showing line numbers on and off
+set number                          " Show line numbers by default
+nnoremap <F4> :NumbersToggle<CR>    " mapping for numbers plugin
+let g:enable_numbers = 0            " turn off numbers plugin by default
+
+
+"" timeout
+set ttimeout
+set ttimeoutlen=0
+
+" Fileetypes
+autocmd! FileType mkd,markdown,md setlocal syn=off " Don't syntax highlight markdown because it's often wrong
+"" Recognize ClojureScript files as Clojure
+au BufNewFile,BufRead *.cljs setf clojure
+"" Recognize Go files
+au BufRead,BufNewFile *.go set filetype=go
+"" Set less as css
+autocmd BufRead,BufNewFile *.less,*.scss,*.css set filetype=css omnifunc=csscomplete#CompleteCSS
+autocmd BufRead,BufNewFile *.handlebars set filetype=html
+
+
+" Read in any marchine-specific vim settings
+if isdirectory(expand('$HOME/.env'))
+  for f in split(glob('$HOME/.env/*.vim'), '\n')
+    exe 'source' f
+  endfor
+endif
+
+
+
+" Functions
+" =========
+
+let g:togglecolumn_is_on = 0
+function! ToggleColorColumn()
+	if g:togglecolumn_is_on
+		let g:togglecolumn_is_on = 0
+		set colorcolumn=
+	else
+		let g:togglecolumn_is_on = 1
+		set colorcolumn=80
+	endif
+endfunction
+
+
+" allow toggling between local and default mode
+function ToggleTab()
+  if &expandtab
+    set shiftwidth=2
+    set softtabstop=0
+    set noexpandtab
+  else
+    set shiftwidth=2
+    set softtabstop=2
+    set expandtab
+  endif
+endfunction
 
 " Indent if we're at the beginning of a line. Else, do completion.
 " Borrowed from @garybernhardt
@@ -166,8 +217,28 @@ function! InsertTabWrapper()
         return "\<c-p>"
     endif
 endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <s-tab> <c-n>
+
+" Toggle Mouse mode on and off
+function! ToggleMouse()
+  if &mouse == "a"
+    set mouse=
+    echo "Mouse Off"
+  else
+    set mouse=a
+    echo "Mouse On"
+  endif
+endfunction
+
+
+
+
+
+" Plugin Settings
+" ===============
+
+" Ctrl P settings
+let g:ctrlp_custom_ignore = '\v[\/]\.?(git|hg|svn|_site|dist)$'
+
 " Set tabstop, softtabstop and shiftwidth to the same value
 command! -nargs=* Stab call Stab()
 function! Stab()
@@ -226,7 +297,7 @@ endfunction
 autocmd WinEnter * call NERDTreeQuit()
 " autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | wincmd p | endif " give current file focus instead of NERDTree
 "" NERDTree settings
-let nerdtree_tabs_open_on_console_startup=0 " open NERDTree on startup
+let nerdtree_tabs_open_on_console_startup=0 " don't open NERDTree on startup
 
 
 " fuzzyfinder
@@ -247,53 +318,8 @@ let g:fuf_dir_exclude = ignore
 map <leader>f :FufFile **/<CR>
 map <leader>b :FufBuffer **/<CR>
 
-noremap <leader>u :GundoToggle<CR>        " mapping for Gundo
-set pastetoggle=<leader>p                 " toggle paste
-
-
-" Splits
-"" switching splits
-nnoremap <leader>j <C-W><C-J>
-nnoremap <leader>k <C-W><C-K>
-nnoremap <leader>l <C-W><C-L>
-nnoremap <leader>h <C-W><C-H>
-"" resizing splits
-nnoremap <leader>= <c-w>+
-nnoremap <leader>- <c-w>-
-nnoremap <leader>+ <c-w><
-nnoremap <leader>_ <c-w>>
-"" new splits
-nnoremap <leader><Bar> <c-w>v
-nnoremap <leader>\ <c-w>s
-"" open new splits to right and bottom
-set splitbelow
-set splitright
-
-
-" Toggle Mouse mode on and off
-function! ToggleMouse()
-  if &mouse == "a"
-    set mouse=
-    echo "Mouse Off"
-  else
-    set mouse=a
-    echo "Mouse On"
-  endif
-endfunction
-nmap <leader>m :call ToggleMouse()<CR>
-set mouse=a                         " Enable mouse by default
-
-
-" Numbers
-map <leader>n :set number!<CR>      " Toggle showing line numbers on and off
-set number                          " Show line numbers by default
-nnoremap <F4> :NumbersToggle<CR>    " mapping for numbers plugin
-let g:enable_numbers = 0            " turn off numbers plugin by default
-
-
-"" timeout
-set ttimeout
-set ttimeoutlen=0
+" mapping for Gundo
+noremap \u :GundoToggle<CR>
 
 
 " Configure vimclojure
@@ -306,31 +332,15 @@ let vimclojure#ParenRainbow=1
 vnoremap <C-Space> :Eval<cr>
 vmap <C-@> <C-Space>
 
-" Fileetypes
-autocmd! FileType mkd,markdown,md setlocal syn=off " Don't syntax highlight markdown because it's often wrong
-"" Recognize ClojureScript files as Clojure
-au BufNewFile,BufRead *.cljs setf clojure
-"" Recognize Go files
-au BufRead,BufNewFile *.go set filetype=go
-"" Set less as css
-autocmd BufRead,BufNewFile *.less,*.scss,*.css set filetype=css omnifunc=csscomplete#CompleteCSS
-autocmd BufRead,BufNewFile *.handlebars set filetype=html
-
 
 " Settings for Airline
 let g:airline_theme='light'
 let g:airline_powerline_fonts=1
 
 
+" Settings for Rainbow Parentheses
 let g:rainbow_active = 1
 
 
 " Settings for Vim Gutter
 exe 'hi! SignColumn guibg=NONE ctermbg=235'
-
-" Read in any marchine-specific vim settings
-if isdirectory(expand('$HOME/.env'))
-  for f in split(glob('$HOME/.env/*.vim'), '\n')
-    exe 'source' f
-  endfor
-endif
