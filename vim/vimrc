@@ -4,6 +4,11 @@
 " Vundle
 source ~/.vim/bundles.vim
 
+" 256 Color support
+if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
+	set t_Co=256
+endif
+
 " Set to auto read when a file is changed from the outside
 set autoread
 
@@ -83,21 +88,28 @@ hi SpellBad cterm=underline
 hi clear SpellBad
 map <leader>s :set spell! spelllang=en_us<CR>
 
-" toggle line numbers
-nmap \l :setlocal number!<CR>
-
 " toggle paste
 nmap \p :set paste!<CR>
 
 " toggle column at 80 characters
 nmap \c :call ToggleColorColumn()<CR>
 
-" Tabs and Spaces
-set wrap                            " wrap lines
-set tabstop=2 shiftwidth=2          " a tab is two spaces
-set backspace=indent,eol,start      " backspace through everything in insert mode
-set softtabstop=2                   " respect hard tabs
-set expandtab                       " convert tabs to spaces
+" wrap lines
+set wrap
+
+" a tab is two spaces
+set tabstop=2 shiftwidth=2
+
+" backspace through everything in insert mode
+set backspace=indent,eol,start
+
+" respect hard tabs
+set softtabstop=2
+
+" convert tabs to spaces
+set expandtab
+
+" switch between hard tabs and spaces
 nmap \t :call ToggleTab()<CR>
 
 " Creating tabs and toggling
@@ -105,55 +117,64 @@ nmap L :tabn<CR>
 nmap H :tabp<CR>
 nmap <C-T> :tabnew<CR>
 
-
-" Who uses semi colon in command mode anyway?
-nnoremap ; :
-
 " Turn off Swap Files
 set noswapfile
 set nobackup
 set nowb 
 
+" highlight search matches
+set hlsearch
 
-"" Searching
-set hlsearch                        " highlight matches
-set incsearch                       " incremental searching
-set ignorecase                      " searches are case insensitive ...
-set smartcase                       " ... unless they contain at least one capital letter
-nnoremap <CR> :noh<CR><CR>          " This unsets the 'last search pattern' register by hitting return
+" incremental searching
+set incsearch
 
+" searches are case insensitive ...
+set ignorecase
+
+" ... unless they contain at least one capital letter
+set smartcase
+
+" This unsets the 'last search pattern' register by hitting return
+nnoremap <CR> :noh<CR><CR>
 
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 
-
-" Splits
-"" switching splits
+" switching splits
 nnoremap <leader>j <C-W><C-J>
 nnoremap <leader>k <C-W><C-K>
 nnoremap <leader>l <C-W><C-L>
 nnoremap <leader>h <C-W><C-H>
-"" resizing splits
+
+" resizing splits
 nnoremap <leader>= <c-w>+
 nnoremap <leader>- <c-w>-
 nnoremap <leader>+ <c-w><
 nnoremap <leader>_ <c-w>>
-"" new splits
+
+" new splits
 nnoremap <leader><Bar> <c-w>v
 nnoremap <leader>\ <c-w>s
-"" open new splits to right and bottom
+
+" open new splits to right and bottom
 set splitbelow
 set splitright
 
+" Enable mouse by default
 nmap <leader>m :call ToggleMouse()<CR>
-set mouse=a                         " Enable mouse by default
+set mouse=a
 
-" Numbers
-map <leader>n :set number!<CR>      " Toggle showing line numbers on and off
-set number                          " Show line numbers by default
-nnoremap <F4> :NumbersToggle<CR>    " mapping for numbers plugin
-let g:enable_numbers = 0            " turn off numbers plugin by default
+" Show line numbers by default
+set number
 
+" Toggle showing line numbers on and off
+nmap \n :setlocal number!<CR>
+
+" mapping for numbers plugin
+nnoremap <leader>n :NumbersToggle<CR>
+
+" turn off numbers plugin by default
+let g:enable_numbers = 0
 
 "" timeout
 set ttimeout
@@ -161,14 +182,16 @@ set ttimeoutlen=0
 
 " Fileetypes
 autocmd! FileType mkd,markdown,md setlocal syn=off " Don't syntax highlight markdown because it's often wrong
-"" Recognize ClojureScript files as Clojure
+
+" Recognize ClojureScript files as Clojure
 au BufNewFile,BufRead *.cljs setf clojure
-"" Recognize Go files
+
+" Recognize Go files
 au BufRead,BufNewFile *.go set filetype=go
-"" Set less as css
+
+" Set less as css
 autocmd BufRead,BufNewFile *.less,*.scss,*.css set filetype=css omnifunc=csscomplete#CompleteCSS
 autocmd BufRead,BufNewFile *.handlebars set filetype=html
-
 
 " Read in any marchine-specific vim settings
 if isdirectory(expand('$HOME/.env'))
@@ -176,6 +199,11 @@ if isdirectory(expand('$HOME/.env'))
     exe 'source' f
   endfor
 endif
+
+" Reload current file
+nmap <C-e> :e#<CR>
+
+nmap ; :CtrlPBuffer<CR>
 
 
 
@@ -237,7 +265,13 @@ endfunction
 " ===============
 
 " Ctrl P settings
-let g:ctrlp_custom_ignore = '\v[\/]\.?(git|hg|svn|_site|dist)$'
+let g:ctrlp_map = '<Leader>t'
+let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_switch_buffer = 0
 
 " Set tabstop, softtabstop and shiftwidth to the same value
 command! -nargs=* Stab call Stab()
@@ -269,6 +303,7 @@ endfunction
 
 
 " NerdTree
+
 nmap <leader>t :NERDTreeTabsToggle<CR>
 "" Close NERDTree if it's the only remaining window
 function! NERDTreeQuit()
