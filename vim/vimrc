@@ -97,6 +97,9 @@ nmap \c :call ToggleColorColumn()<CR>
 " wrap lines
 set wrap
 
+" show invisibles
+set list listchars=tab:▸\ ,eol:¬,trail:•
+
 " a tab is two spaces
 set tabstop=2 shiftwidth=2
 
@@ -192,13 +195,6 @@ au BufRead,BufNewFile *.go set filetype=go
 " Set less as css
 autocmd BufRead,BufNewFile *.less,*.scss,*.css set filetype=css omnifunc=csscomplete#CompleteCSS
 autocmd BufRead,BufNewFile *.handlebars set filetype=html
-
-" Read in any marchine-specific vim settings
-if isdirectory(expand('$HOME/.env'))
-  for f in split(glob('$HOME/.env/*.vim'), '\n')
-    exe 'source' f
-  endfor
-endif
 
 " Reload current file
 nmap <C-e> :e#<CR>
@@ -379,3 +375,11 @@ let g:rainbow_active = 1
 
 " Settings for Vim Gutter
 exe 'hi! SignColumn guibg=NONE ctermbg=235'
+
+" Read in any marchine-specific vim settings
+if isdirectory(expand('$HOME/.env'))
+  for f in split(glob('$HOME/.env/*.vim'), '\n')
+    exe 'source' f
+  endfor
+endif
+
