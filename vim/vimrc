@@ -89,7 +89,7 @@ hi clear SpellBad
 map <leader>s :set spell! spelllang=en_us<CR>
 
 " toggle paste
-nmap \p :set paste!<CR>
+nmap \o :set paste!<CR>
 
 " toggle column at 80 characters
 nmap \c :call ToggleColorColumn()<CR>
