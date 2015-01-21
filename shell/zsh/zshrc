@@ -59,9 +59,9 @@ zle -N edit-command-line
 bindkey -M vicmd 'v' edit-command-line
 
 # Load everything else
-. $DD/shell/paths.sh
-. $DD/shell/aliases.sh
-. $DD/shell/functions.sh
+. ~/.paths
+. ~/.aliases
+. ~/.functions
 [ "$OS" = "osx" ] && . $DD/osx/osx.sh;
 
 # Load machine-specific env vars
