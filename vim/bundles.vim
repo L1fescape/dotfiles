@@ -28,5 +28,7 @@ Bundle 'oblitum/rainbow'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'lambdatoast/elm.vim'
 Bundle 'rodjek/vim-puppet'
+Bundle 'JulesWang/css.vim'
+Bundle 'cakebaker/scss-syntax.vim'
 
 filetype plugin indent on

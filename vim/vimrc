@@ -192,8 +192,12 @@ au BufNewFile,BufRead *.cljs setf clojure
 " Recognize Go files
 au BufRead,BufNewFile *.go set filetype=go
 
-" Set less as css
-autocmd BufRead,BufNewFile *.less,*.scss,*.css set filetype=css omnifunc=csscomplete#CompleteCSS
+" Syntax hightlighting for CSS, Less, and SCSS
+autocmd BufRead,BufNewFile *.less,*.css set filetype=css omnifunc=csscomplete#CompleteCSS
+au BufRead,BufNewFile *.scss set filetype=scss.css
+autocmd FileType scss set iskeyword+=-
+
+" Recognize Hanglebars files as html
 autocmd BufRead,BufNewFile *.handlebars set filetype=html
 
 " Reload current file
