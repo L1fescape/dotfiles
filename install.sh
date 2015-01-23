@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Settings
-dd=~/.dotfiles # dotfile directory
+dd=$HOME/.dotfiles # dotfile directory
 
 # functions for text formatting
 info () {
@@ -105,9 +105,6 @@ programs_install () {
     brew install findutils
     # Install Bash 4
     brew install bash
-    brew install tree
-    brew install lynx
-    brew install node
     # Install native apps
     brew tap phinze/homebrew-cask
     brew install brew-cask
@@ -158,16 +155,6 @@ packages_install () {
   sudo pip install virtualenv 
   sudo pip install virtualenvwrapper 
   sudo pip install httpie
-
-  # install node modules (depending on your setup, this might need sudo)
-  npm install -g bower
-  npm install -g grunt-cli
-  npm install -g yo
-
-
-  # install ruby gems
-  sudo gem install rails
-  sudo gem install jekyll
 }
 
 gitconfig_install () {
