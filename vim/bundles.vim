@@ -24,11 +24,12 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'tpope/vim-surround'
 Bundle 'FuzzyFinder'
 Bundle 'L9'
-Bundle 'oblitum/rainbow'
+Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'lambdatoast/elm.vim'
 Bundle 'rodjek/vim-puppet'
 Bundle 'JulesWang/css.vim'
 Bundle 'cakebaker/scss-syntax.vim'
+Bundle 'othree/html5.vim'
 
 filetype plugin indent on

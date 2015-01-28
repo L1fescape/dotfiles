@@ -66,7 +66,7 @@ set anti
 set guifont=Ubuntu\ Mono\ Bold\ 10  " set font
 
 " Enable syntax highlighting
-syntax enable 
+syntax enable
 
 " shows the horizontal cursor line
 set cursorline
@@ -371,10 +371,6 @@ vmap <C-@> <C-Space>
 " Settings for Airline
 let g:airline_theme='light'
 let g:airline_powerline_fonts=1
-
-
-" Settings for Rainbow Parentheses
-let g:rainbow_active = 1
 
 
 " Settings for Vim Gutter
