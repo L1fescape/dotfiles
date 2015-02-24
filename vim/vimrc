@@ -173,9 +173,6 @@ set number
 " Toggle showing line numbers on and off
 nmap \n :setlocal number!<CR>
 
-" mapping for numbers plugin
-nnoremap <leader>n :NumbersToggle<CR>
-
 " turn off numbers plugin by default
 let g:enable_numbers = 0
 
@@ -206,7 +203,6 @@ nmap <C-e> :e#<CR>
 nmap ; :CtrlPBuffer<CR>
 
 
-
 " Functions
 " =========
 
@@ -220,7 +216,6 @@ function! ToggleColorColumn()
 		set colorcolumn=80
 	endif
 endfunction
-
 
 " allow toggling between local and default mode
 function ToggleTab()
@@ -256,9 +251,6 @@ function! ToggleMouse()
     echo "Mouse On"
   endif
 endfunction
-
-
-
 
 
 " Plugin Settings
@@ -304,7 +296,7 @@ endfunction
 
 " NerdTree
 
-nmap <leader>t :NERDTreeTabsToggle<CR>
+nmap <leader>n :NERDTreeTabsToggle<CR>
 "" Close NERDTree if it's the only remaining window
 function! NERDTreeQuit()
     redir => buffersoutput
