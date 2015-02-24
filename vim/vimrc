@@ -4,11 +4,6 @@
 " Vundle
 source ~/.vim/bundles.vim
 
-" 256 Color support
-if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
-	set t_Co=256
-endif
-
 " Set to auto read when a file is changed from the outside
 set autoread
 
@@ -18,11 +13,11 @@ let g:mapleader = ","
 
 " make saving and quitting easier
 command W w
+command Q q
 nmap <leader>w :w<cr>
 nmap <leader>q :q<cr>
 
-" save file as sudo 
-" (useful for handling the permission-denied error)
+" save file as sudo (useful for handling the permission-denied error)
 cnoremap sudow w !sudo tee % >/dev/null
 
 " Reload VimRC
@@ -30,14 +25,6 @@ nmap <leader>r :so ~/.vimrc<CR>
 
 " Turn on the WiLd menu for command completion
 set wildmode=longest:list,full
-
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc
-if has("win16") || has("win32")
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-else
-    set wildignore+=.git\*,.hg\*,.svn\*
-endif
 
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
@@ -48,11 +35,7 @@ map <space> /
 map <c-space> ?
 
 " Set colors
-try
-  colorscheme Tomorrow-Night-Eighties
-catch
-endtry
-set background=dark
+colorscheme badwolf
 
 " full color support
 set term=screen-256color
@@ -63,7 +46,8 @@ set encoding=utf-8
 " enable anti-aliased fonts 
 set anti
 
-set guifont=Ubuntu\ Mono\ Bold\ 10  " set font
+" set font
+set guifont=Ubuntu\ Mono\ Bold\ 10
 
 " Enable syntax highlighting
 syntax enable
@@ -76,9 +60,6 @@ set ffs=unix,dos,mac
 
 " always show the statusline
 set laststatus=2
-
-" turn syntax highlighting on
-syntax on
 
 " load file type plugins + indentation
 filetype plugin indent on 
@@ -293,9 +274,7 @@ function! SummarizeTabs()
   endtry
 endfunction
 
-
 " NerdTree
-
 nmap <leader>n :NERDTreeTabsToggle<CR>
 "" Close NERDTree if it's the only remaining window
 function! NERDTreeQuit()
@@ -326,44 +305,12 @@ autocmd WinEnter * call NERDTreeQuit()
 "" NERDTree settings
 let nerdtree_tabs_open_on_console_startup=0 " don't open NERDTree on startup
 
-
-" fuzzyfinder
-let ignore = '\v\~$|\.?(git|hg|svn|node_modules|_site|dist)'
-let ignorefile = ".gitignore"
-if filereadable(ignorefile)
-
-  for line in readfile(ignorefile)
-    let line = substitute(line, '\.', '\\.', 'g')
-    let line = substitute(line, '\*', '.*', 'g')
-    let ignore .= '|^' . line
-  endfor
-
-endif
-let g:fuf_coveragefile_exclude = ignore
-let g:fuf_file_exclude = ignore
-let g:fuf_dir_exclude = ignore
-map <leader>f :FufFile **/<CR>
-map <leader>b :FufBuffer **/<CR>
-
 " mapping for Gundo
 noremap \u :GundoToggle<CR>
-
-
-" Configure vimclojure
-let vimclojure#HighlightBuiltins=1
-let vimclojure#DynamicHighlighting=1
-let vimclojure#ParenRainbow=1
-
-
-" Ctrl-Space eval selection
-vnoremap <C-Space> :Eval<cr>
-vmap <C-@> <C-Space>
-
 
 " Settings for Airline
 let g:airline_theme='light'
 let g:airline_powerline_fonts=1
-
 
 " Settings for Vim Gutter
 exe 'hi! SignColumn guibg=NONE ctermbg=235'
