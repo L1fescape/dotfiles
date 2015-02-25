@@ -21,5 +21,6 @@ Bundle 'JulesWang/css.vim'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'othree/html5.vim'
 Bundle 'sjl/badwolf'
+Bundle 'rking/ag.vim'
 
 filetype plugin indent on

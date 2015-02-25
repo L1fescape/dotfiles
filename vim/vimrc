@@ -30,12 +30,19 @@ set wildmode=longest:list,full
 map j gj
 map k gk
 
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
+" move to beginning/end of line
+nnoremap B ^
+nnoremap E $
 
 " Set colors
-colorscheme badwolf
+try
+  colorscheme badwolf
+catch
+endtry
+set background=dark
+
+" show command in bottom bar
+set showcmd
 
 " full color support
 set term=screen-256color
@@ -78,6 +85,9 @@ nmap \c :call ToggleColorColumn()<CR>
 " wrap lines
 set wrap
 
+" redraw only when we need to
+set lazyredraw
+
 " show invisibles
 set list listchars=tab:▸\ ,eol:¬,trail:•
 
@@ -100,6 +110,24 @@ nmap \t :call ToggleTab()<CR>
 nmap L :tabn<CR>
 nmap H :tabp<CR>
 nmap <C-T> :tabnew<CR>
+
+" enable folding
+set foldenable
+
+" open most folds by default
+set foldlevelstart=10
+
+" 10 nested fold max
+set foldnestmax=10
+
+" space open/closes folds
+nnoremap <space> za
+
+" fold based on indent level
+set foldmethod=indent
+
+" highlight last inserted text
+nnoremap gV `[v`]
 
 " Turn off Swap Files
 set noswapfile
@@ -179,10 +207,10 @@ autocmd FileType scss set iskeyword+=-
 autocmd BufRead,BufNewFile *.handlebars set filetype=html
 
 " Reload current file
-nmap <C-e> :e#<CR>
+nmap <C-e> :e<CR>
 
-nmap ; :CtrlPBuffer<CR>
-
+" save session (restore with `vim -S`)
+nnoremap <leader>s :mksession<CR>
 
 " Functions
 " =========
@@ -243,8 +271,11 @@ let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_dotfiles = 0
-let g:ctrlp_switch_buffer = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+
+" ag.vim settings
+nnoremap <leader>a :Ag
+nnoremap <C-F> :Ag
 
 " Set tabstop, softtabstop and shiftwidth to the same value
 command! -nargs=* Stab call Stab()
