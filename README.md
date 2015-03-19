@@ -2,21 +2,14 @@
 
 These are configs I like for programs I use often. Feel free to contribute!
 
-## How to Install
-
 ```
-# clone the repo
-git clone https://github.com/akenn/dotfiles ~/.dotfiles
-
-# change directory to the newly cloned repo
-cd ~/.dotfiles
-
-# install everything!
+# install
 sh install.sh
-```
 
-**Note:** running `sh install.sh` is just a glorified `cp` and isn't mandatory.
-Feel free do dig into each section of these configs and rip out what you want. 
+# update
+git pull
+sh install.sh update
+```
 
 ## Components
 
@@ -25,7 +18,7 @@ Feel free do dig into each section of these configs and rip out what you want.
 - **irssi/**: Configs for my favorite IRC client.
 - **osx/**: OSX specific configs and scripts.
 - **shell/**: Contains all settings for Zsh and Bash.
-- **tmux/**: Terminal multiplexer. Colors and keybinding settings for that.
+- **tmux/**: Terminal multiplexer settings. Colors and keybinding settings for that.
 - **vim/**: Configs for making my favorite text-editor boss.
 
 ## Acknowledgements

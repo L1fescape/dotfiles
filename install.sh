@@ -209,29 +209,40 @@ tmux_install () {
   success 'Installing tmux settings.'
 }
 
+vim_update () {
+  cp $dd/vim/vimrc ~/.vimrc
+  cp $dd/vim/bundles.vim ~/.vim/bundles.vim
+  vim +BundleInstall +qall
+}
+
 vim_install () {
   info 'setup vim'
 
-  cp $dd/vim/vimrc ~/.vimrc
   cp -r $dd/vim ~/.vim
-  
   git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-  vim +BundleInstall +qall
+
+  vim_update
 
   success 'vim setup'
 }
 
-# let's do this!
-prompt_warning
-packagemanager_setup
-programs_install
-packages_install
+if [ "$1" = "update" ]; then
+  vim_update
+  # todo: add update methods everything else
+else
+  # let's do this!
+  prompt_warning
+  packagemanager_setup
+  programs_install
+  packages_install
 
-gitconfig_install
-shell_install
-shell_zsh_install
-shell_bash_install
-tmux_install
-vim_install
+  gitconfig_install
+  shell_install
+  shell_zsh_install
+  shell_bash_install
+  tmux_install
+  vim_install
+
+fi
 
 success "All done!"
