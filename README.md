@@ -13,13 +13,13 @@ sh install.sh update
 
 ## Components
 
-- **fonts/**: Sweet typography to make your terminal look fine.
-- **git/**: Git settings, huzzah!
-- **irssi/**: Configs for my favorite IRC client.
-- **osx/**: OSX specific configs and scripts.
-- **shell/**: Contains all settings for Zsh and Bash.
-- **tmux/**: Terminal multiplexer settings. Colors and keybinding settings for that.
-- **vim/**: Configs for making my favorite text-editor boss.
+- **[fonts/](fonts)**: Sweet typography to make your terminal look fine.
+- **[git/](git)**: Git settings, huzzah!
+- **[irssi/](irssi)**: Configs for my favorite IRC client.
+- **[osx/](osx)**: OSX specific configs and scripts.
+- **[shell/](shell)**: Contains all settings for Zsh and Bash.
+- **[tmux/](tmux)**: Terminal multiplexer settings. Colors and keybinding settings for that.
+- **[vim/](vim)**: Configs for making my favorite text-editor boss.
 
 ## Acknowledgements
 - [Mathias Bynens](https://github.com/mathiasbynens) ([dotfiles](https://github.com/mathiasbynens/dotfiles))
