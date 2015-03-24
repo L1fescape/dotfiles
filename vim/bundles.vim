@@ -24,6 +24,6 @@ Bundle 'rking/ag.vim'
 
 " Themes
 Bundle 'sjl/badwolf'
-Bundle 'cdmedia/itg_flat_vim'
+Bundle 'akenn/itg_flat_vim'
 
 filetype plugin indent on
