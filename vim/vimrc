@@ -36,7 +36,8 @@ nnoremap E $
 
 " Set colors
 try
-  colorscheme badwolf
+  " colorscheme badwolf
+  colorscheme itg_flat
 catch
 endtry
 set background=dark
@@ -212,6 +213,7 @@ nmap <C-e> :e<CR>
 " save session (restore with `vim -S`)
 nnoremap <leader>s :mksession<CR>
 
+
 " Functions
 " =========
 
@@ -228,37 +230,37 @@ endfunction
 
 " allow toggling between local and default mode
 function ToggleTab()
-  if &expandtab
-    set shiftwidth=2
-    set softtabstop=0
-    set noexpandtab
-  else
-    set shiftwidth=2
-    set softtabstop=2
-    set expandtab
-  endif
+	if &expandtab
+		set shiftwidth=2
+		set softtabstop=0
+		set noexpandtab
+	else
+		set shiftwidth=2
+		set softtabstop=2
+		set expandtab
+	endif
 endfunction
 
 " Indent if we're at the beginning of a line. Else, do completion.
 " Borrowed from @garybernhardt
 function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
+	let col = col('.') - 1
+	if !col || getline('.')[col - 1] !~ '\k'
+		return "\<tab>"
+	else
+		return "\<c-p>"
+	endif
 endfunction
 
 " Toggle Mouse mode on and off
 function! ToggleMouse()
-  if &mouse == "a"
-    set mouse=
-    echo "Mouse Off"
-  else
-    set mouse=a
-    echo "Mouse On"
-  endif
+	if &mouse == "a"
+		set mouse=
+		echo "Mouse Off"
+	else
+		set mouse=a
+		echo "Mouse On"
+	endif
 endfunction
 
 
@@ -277,59 +279,32 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 nnoremap <leader>a :Ag
 nnoremap <C-F> :Ag
 
-" Set tabstop, softtabstop and shiftwidth to the same value
-command! -nargs=* Stab call Stab()
-function! Stab()
-  let l:tabstop = 1 * input('set tabstop = softtabstop = shiftwidth = ')
-  if l:tabstop > 0
-    let &l:sts = l:tabstop
-    let &l:ts = l:tabstop
-    let &l:sw = l:tabstop
-  endif
-  call SummarizeTabs()
-endfunction
-  
-function! SummarizeTabs()
-  try
-    echohl ModeMsg
-    echon 'tabstop='.&l:ts
-    echon ' shiftwidth='.&l:sw
-    echon ' softtabstop='.&l:sts
-    if &l:et
-      echon ' expandtab'
-    else
-      echon ' noexpandtab'
-    endif
-  finally
-    echohl None
-  endtry
-endfunction
-
 " NerdTree
 nmap <leader>n :NERDTreeTabsToggle<CR>
 "" Close NERDTree if it's the only remaining window
 function! NERDTreeQuit()
-    redir => buffersoutput
-    silent buffers
-    redir END
-    "                     1BufNo  2Mods.     3File           4LineNo
-    let pattern = '^\s*\(\d\+\)\(.....\) "\(.*\)"\s\+line \(\d\+\)$'
-    let windowfound = 0
+	redir => buffersoutput
+	silent buffers
+	redir END
+	"                     1BufNo  2Mods.     3File           4LineNo
+	let pattern = '^\s*\(\d\+\)\(.....\) "\(.*\)"\s\+line \(\d\+\)$'
+	let windowfound = 0
 
-    for bline in split(buffersoutput, "\n")
-        let m = matchlist(bline, pattern)
+	for bline in split(buffersoutput, "\n")
+		let m = matchlist(bline, pattern)
 
-        if (len(m) > 0)
-            if (m[2] =~ '..a..')
-                let windowfound = 1
-            endif
-        endif
-    endfor
+		if (len(m) > 0)
+			if (m[2] =~ '..a..')
+				let windowfound = 1
+			endif
+		endif
+	endfor
 
-    if (!windowfound)
-        quitall
-    endif
+	if (!windowfound)
+		quitall
+	endif
 endfunction
+
 "" NERDTree autocommands
 autocmd WinEnter * call NERDTreeQuit()
 " autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | wincmd p | endif " give current file focus instead of NERDTree
@@ -348,8 +323,8 @@ exe 'hi! SignColumn guibg=NONE ctermbg=235'
 
 " Read in any marchine-specific vim settings
 if isdirectory(expand('$HOME/.env'))
-  for f in split(glob('$HOME/.env/*.vim'), '\n')
-    exe 'source' f
-  endfor
+	for f in split(glob('$HOME/.env/*.vim'), '\n')
+		exe 'source' f
+	endfor
 endif
 

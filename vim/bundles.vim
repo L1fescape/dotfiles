@@ -20,7 +20,10 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'JulesWang/css.vim'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'othree/html5.vim'
-Bundle 'sjl/badwolf'
 Bundle 'rking/ag.vim'
+
+" Themes
+Bundle 'sjl/badwolf'
+Bundle 'cdmedia/itg_flat_vim'
 
 filetype plugin indent on
