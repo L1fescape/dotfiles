@@ -7,6 +7,9 @@ source ~/.vim/bundles.vim
 " Set to auto read when a file is changed from the outside
 set autoread
 
+" Remove startup screen
+set shortmess=I
+
 " set the leader key
 let mapleader = ","
 let g:mapleader = ","
