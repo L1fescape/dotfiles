@@ -36,8 +36,7 @@ nnoremap E $
 
 " Set colors
 try
-  " colorscheme badwolf
-  colorscheme itg_flat
+  colorscheme badwolf
 catch
 endtry
 set background=dark
@@ -278,6 +277,16 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 " ag.vim settings
 nnoremap <leader>a :Ag
 nnoremap <C-F> :Ag
+
+" Settings for syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " NerdTree
 nmap <leader>n :NERDTreeTabsToggle<CR>
