@@ -71,7 +71,7 @@ packagemanager_setup () {
     if [[ $? != 0 ]] ; then
         # Install Homebrew
         info "Installing Homebrew"
-        ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
   fi
 }
@@ -226,6 +226,10 @@ vim_install () {
   success 'vim setup'
 }
 
+misc_install() {
+  cp $dd/ag/agignore ~/.agignore
+}
+
 if [ "$1" = "update" ]; then
   vim_update
   # todo: add update methods everything else
@@ -242,7 +246,7 @@ else
   shell_bash_install
   tmux_install
   vim_install
-
+  misc_install
 fi
 
 success "All done!"
