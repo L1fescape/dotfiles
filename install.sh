@@ -226,12 +226,17 @@ vim_install () {
   success 'vim setup'
 }
 
-misc_install() {
+misc_update () {
   cp $dd/ag/agignore ~/.agignore
+}
+
+misc_install() {
+  misc_update
 }
 
 if [ "$1" = "update" ]; then
   vim_update
+  misc_update
   # todo: add update methods everything else
 else
   # let's do this!
