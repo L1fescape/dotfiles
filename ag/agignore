@@ -19,3 +19,8 @@ build
 release
 releases
 fixtures
+
+# VCS folders
+.git/
+.hg/
+.svn/
