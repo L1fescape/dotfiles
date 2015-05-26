@@ -39,7 +39,7 @@ nnoremap E $
 
 " Set colors
 try
-  colorscheme badwolf
+  colorscheme Tomorrow-Night-Eighties
 catch
 endtry
 set background=dark
