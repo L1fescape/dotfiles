@@ -28,5 +28,6 @@ Bundle 'othree/html5.vim'
 " Themes
 Bundle 'sjl/badwolf'
 Bundle 'akenn/itg_flat_vim'
+Bundle 'chriskempson/vim-tomorrow-theme'
 
 filetype plugin indent on
