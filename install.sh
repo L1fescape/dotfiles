@@ -176,6 +176,10 @@ tmux_update () {
 # vim
 
 vim_update () {
+  if [ ! -d "$HOME/.vim" ]; then
+    cp -r $dd/vim $HOME/.vim
+  fi
+
   cp $dd/vim/vimrc $HOME/.vimrc
   cp $dd/vim/bundles.vim $HOME/.vim/bundles.vim
 
