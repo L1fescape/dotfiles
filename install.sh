@@ -61,7 +61,7 @@ packagemanager_setup () {
         ;;
     esac
   done
-  
+
   # prepend sudo if not osx
   [ $os != "o" ] && pkgmgmt="sudo $pkgmgmt"
 
@@ -83,71 +83,15 @@ programs_install () {
   info "Updating Packages"
   $pkgmgmt update
 
-  # Install Zsh
-  info "Installing Zsh \n"
-  $pkgmgmt zsh
-  info "Setting zsh as default shell \n"
-  chsh -s /bin/zsh
-
   # if osx, install things a little differently
   if [ "$os" = "o" ]; then
-    brew install readline sqlite gdbm --universal
-    # install python with easy_install
-    brew install python --universal --framework 
-    # install pip
-    sudo easy_install pip
-    # Install wget with IRI support
-    brew install wget --enable-iri
-    # Install GNU core utilities (those that come with OS X are outdated)
-    brew install coreutils
-    echo "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
-    # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
-    brew install findutils
-    # Install Bash 4
-    brew install bash
-    # Install native apps
-    brew tap phinze/homebrew-cask
-    brew install brew-cask
-
-    installcask() {
-      if brew cask info "${@}" | grep "Not installed" > /dev/null; then
-        brew cask install "${@}"
-      else
-        echo "${@} is already installed."
-      fi
-    }
-
-    installcask dropbox
-    installcask google-drive
-    installcask google-chrome
-    installcask google-chrome-canary
-    installcask iterm2
-    installcask sublime-text
-    installcask virtualbox
-    installcask vlc
-    installcask alfred
-    # Link brew cask apps to Applications dir
-    brew cask linkapps --appdir="/Applications"
-    # Remove outdated versions from the cellar
-    brew cleanup
-
-    # setup mac defaults
-    . ~/dotfiles/osx/osx-init
+    source $dd/osx/install.sh
   else
     $pkgmgmt python-pip vim
   fi
 
   # install tmux and curl
   $pkgmgmt tmux curl
-
-  cp -r $dd/irssi ~/.irssi
-  if [ "$os" = "o" ]
-  then
-    cp -r $dd/osx/osx.sh ~/.osx
-    cp $dd/osx/hushlogin ~/.hushlogin
-    # Copy iterm2 settings
-    cp $dd/osx/iterm/com.googlecode.iterm2.plist ~/Library/Preferences/
-  fi
 }
 
 packages_install () {
@@ -156,6 +100,8 @@ packages_install () {
   sudo pip install virtualenvwrapper 
   sudo pip install httpie
 }
+
+# gitconfig
 
 gitconfig_install () {
   info 'setup gitconfig'
@@ -172,26 +118,42 @@ gitconfig_install () {
   success 'gitconfig'
 }
 
-shell_install () {
+# generic shell
+
+shell_update () {
   info 'installing shell aliases, functions, and paths'
 
-  cp $dd/shell/aliases.sh ~/.aliases
-  cp $dd/shell/functions.sh ~/.functions
-  cp $dd/shell/paths.sh ~/.paths
+  cp $dd/shell/aliases.sh $HOME/.aliases
+  cp $dd/shell/functions.sh $HOME/.functions
+  cp $dd/shell/paths.sh $HOME/.paths
 
   success 'installed shell aliases, functions, and paths'
 }
 
+# zsh
+
 shell_zsh_install () {
+  # Install Zsh
+  info "Installing Zsh \n"
+
+  $pkgmgmt zsh
+
+  info "Setting zsh as default shell \n"
+  chsh -s /bin/zsh
+}
+
+shell_zsh_update () {
   info 'setting up zsh'
 
-  cp $dd/shell/zsh/zshrc ~/.zshrc
-  cp -r $dd/shell/zsh ~/.zsh
+  cp $dd/shell/zsh/zshrc $HOME/.zshrc
+  cp -r $dd/shell/zsh $HOME/.zsh
 
   success 'set up zsh'
 }
 
-shell_bash_install () {
+# bash
+
+shell_bash_update () {
   info 'setting up bash'
 
   cp $dd/shell/bash/bashrc ~/.bashrc
@@ -200,7 +162,9 @@ shell_bash_install () {
   success 'set up bash'
 }
 
-tmux_install () {
+# tmux
+
+tmux_update () {
   info 'Installing tmux settings.'
 
   cp $dd/tmux/tmux.conf ~/.tmux.conf
@@ -209,9 +173,16 @@ tmux_install () {
   success 'Installing tmux settings.'
 }
 
+# vim
+
 vim_update () {
-  cp $dd/vim/vimrc ~/.vimrc
-  cp $dd/vim/bundles.vim ~/.vim/bundles.vim
+  cp $dd/vim/vimrc $HOME/.vimrc
+  cp $dd/vim/bundles.vim $HOME/.vim/bundles.vim
+
+  if [ ! -d "$HOME/.vim/bundle/vundle" ]; then
+    git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
+  fi
+
   vim +BundleInstall +qall
 }
 
@@ -219,12 +190,13 @@ vim_install () {
   info 'setup vim'
 
   cp -r $dd/vim ~/.vim
-  git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
   vim_update
 
   success 'vim setup'
 }
+
+# misc
 
 misc_update () {
   cp $dd/ag/agignore ~/.agignore
@@ -234,8 +206,13 @@ misc_install() {
   misc_update
 }
 
+# do it!
+
 if [ "$1" = "update" ]; then
+  shell_update
+  shell_zsh_update
   vim_update
+  tmux_update
   misc_update
   # todo: add update methods everything else
 else
@@ -246,10 +223,11 @@ else
   packages_install
 
   gitconfig_install
-  shell_install
+  shell_update
   shell_zsh_install
+  shell_zsh_update
   shell_bash_install
-  tmux_install
+  tmux_update
   vim_install
   misc_install
 fi
