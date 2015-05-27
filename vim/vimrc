@@ -265,6 +265,11 @@ function! ToggleMouse()
 	endif
 endfunction
 
+function! Solarized()
+  colorscheme solarized
+  set background=light
+endfunction
+map <leader>s :call Solarized()<CR>
 
 " Plugin Settings
 " ===============
@@ -275,18 +280,11 @@ let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
 let g:ctrlp_working_path_mode = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 " ag.vim settings
 nnoremap <leader>a :Ag
 nnoremap <C-F> :Ag
-
-if executable('ag')
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s --files-with-matches -g "" --ignore "\.git$\|\.hg$\|\.svn$"'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
 
 " Settings for syntastic
 set statusline+=%#warningmsg#
