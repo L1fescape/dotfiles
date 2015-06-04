@@ -15,7 +15,6 @@ sh install.sh update
 
 - **[fonts/](fonts)**: Sweet typography to make your terminal look fine.
 - **[git/](git)**: Git settings, huzzah!
-- **[irssi/](irssi)**: Configs for my favorite IRC client.
 - **[osx/](osx)**: OSX specific configs and scripts.
 - **[shell/](shell)**: Contains all settings for Zsh and Bash.
 - **[tmux/](tmux)**: Terminal multiplexer settings. Colors and keybinding settings for that.

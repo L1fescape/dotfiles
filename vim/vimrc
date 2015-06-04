@@ -11,8 +11,10 @@ set autoread
 set shortmess=I
 
 " set the leader key
-let mapleader = ","
-let g:mapleader = ","
+let mapleader = "\<Space>"
+
+" open a file
+nnoremap <Leader>o :CtrlP<CR>
 
 " make saving and quitting easier
 command W w

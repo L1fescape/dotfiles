@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Settings
-dd=$HOME/.dotfiles # dotfile directory
+cwd=$(pwd)
 
 # functions for text formatting
 info () {
@@ -85,7 +85,7 @@ programs_install () {
 
   # if osx, install things a little differently
   if [ "$os" = "o" ]; then
-    source $dd/osx/install.sh
+    source $cwd/osx/install.sh
   else
     $pkgmgmt python-pip vim
   fi
@@ -111,9 +111,7 @@ gitconfig_install () {
   user ' - What is your github author email?'
   read -e git_authoremail
 
-  sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" $dd/git/gitconfig.example > $dd/git/gitconfig
-
-  cp $dd/git/gitconfig ~/.gitconfig
+  sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" $cwd/git/gitconfig.example > $HOME/.gitconfig
 
   success 'gitconfig'
 }
@@ -123,9 +121,9 @@ gitconfig_install () {
 shell_update () {
   info 'installing shell aliases, functions, and paths'
 
-  cp $dd/shell/aliases.sh $HOME/.aliases
-  cp $dd/shell/functions.sh $HOME/.functions
-  cp $dd/shell/paths.sh $HOME/.paths
+  cp $cwd/shell/aliases.sh $HOME/.aliases
+  cp $cwd/shell/functions.sh $HOME/.functions
+  cp $cwd/shell/paths.sh $HOME/.paths
 
   success 'installed shell aliases, functions, and paths'
 }
@@ -145,8 +143,8 @@ shell_zsh_install () {
 shell_zsh_update () {
   info 'setting up zsh'
 
-  cp $dd/shell/zsh/zshrc $HOME/.zshrc
-  cp -r $dd/shell/zsh $HOME/.zsh
+  cp $cwd/shell/zsh/zshrc $HOME/.zshrc
+  cp -r $cwd/shell/zsh $HOME/.zsh
 
   success 'set up zsh'
 }
@@ -156,8 +154,8 @@ shell_zsh_update () {
 shell_bash_update () {
   info 'setting up bash'
 
-  cp $dd/shell/bash/bashrc ~/.bashrc
-  cp -r $dd/shell/bash ~/.bash
+  cp $cwd/shell/bash/bashrc ~/.bashrc
+  cp -r $cwd/shell/bash ~/.bash
 
   success 'set up bash'
 }
@@ -167,8 +165,8 @@ shell_bash_update () {
 tmux_update () {
   info 'Installing tmux settings.'
 
-  cp $dd/tmux/tmux.conf ~/.tmux.conf
-  cp -r $dd/tmux ~/.tmux
+  cp $cwd/tmux/tmux.conf ~/.tmux.conf
+  cp -r $cwd/tmux ~/.tmux
 
   success 'Installing tmux settings.'
 }
@@ -177,11 +175,11 @@ tmux_update () {
 
 vim_update () {
   if [ ! -d "$HOME/.vim" ]; then
-    cp -r $dd/vim $HOME/.vim
+    cp -r $cwd/vim $HOME/.vim
   fi
 
-  cp $dd/vim/vimrc $HOME/.vimrc
-  cp $dd/vim/bundles.vim $HOME/.vim/bundles.vim
+  cp $cwd/vim/vimrc $HOME/.vimrc
+  cp $cwd/vim/bundles.vim $HOME/.vim/bundles.vim
 
   if [ ! -d "$HOME/.vim/bundle/vundle" ]; then
     git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
@@ -193,7 +191,7 @@ vim_update () {
 vim_install () {
   info 'setup vim'
 
-  cp -r $dd/vim ~/.vim
+  cp -r $cwd/vim ~/.vim
 
   vim_update
 
@@ -203,7 +201,7 @@ vim_install () {
 # misc
 
 misc_update () {
-  cp $dd/ag/agignore ~/.agignore
+  cp $cwd/ag/agignore ~/.agignore
 }
 
 misc_install() {
