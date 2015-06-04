@@ -8,14 +8,8 @@ homebrew=/usr/local/bin:/usr/local/sbin
 ## NPM Paths
 npm=/usr/local/share/npm/bin
 
-## MySQL
-mysql=/usr/local/mysql/bin
-
-## Haskell
-haskell=~/.cabal/bin
-
 ## Export paths
-export PATH=$homebrew:$npm:$mysql:$haskell:$PATH
+export PATH=$homebrew:$npm:$PATH
 
 
 # Variables

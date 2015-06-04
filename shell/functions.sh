@@ -11,7 +11,7 @@ mkcd() { mkdir -p "$@" && cd "$_"; }
 
 function server() {
 	# needs to be more elegantly written. basically just default to 
-	# port 8000 if no por is given. if the 'o' flag is passed, also
+	# port 8000 if no port is given. if the 'o' flag is passed, also
 	# open the server in a browser.
 	local COMMAND=$1;
 	if [ $COMMAND = "-o" ];

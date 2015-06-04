@@ -4,25 +4,19 @@
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
-alias http="http"
-alias slime='open -a "Sublime Text 2"'
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
 alias vi="vim"
 alias :q="exit"
 alias :Q="exit"
-alias lsal="cat ~/.aliases | grep alias"
-alias lsfun="cat ~/.aliases | grep function; cat ~/.functions | grep function"
 alias s="ls" # ;s
 alias ks="ls" # I mistype ls often
 alias sl="ls"
-alias fucking="sudo"
-alias fuck="sudo" # fuck !! > fucking !!
-alias please="sudo"
 alias diff='vim -d'
 alias roll='curl -L http://bit.ly/10hA8iC | bash'
 alias tmux='tmux -2' # fix for tmux with 256 colors in ubuntu
 alias t='tmux'
 alias ta='tmux attach || tmux'
-alias gitm='git pull origin master'
 alias 'ps?'='ps ax | grep '
 function readme() {
   readmefile="${1:-README.md}"
@@ -58,19 +52,6 @@ alias lsd='ls -l | grep "^d"'
 #                  sudo easy_install Pygments
 alias c='pygmentize -O style=monokai -f console256 -g'
 
-# git
-alias github="open https://github.com"
-
-# YOLO
-alias yolo="git add -A && git commit -am '#YOLO' && git push origin master --force"
-
-# Django
-alias django-new="django-admin.py startproject"
-alias django-start="python manage.py runserver"
-
-# Gource
-alias gourcedef="gource -1280x720 --time-scale 3.0 --seconds-per-day 1 -o - | ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -preset ultrafast -pix_fmt yuv420p -crf 1 -threads 0 -bf 0 gource.mp4"
-
 # IP addresses
 function localip() {
   IP=`ipconfig getifaddr en0`
@@ -98,10 +79,3 @@ function setmac() {
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
-
-# iOS simulator
-alias simulator='open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app'
-
-
-# redis
-alias redis-start="redis-server /usr/local/etc/redis.conf"
