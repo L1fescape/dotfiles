@@ -114,7 +114,7 @@ nmap \t :call ToggleTab()<CR>
 " Creating tabs and toggling
 nmap L :tabn<CR>
 nmap H :tabp<CR>
-nmap <C-T> :tabnew<CR>
+nmap <leader>t :tabnew<CR>
 
 " enable folding
 set foldenable
@@ -277,7 +277,6 @@ map <leader>s :call Solarized()<CR>
 " ===============
 
 " Ctrl P settings
-let g:ctrlp_map = '<Leader>t'
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
