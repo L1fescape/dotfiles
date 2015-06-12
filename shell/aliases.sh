@@ -7,6 +7,7 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 alias vi="vim"
+alias v="vim"
 alias :q="exit"
 alias :Q="exit"
 alias s="ls" # ;s
