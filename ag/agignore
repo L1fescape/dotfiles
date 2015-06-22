@@ -24,3 +24,9 @@ fixtures
 .git/
 .hg/
 .svn/
+
+# IDE's
+.idea/
+
+# OS-specific
+.DS_Store

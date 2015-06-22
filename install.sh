@@ -103,7 +103,7 @@ packages_install () {
 
 # gitconfig
 
-gitconfig_install () {
+git_install () {
   info 'setup gitconfig'
 
   user ' - What is your github author name?'
@@ -114,6 +114,14 @@ gitconfig_install () {
   sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" $cwd/git/gitconfig.example > $HOME/.gitconfig
 
   success 'gitconfig'
+}
+
+git_update () {
+  info 'setup git'
+
+  cp $cwd/git/gitignore $HOME/.gitignore
+
+  success 'setup git'
 }
 
 # generic shell
@@ -211,6 +219,7 @@ misc_install() {
 # do it!
 
 if [ "$1" = "update" ]; then
+  git_update
   shell_update
   shell_zsh_update
   vim_update
@@ -224,7 +233,8 @@ else
   programs_install
   packages_install
 
-  gitconfig_install
+  git_install
+  git_update
   shell_update
   shell_zsh_install
   shell_zsh_update
