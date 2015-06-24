@@ -35,6 +35,9 @@ set wildmode=longest:list,full
 map j gj
 map k gk
 
+" Join with line above (similar to J)
+map K kJ
+
 " move to beginning/end of line
 nnoremap B ^
 nnoremap E $
@@ -294,6 +297,9 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
+" Vim Expand Region settings
+map <C-k> <Plug>(expand_region_expand)
+map <C-j> <Plug>(expand_region_shrink)
 
 " Settings for syntastic
 set statusline+=%#warningmsg#

@@ -15,6 +15,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'sjl/gundo.vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'rking/ag.vim'
+Bundle 'terryma/vim-expand-region'
 
 " HTML, CSS, Javascript
 Bundle 'jakar/vim-json'
