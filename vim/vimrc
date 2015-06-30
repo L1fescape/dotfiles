@@ -82,7 +82,7 @@ filetype plugin indent on
 " settings for showing grammatical errors
 hi SpellBad cterm=underline
 hi clear SpellBad
-map <leader>s :set spell! spelllang=en_us<CR>
+map \s :set spell! spelllang=en_us<CR>
 
 " toggle paste
 nmap \o :set paste!<CR>
@@ -96,7 +96,7 @@ set wrap
 " redraw only when we need to
 set lazyredraw
 
-" show invisibles
+" show invisible
 set list listchars=tab:▸\ ,eol:¬,trail:•
 
 " a tab is two spaces
@@ -127,9 +127,6 @@ set foldlevelstart=10
 
 " 10 nested fold max
 set foldnestmax=10
-
-" space open/closes folds
-nnoremap <space> za
 
 " fold based on indent level
 set foldmethod=indent
@@ -226,48 +223,48 @@ nnoremap <leader>s :mksession<CR>
 
 let g:togglecolumn_is_on = 0
 function! ToggleColorColumn()
-	if g:togglecolumn_is_on
-		let g:togglecolumn_is_on = 0
-		set colorcolumn=
-	else
-		let g:togglecolumn_is_on = 1
-		set colorcolumn=80
-	endif
+  if g:togglecolumn_is_on
+    let g:togglecolumn_is_on = 0
+    set colorcolumn=
+  else
+    let g:togglecolumn_is_on = 1
+    set colorcolumn=80
+  endif
 endfunction
 
 " allow toggling between local and default mode
 function ToggleTab()
-	if &expandtab
-		set shiftwidth=2
-		set softtabstop=0
-		set noexpandtab
-	else
-		set shiftwidth=2
-		set softtabstop=2
-		set expandtab
-	endif
+  if &expandtab
+    set shiftwidth=2
+    set softtabstop=0
+    set noexpandtab
+  else
+    set shiftwidth=2
+    set softtabstop=2
+    set expandtab
+  endif
 endfunction
 
 " Indent if we're at the beginning of a line. Else, do completion.
 " Borrowed from @garybernhardt
 function! InsertTabWrapper()
-	let col = col('.') - 1
-	if !col || getline('.')[col - 1] !~ '\k'
-		return "\<tab>"
-	else
-		return "\<c-p>"
-	endif
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  else
+    return "\<c-p>"
+  endif
 endfunction
 
 " Toggle Mouse mode on and off
 function! ToggleMouse()
-	if &mouse == "a"
-		set mouse=
-		echo "Mouse Off"
-	else
-		set mouse=a
-		echo "Mouse On"
-	endif
+  if &mouse == "a"
+    set mouse=
+    echo "Mouse Off"
+  else
+    set mouse=a
+    echo "Mouse On"
+  endif
 endfunction
 
 function! Solarized()
@@ -315,26 +312,26 @@ let g:syntastic_check_on_wq = 0
 nmap <leader>n :NERDTreeTabsToggle<CR>
 "" Close NERDTree if it's the only remaining window
 function! NERDTreeQuit()
-	redir => buffersoutput
-	silent buffers
-	redir END
-	"                     1BufNo  2Mods.     3File           4LineNo
-	let pattern = '^\s*\(\d\+\)\(.....\) "\(.*\)"\s\+line \(\d\+\)$'
-	let windowfound = 0
+  redir => buffersoutput
+  silent buffers
+  redir END
+  "                     1BufNo  2Mods.     3File           4LineNo
+  let pattern = '^\s*\(\d\+\)\(.....\) "\(.*\)"\s\+line \(\d\+\)$'
+  let windowfound = 0
 
-	for bline in split(buffersoutput, "\n")
-		let m = matchlist(bline, pattern)
+  for bline in split(buffersoutput, "\n")
+    let m = matchlist(bline, pattern)
 
-		if (len(m) > 0)
-			if (m[2] =~ '..a..')
-				let windowfound = 1
-			endif
-		endif
-	endfor
+    if (len(m) > 0)
+      if (m[2] =~ '..a..')
+        let windowfound = 1
+      endif
+    endif
+  endfor
 
-	if (!windowfound)
-		quitall
-	endif
+  if (!windowfound)
+    quitall
+  endif
 endfunction
 
 "" NERDTree autocommands
@@ -355,8 +352,7 @@ exe 'hi! SignColumn guibg=NONE ctermbg=235'
 
 " Read in any marchine-specific vim settings
 if isdirectory(expand('$HOME/.env'))
-	for f in split(glob('$HOME/.env/*.vim'), '\n')
-		exe 'source' f
-	endfor
+  for f in split(glob('$HOME/.env/*.vim'), '\n')
+    exe 'source' f
+  endfor
 endif
-
