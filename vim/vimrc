@@ -48,6 +48,9 @@ try
 catch
 endtry
 set background=dark
+if &diff
+  colorscheme evening
+endif
 
 " show command in bottom bar
 set showcmd
@@ -266,12 +269,6 @@ function! ToggleMouse()
     echo "Mouse On"
   endif
 endfunction
-
-function! Solarized()
-  colorscheme solarized
-  set background=light
-endfunction
-map <leader>s :call Solarized()<CR>
 
 " Plugin Settings
 " ===============
