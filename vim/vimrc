@@ -101,6 +101,7 @@ set lazyredraw
 
 " show invisible
 set list listchars=tab:▸\ ,eol:¬,trail:•
+nmap \l :set list!<CR>
 
 " a tab is two spaces
 set tabstop=2 shiftwidth=2

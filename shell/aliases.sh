@@ -15,6 +15,7 @@ alias ks="ls" # I mistype ls often
 alias sl="ls"
 alias diff='vim -d'
 alias roll='curl -L http://bit.ly/10hA8iC | bash'
+alias co='cp'
 alias tmux='tmux -2' # fix for tmux with 256 colors in ubuntu
 alias t='tmux'
 alias ta='tmux attach || tmux'
@@ -80,3 +81,26 @@ function setmac() {
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+
+# LOLZ
+
+function woodo() {
+  if [ $EUID != 0 ]; then
+    echo "It's a weird tree."
+  else
+      echo '     _              __'
+      echo '    / `\  (~._    ./  )'
+      echo '    \__/ __`-_\__/ ./'
+      echo '   _ \ \/  \   \ |_   __'
+      echo ' (   )  \__/ -^    \ /  \'
+      echo '  \_/ "  \  | o  o  |.. /  __'
+      echo "       \\. --' ====  /  || /  \\ "
+      echo '         \   .  .  |---__.\__/'
+      echo '         /  :     /   |   |'
+      echo '         /   :   /     \_/'
+      echo '      --/ ::    ('
+      echo '     (  |     (  (____'
+      echo '   .--  .. ----**.____)'
+      echo '   \___/          '
+  fi
+}
