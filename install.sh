@@ -174,7 +174,6 @@ tmux_update () {
   info 'Installing tmux settings.'
 
   cp $cwd/tmux/tmux.conf ~/.tmux.conf
-  cp -r $cwd/tmux ~/.tmux
 
   success 'Installing tmux settings.'
 }
