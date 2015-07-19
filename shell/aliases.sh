@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Aliases
+alias dotupdate="cd ~/code/dotfiles; git pull; bash install.sh update; cd -"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
