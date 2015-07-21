@@ -16,6 +16,9 @@ Bundle 'mattn/emmet-vim'
 Bundle 'rking/ag.vim'
 Bundle 'terryma/vim-expand-region'
 
+" Completion
+Bundle 'Shougo/neocomplete.vim'
+
 " HTML, CSS, Javascript
 Bundle 'jakar/vim-json'
 Bundle 'kchmck/vim-coffee-script'

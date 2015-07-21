@@ -87,7 +87,7 @@ programs_install () {
   if [ "$os" = "o" ]; then
     source $cwd/osx/install.sh
   else
-    $pkgmgmt python-pip vim
+    $pkgmgmt python-pip vim vim-nox
   fi
 
   # install tmux and curl
@@ -187,6 +187,10 @@ vim_update () {
 
   cp $cwd/vim/vimrc $HOME/.vimrc
   cp $cwd/vim/bundles.vim $HOME/.vim/bundles.vim
+  if [ -d "$HOME/.vim/plugin-configs" ]; then
+    rm -rf $HOME/.vim/plugin-configs
+  fi
+  cp -r $cwd/vim/plugin-configs $HOME/.vim
 
   if [ ! -d "$HOME/.vim/bundle/vundle" ]; then
     git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle

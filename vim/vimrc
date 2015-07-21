@@ -274,79 +274,12 @@ endfunction
 " Plugin Settings
 " ===============
 
-" Ctrl P settings
-let g:ctrlp_match_window_bottom = 0
-let g:ctrlp_match_window_reversed = 0
-let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
-let g:ctrlp_working_path_mode = 0
- 
-" ag.vim settings
-if executable('ag')
-  nnoremap <leader>a :Ag
-  nnoremap <C-F> :Ag
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
-
-" Vim Expand Region settings
-map <C-k> <Plug>(expand_region_expand)
-map <C-j> <Plug>(expand_region_shrink)
-
-" Settings for syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" NerdTree
-nmap <leader>n :NERDTreeTabsToggle<CR>
-"" Close NERDTree if it's the only remaining window
-function! NERDTreeQuit()
-  redir => buffersoutput
-  silent buffers
-  redir END
-  "                     1BufNo  2Mods.     3File           4LineNo
-  let pattern = '^\s*\(\d\+\)\(.....\) "\(.*\)"\s\+line \(\d\+\)$'
-  let windowfound = 0
-
-  for bline in split(buffersoutput, "\n")
-    let m = matchlist(bline, pattern)
-
-    if (len(m) > 0)
-      if (m[2] =~ '..a..')
-        let windowfound = 1
-      endif
-    endif
+" Read in any plugin settings
+if isdirectory(expand('$HOME/.vim/plugin-configs'))
+  for f in split(glob('$HOME/.vim/plugin-configs/*.vim'), '\n')
+    exe 'source' f
   endfor
-
-  if (!windowfound)
-    quitall
-  endif
-endfunction
-
-"" NERDTree autocommands
-autocmd WinEnter * call NERDTreeQuit()
-" autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | wincmd p | endif " give current file focus instead of NERDTree
-"" NERDTree settings
-let nerdtree_tabs_open_on_console_startup=0 " don't open NERDTree on startup
-
-" mapping for Gundo
-noremap \u :GundoToggle<CR>
-
-" Settings for Airline
-let g:airline_theme='light'
-let g:airline_powerline_fonts=1
-
-" Settings for Vim Gutter
-exe 'hi! SignColumn guibg=NONE ctermbg=235'
+endif
 
 " Read in any marchine-specific vim settings
 if isdirectory(expand('$HOME/.env'))
