@@ -19,6 +19,8 @@ brew install python --universal --framework
 sudo easy_install pip
 # Install wget with IRI support
 brew install wget --enable-iri
+# Install vim with lua
+brew install vim --with-lua
 # Install GNU core utilities (those that come with OS X are outdated)
 brew install coreutils
 echo "Don’t forget to add $(brew --prefix coreutils)/libexec/gnubin to \$PATH."
