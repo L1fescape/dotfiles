@@ -64,7 +64,6 @@ function localip() {
 alias globalip="curl ifconfig.me"
 alias externalip="globalip"
 alias gateway="route -n get default | sed -n 4p | cut -c14-"
-alias whois="whois -h whois-servers.net"
 
 alias arp-local="arp-scan --interface=en0 --localnet"
 alias arp-local2="arp-scan --interface=en0 192.168.1.1/24"
