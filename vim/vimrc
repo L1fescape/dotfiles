@@ -7,8 +7,8 @@ source ~/.vim/bundles.vim
 " Set to auto read when a file is changed from the outside
 set autoread
 
-" Remove 'Hit ENTER to continue' prompts
-set shortmess=a
+" Remove 'Hit ENTER to continue' prompts when saving files
+set shortmess=at
 
 " set the leader key
 let mapleader = "\<Space>"
