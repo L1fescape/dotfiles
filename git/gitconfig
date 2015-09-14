@@ -1,6 +1,6 @@
 [user]
-  name = AUTHORNAME
-  email = AUTHOREMAIL
+  name = Andrew Kennedy
+  email = akennedy@cloudflare.com
 [alias]
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
   co = checkout
@@ -27,6 +27,8 @@
   d = difftool
   hub = "!echo `git config remote.origin.url`"
   dif = "!git diff | vim -"
+  recent = "!git for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short) %(subject)' refs/heads"
+  recent-all = "!git recent refs/remotes"
 [color]
   # Use colors in Git commands that are capable of colored output when outputting to the terminal
   ui = auto

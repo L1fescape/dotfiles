@@ -1,6 +1,5 @@
 .DS_Store
 .netrwhist
-git/gitconfig
 vim/doc/*
 vim/bundle
 backups/

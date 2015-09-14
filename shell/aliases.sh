@@ -37,10 +37,6 @@ else # OS X `ls`
   colorflag="-G"
 fi
 
-# Git aliases
-alias gitrecent="git for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname)' refs/heads"
-alias gitrecent-all="gitrecent refs/remotes"
-
 # Get chmod value of a file
 alias chmod-get='stat --format "%a"'
 

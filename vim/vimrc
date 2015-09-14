@@ -183,7 +183,13 @@ set splitright
 
 " Enable mouse by default
 nmap <leader>m :call ToggleMouse()<CR>
-set mouse=a
+set mouse+=a
+
+" Allow vim split dragging if running vim inside tmux
+if &term =~ '^screen'
+    " tmux knows the extended mouse mode
+    set ttymouse=xterm2
+endif
 
 " Show line numbers by default
 set number
