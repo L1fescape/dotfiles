@@ -168,10 +168,10 @@ nnoremap <leader>l <C-W><C-L>
 nnoremap <leader>h <C-W><C-H>
 
 " resizing splits
-nnoremap <leader>= <c-w>+
-nnoremap <leader>- <c-w>-
-nnoremap <leader>+ <c-w><
-nnoremap <leader>_ <c-w>>
+nmap = 10<c-w><
+nmap - 10<c-w>>
+nmap + 10<c-w>+
+nmap _ 10<c-w>-
 
 " new splits
 nnoremap <leader><Bar> <c-w>v
