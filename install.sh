@@ -120,6 +120,7 @@ git_update () {
   info 'setup git'
 
   cp $cwd/git/gitignore $HOME/.gitignore
+  cp $cwd/git/gitconfig $HOME/.gitconfig
 
   success 'setup git'
 }

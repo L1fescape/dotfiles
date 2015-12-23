@@ -1,6 +1,6 @@
 [user]
   name = Andrew Kennedy
-  email = akennedy@cloudflare.com
+  email = andrew@akenn.org
 [alias]
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
   co = checkout
