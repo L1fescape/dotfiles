@@ -4,33 +4,34 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-fugitive'
-Bundle 'bling/vim-airline'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'kien/ctrlp.vim'
-Bundle 'sjl/gundo.vim'
-Bundle 'mattn/emmet-vim'
-Bundle 'rking/ag.vim'
-Bundle 'terryma/vim-expand-region'
+Plugin 'gmarik/vundle'
+Plugin 'tpope/vim-fugitive'
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'kien/ctrlp.vim'
+Plugin 'sjl/gundo.vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'rking/ag.vim'
+Plugin 'terryma/vim-expand-region'
 
 " Completion
-Bundle 'Shougo/neocomplete.vim'
+Plugin 'Shougo/neocomplete.vim'
 
 " HTML, CSS, Javascript
-Bundle 'jakar/vim-json'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'pangloss/vim-javascript'
-Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'JulesWang/css.vim'
-Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'othree/html5.vim'
+Plugin 'jakar/vim-json'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'pangloss/vim-javascript'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'JulesWang/css.vim'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'othree/html5.vim'
 
 " Themes
-Bundle 'sjl/badwolf'
-Bundle 'akenn/itg_flat_vim'
-Bundle 'chriskempson/vim-tomorrow-theme'
+Plugin 'sjl/badwolf'
+Plugin 'akenn/itg_flat_vim'
+Plugin 'chriskempson/vim-tomorrow-theme'
 
 filetype plugin indent on
