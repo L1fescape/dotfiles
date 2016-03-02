@@ -17,6 +17,5 @@ export VIRTUAL_ENV_DISABLE_PROMPT='1' # don't prepend active environment to prom
 
 ## Go variables
 export GOPATH=$HOME/.go
-export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
