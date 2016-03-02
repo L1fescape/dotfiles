@@ -11,13 +11,12 @@ npm=/usr/local/share/npm/bin
 ## Export paths
 export PATH=$homebrew:$npm:$PATH
 
-
-# Variables
-
 ## Virtualenv variables and settings
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUAL_ENV_DISABLE_PROMPT='1' # don't prepend active environment to prompt
 
 ## Go variables
 export GOPATH=$HOME/.go
-
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
