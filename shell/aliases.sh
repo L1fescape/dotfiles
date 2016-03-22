@@ -19,7 +19,15 @@ alias roll='curl -L http://bit.ly/10hA8iC | bash'
 alias co='cp'
 alias tmux='tmux -2' # fix for tmux with 256 colors in ubuntu
 alias t='tmux'
-alias ta='tmux attach || tmux'
+alias ts='tmux ls'
+function ta() {
+  if [ -n "$1" ]
+  then
+    tmux attach-session -t $1
+  else
+    tmux attach || tmux
+  fi
+}
 alias 'ps?'='ps ax | grep '
 function readme() {
   readmefile="${1:-README.md}"
