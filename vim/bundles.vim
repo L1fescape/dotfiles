@@ -16,6 +16,7 @@ Plugin 'sjl/gundo.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'rking/ag.vim'
 Plugin 'terryma/vim-expand-region'
+Plugin 'chase/vim-ansible-yaml'
 
 " Completion
 Plugin 'Shougo/neocomplete.vim'
