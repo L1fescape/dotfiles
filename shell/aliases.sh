@@ -90,25 +90,16 @@ function setmac() {
 alias sniff="sudo ngrep -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
-# LOLZ
-
-function woodo() {
-  if [ $EUID != 0 ]; then
-    echo "It's a weird tree."
-  else
-      echo '     _              __'
-      echo '    / `\  (~._    ./  )'
-      echo '    \__/ __`-_\__/ ./'
-      echo '   _ \ \/  \   \ |_   __'
-      echo ' (   )  \__/ -^    \ /  \'
-      echo '  \_/ "  \  | o  o  |.. /  __'
-      echo "       \\. --' ====  /  || /  \\ "
-      echo '         \   .  .  |---__.\__/'
-      echo '         /  :     /   |   |'
-      echo '         /   :   /     \_/'
-      echo '      --/ ::    ('
-      echo '     (  |     (  (____'
-      echo '   .--  .. ----**.____)'
-      echo '   \___/          '
-  fi
+# Colorized Man Pages
+man() {
+    env \
+        LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+        LESS_TERMCAP_md=$(printf "\e[1;31m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[1;32m") \
+            man "$@"
 }
+
