@@ -87,18 +87,8 @@ programs_install () {
   if [ "$os" = "o" ]; then
     source $cwd/osx/install.sh
   else
-    $pkgmgmt python-pip vim vim-nox
+    $pkgmgmt neovim
   fi
-
-  # install tmux and curl
-  $pkgmgmt tmux curl
-}
-
-packages_install () {
-  # install python packages
-  sudo pip install virtualenv 
-  sudo pip install virtualenvwrapper 
-  sudo pip install httpie
 }
 
 # gitconfig
@@ -182,16 +172,22 @@ tmux_update () {
 # vim
 
 vim_update () {
-  if [ ! -d "$HOME/.vim" ]; then
-    cp -r $cwd/vim $HOME/.vim
-  fi
+  VIM_DIR=$HOME/.vim
+  NVIM_DIR=$HOME/.config/nvim
 
-  cp $cwd/vim/vimrc $HOME/.vimrc
-  cp $cwd/vim/bundles.vim $HOME/.vim/bundles.vim
-  if [ -d "$HOME/.vim/plugin-configs" ]; then
-    rm -rf $HOME/.vim/plugin-configs
-  fi
-  cp -r $cwd/vim/plugin-configs $HOME/.vim
+  declare -a DIRS=("$NVIM_DIR" "$VIM_DIR" "$VIM_DIR/plugin-configs" "$VIM_DIR/colors")
+  for DIR in "${DIRS[@]}"
+  do
+    if [ ! -d "$DIR" ];
+    then
+      mkdir -p $DIR
+    fi
+  done
+
+  cp $cwd/nvim/init.vim $NVIM_DIR/init.vim
+  cp $cwd/nvim/vim/vimrc $HOME/.vimrc
+  cp $cwd/nvim/vim/bundles.vim $VIM_DIR/bundles.vim
+  cp $cwd/nvim/vim/plugin-configs/* $VIM_DIR/plugin-configs
 
   if [ ! -d "$HOME/.vim/bundle/vundle" ]; then
     git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
@@ -203,11 +199,9 @@ vim_update () {
 vim_install () {
   info 'setup vim'
 
-  cp -r $cwd/vim ~/.vim
-
   vim_update
 
-  success 'vim setup'
+  success 'setup vim done'
 }
 
 # misc
@@ -229,13 +223,10 @@ if [ "$1" = "update" ]; then
   vim_update
   tmux_update
   misc_update
-  # todo: add update methods everything else
 else
-  # let's do this!
   prompt_warning
   packagemanager_setup
   programs_install
-  packages_install
 
   git_install
   git_update

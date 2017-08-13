@@ -4,21 +4,12 @@ These are configs I like for programs I use often. Feel free to contribute!
 
 ```
 # install
-sh install.sh
+$ bash install.sh
 
 # update
-git pull
-sh install.sh update
+$ git pull
+$ bash install.sh update
 ```
-
-## Components
-
-- **[fonts/](fonts)**: Sweet typography to make your terminal look fine.
-- **[git/](git)**: Git settings, huzzah!
-- **[osx/](osx)**: OSX specific configs and scripts.
-- **[shell/](shell)**: Contains all settings for Zsh and Bash.
-- **[tmux/](tmux)**: Terminal multiplexer settings. Colors and keybinding settings for that.
-- **[vim/](vim)**: Configs for making my favorite text-editor boss.
 
 ## Acknowledgements
 - [Mathias Bynens](https://github.com/mathiasbynens) ([dotfiles](https://github.com/mathiasbynens/dotfiles))
