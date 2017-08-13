@@ -55,14 +55,17 @@ endif
 " show command in bottom bar
 set showcmd
 
-" full color support
-set term=screen-256color
+if !has('nvim')
+  " full color support
+  set term=screen-256color
+
+  " enable anti-aliased fonts 
+  set anti
+
+endif
 
 " set encoding to utf-8
 set encoding=utf-8
-
-" enable anti-aliased fonts 
-set anti
 
 " set font
 set guifont=Ubuntu\ Mono\ Bold\ 10
