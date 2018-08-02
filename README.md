@@ -2,6 +2,15 @@
 
 These are configs I like for programs I use often. Feel free to contribute!
 
+## Requirements
+
+- git
+- vim
+
+#### Optional
+
+- [Silver Searcher (ag)](https://github.com/ggreer/the_silver_searcher)
+
 ## Installation
 
 ```
