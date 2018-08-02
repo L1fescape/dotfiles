@@ -1,6 +1,6 @@
 [user]
-  name = Andrew Kennedy
-  email = andrew@akenn.org
+  name =
+  email =
 [alias]
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
   co = checkout
