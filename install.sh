@@ -18,22 +18,8 @@ fail () {
   echo ''
   exit
 }
-prompt_warning () {
-  # warn user about overwriting files
-  info "WARNING: This script will replace all current dotfile settings. \n"
-  info "Would you like to continue? [Y/n]: "
-  read cont
-  printf "\n"
-  if [ "$cont" = "n" ]; then
-    echo "Exited."
-    exit
-  fi
-}
 
-
-# gitconfig
-
-git_install () {
+git_config () {
   info 'setup gitconfig'
 
   user ' - What is your github author name?'
@@ -46,7 +32,7 @@ git_install () {
   success 'gitconfig'
 }
 
-git_update () {
+git() {
   info 'setup git'
 
   cp $cwd/git/gitignore $HOME/.gitignore
@@ -55,9 +41,7 @@ git_update () {
   success 'setup git'
 }
 
-# generic shell
-
-shell_update () {
+shell_common() {
   info 'installing shell aliases, functions, and paths'
 
   cp $cwd/shell/aliases.sh $HOME/.aliases
@@ -67,19 +51,7 @@ shell_update () {
   success 'installed shell aliases, functions, and paths'
 }
 
-# zsh
-
-shell_zsh_install () {
-  # Install Zsh
-  info "Installing Zsh \n"
-
-  $pkgmgmt zsh
-
-  info "Setting zsh as default shell \n"
-  chsh -s /bin/zsh
-}
-
-shell_zsh_update () {
+shell_zsh() {
   info 'setting up zsh'
 
   cp $cwd/shell/zsh/zshrc $HOME/.zshrc
@@ -88,9 +60,7 @@ shell_zsh_update () {
   success 'set up zsh'
 }
 
-# bash
-
-shell_bash_update () {
+shell_bash() {
   info 'setting up bash'
 
   cp $cwd/shell/bash/bashrc ~/.bashrc
@@ -99,9 +69,7 @@ shell_bash_update () {
   success 'set up bash'
 }
 
-# tmux
-
-tmux_update () {
+tmux_update() {
   info 'Installing tmux settings.'
 
   cp $cwd/tmux/tmux.conf ~/.tmux.conf
@@ -109,9 +77,9 @@ tmux_update () {
   success 'Installing tmux settings.'
 }
 
-# vim
+vim() {
+  info 'setup vim'
 
-vim_update () {
   VIM_DIR=$HOME/.vim
   NVIM_DIR=$HOME/.config/nvim
 
@@ -134,47 +102,21 @@ vim_update () {
   fi
 
   vim +BundleInstall +qall
-}
-
-vim_install () {
-  info 'setup vim'
-
-  vim_update
 
   success 'setup vim done'
 }
 
-# misc
-
-misc_update () {
+misc() {
   cp $cwd/ag/agignore ~/.agignore
 }
 
-misc_install() {
-  misc_update
-}
-
-# do it!
-
-if [ "$1" = "update" ]; then
-  git_update
-  shell_update
-  shell_zsh_update
-  vim_update
-  tmux_update
-  misc_update
-else
-  prompt_warning
-
-  git_install
-  git_update
-  shell_update
-  shell_zsh_install
-  shell_zsh_update
-  shell_bash_install
-  tmux_update
-  vim_install
-  misc_install
-fi
+# run all the functions
+git
+shell_common
+shell_zsh
+shell_bash
+tmux
+vim
+misc
 
 success "All done!"
