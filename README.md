@@ -1,4 +1,4 @@
-# Dotfiles
+# Settings and configs
 
 These are configs I like for programs I use often. Feel free to contribute!
 
@@ -9,6 +9,7 @@ These are configs I like for programs I use often. Feel free to contribute!
 
 #### Optional
 
+- zsh
 - [Silver Searcher (ag)](https://github.com/ggreer/the_silver_searcher)
 
 ## Installation
