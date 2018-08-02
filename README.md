@@ -2,13 +2,10 @@
 
 These are configs I like for programs I use often. Feel free to contribute!
 
-```
-# install
-$ bash install.sh
+## Installation
 
-# update
-$ git pull
-$ bash install.sh update
+```
+$ bash install.sh
 ```
 
 ## Acknowledgements
