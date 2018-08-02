@@ -1,6 +1,3 @@
-# Determine OS
-[[ `uname` == "Darwin" ]] && OS="osx" || OS="linux" # not checking for windows. screw that.
-
 # Disable software flow control (i.e. <ctrl>-s and <ctrl>-q)
 stty -ixon
 
@@ -55,11 +52,21 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd 'v' edit-command-line
 
+# Load all of the config files in ~/oh-my-zsh that end in .zsh
+# TIP: Add files you don't want in git to .gitignore
+for config_file ($ZSH/lib/*.zsh); do
+  source $config_file
+done
+
+# Load the theme
+if [ ! "$ZSH_THEME" = ""  ]
+  source "$ZSH/$ZSH_THEME.zsh-theme"
+fi
+
 # Load everything else
 . $HOME/.paths
 . $HOME/.aliases
 . $HOME/.functions
-[ "$OS" = "osx" ] && . $HOME/.osx;
 
 # Load machine-specific env vars
 if [ -d "$HOME/.env" ]; then

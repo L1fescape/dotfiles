@@ -52,13 +52,8 @@ alias chmod-get='stat --format "%a"'
 # List all files colorized in long format
 alias l="ls -l ${colorflag}"
 alias ls="ls ${colorflag}"
-
-# List all files colorized in long format, including dot files
+alias lsa="ls -la ${colorflag}"
 alias la="ls -lptra ${colorflag}"
-
-
-# List only directories
-alias lsd='ls -l | grep "^d"'
 
 # `cat` with beautiful colors. requires Pygments installed.
 #                  sudo easy_install Pygments

@@ -1,2 +1,1 @@
 . $HOME/.bashrc
-case "$-" in *i*) byobu-launcher && exit 0; esac;

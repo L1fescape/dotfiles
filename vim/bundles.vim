@@ -18,9 +18,6 @@ Plugin 'rking/ag.vim'
 Plugin 'terryma/vim-expand-region'
 Plugin 'chase/vim-ansible-yaml'
 
-" Completion
-Plugin 'Shougo/neocomplete.vim'
-
 " HTML, CSS, Javascript
 Plugin 'jakar/vim-json'
 Plugin 'kchmck/vim-coffee-script'
@@ -29,6 +26,7 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'JulesWang/css.vim'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'othree/html5.vim'
+Plugin 'leafgarland/typescript-vim'
 
 " Themes
 Plugin 'sjl/badwolf'

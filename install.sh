@@ -31,66 +31,6 @@ prompt_warning () {
 }
 
 
-# Install methods
-
-pkgmgmt=true
-
-packagemanager_setup () {
-  while $pkgmgmt; do
-    # check which os we're running
-    info "Operating System [ a:arch, d:debian, r:redhat, o:osx ]: "
-    read os
-    printf "\n"
-
-    # pick which package manager to use based on os
-    case "$os" in
-      "a")
-        pkgmgmt="pacman -S"
-        ;;
-      "d")
-        pkgmgmt="apt-get install"
-        ;;
-      "r")
-        pkgmgmt="yum install"
-        ;;
-      "o")
-        pkgmgmt="brew install"
-        ;;
-      *)
-        echo "Please select a valid Operating System."
-        ;;
-    esac
-  done
-
-  # prepend sudo if not osx
-  [ $os != "o" ] && pkgmgmt="sudo $pkgmgmt"
-
-  # If osx, check if Homebrew is installed
-  if [ "$os" = "o" ]; then
-    which -s brew
-    if [[ $? != 0 ]] ; then
-        # Install Homebrew
-        info "Installing Homebrew"
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    fi
-  fi
-}
-
-programs_install () {
-  info 'Installing Programs \n'
-
-  # Update packages
-  info "Updating Packages"
-  $pkgmgmt update
-
-  # if osx, install things a little differently
-  if [ "$os" = "o" ]; then
-    source $cwd/osx/install.sh
-  else
-    $pkgmgmt neovim
-  fi
-}
-
 # gitconfig
 
 git_install () {
@@ -185,9 +125,9 @@ vim_update () {
   done
 
   cp $cwd/nvim/init.vim $NVIM_DIR/init.vim
-  cp $cwd/nvim/vim/vimrc $HOME/.vimrc
-  cp $cwd/nvim/vim/bundles.vim $VIM_DIR/bundles.vim
-  cp $cwd/nvim/vim/plugin-configs/* $VIM_DIR/plugin-configs
+  cp $cwd/vim/vimrc $HOME/.vimrc
+  cp $cwd/vim/bundles.vim $VIM_DIR/bundles.vim
+  cp $cwd/vim/plugin-configs/* $VIM_DIR/plugin-configs
 
   if [ ! -d "$HOME/.vim/bundle/vundle" ]; then
     git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
@@ -225,8 +165,6 @@ if [ "$1" = "update" ]; then
   misc_update
 else
   prompt_warning
-  packagemanager_setup
-  programs_install
 
   git_install
   git_update
