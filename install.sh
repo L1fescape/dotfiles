@@ -32,7 +32,7 @@ git_config () {
   success 'gitconfig'
 }
 
-git() {
+git_setup () {
   info 'setup git'
 
   cp $cwd/git/gitignore $HOME/.gitignore
@@ -41,7 +41,7 @@ git() {
   success 'setup git'
 }
 
-shell_common() {
+shell_common_setup () {
   info 'installing shell aliases, functions, and paths'
 
   cp $cwd/shell/aliases.sh $HOME/.aliases
@@ -51,7 +51,7 @@ shell_common() {
   success 'installed shell aliases, functions, and paths'
 }
 
-shell_zsh() {
+shell_zsh_setup () {
   info 'setting up zsh'
 
   cp $cwd/shell/zsh/zshrc $HOME/.zshrc
@@ -60,7 +60,7 @@ shell_zsh() {
   success 'set up zsh'
 }
 
-shell_bash() {
+shell_bash_setup () {
   info 'setting up bash'
 
   cp $cwd/shell/bash/bashrc ~/.bashrc
@@ -69,7 +69,7 @@ shell_bash() {
   success 'set up bash'
 }
 
-tmux_update() {
+tmux_setup () {
   info 'Installing tmux settings.'
 
   cp $cwd/tmux/tmux.conf ~/.tmux.conf
@@ -77,7 +77,7 @@ tmux_update() {
   success 'Installing tmux settings.'
 }
 
-vim() {
+vim_setup () {
   info 'setup vim'
 
   VIM_DIR=$HOME/.vim
@@ -106,17 +106,17 @@ vim() {
   success 'setup vim done'
 }
 
-misc() {
+misc_setup () {
   cp $cwd/ag/agignore ~/.agignore
 }
 
 # run all the functions
-git
-shell_common
-shell_zsh
-shell_bash
-tmux
-vim
-misc
+git_setup
+shell_common_setup
+shell_zsh_setup
+shell_bash_setup
+tmux_setup
+vim_setup
+misc_setup
 
 success "All done!"

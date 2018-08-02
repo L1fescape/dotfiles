@@ -12,9 +12,6 @@ PURE_GIT_PULL=0
 COMPLETION_WAITING_DOTS="true"
 plugins=(vi-mode git z)
 
-# Start Oh My Zsh
-source $ZSH/oh-my-zsh.sh
-
 # 10ms for key sequences (default is 400)
 KEYTIMEOUT=1
 
@@ -59,7 +56,7 @@ for config_file ($ZSH/lib/*.zsh); do
 done
 
 # Load the theme
-if [ ! "$ZSH_THEME" = ""  ]
+if [ ! "$ZSH_THEME" = ""  ]; then
   source "$ZSH/$ZSH_THEME.zsh-theme"
 fi
 
