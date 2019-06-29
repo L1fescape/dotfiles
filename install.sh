@@ -110,6 +110,15 @@ misc_setup () {
   cp $cwd/ag/agignore ~/.agignore
 }
 
+osx_setup () {
+  brew cask install iterm
+  brew cask install visual-studio-code
+  brew install tmux
+  brew install z
+  brew install zsh
+  brew install node
+}
+
 # run all the functions
 git_setup
 shell_common_setup

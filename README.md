@@ -14,8 +14,11 @@ These are configs I like for programs I use often. Feel free to contribute!
 
 ## Installation
 
+Default install symlinks all
+
 ```
 $ bash install.sh
+$ bash install.sh nolink
 ```
 
 ## Acknowledgements
