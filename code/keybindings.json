@@ -1,27 +1,34 @@
+// Place your key bindings in this file to override the defaults
 [
+    { "key": "cmd+t", "when": "editorFocus", "command": "workbench.action.files.newUntitledFile" },
+    { "key": "ctrl+t", "when": "editorFocus", "command": "workbench.action.files.newUntitledFile" },
+    { "key": "cmd+t", "when": "terminalFocus", "command": "workbench.action.terminal.new" },
+    { "key": "ctrl+t", "when": "terminalFocus", "command": "workbench.action.terminal.new" },
+
+    { "key": "cmd+n", "when": "editorFocus", "command": "workbench.action.files.newUntitledFile" },
+    { "key": "ctrl+n", "when": "editorFocus", "command": "workbench.action.files.newUntitledFile" },
+    { "key": "cmd+n", "when": "terminalFocus", "command": "workbench.action.terminal.new" },
+    { "key": "ctrl+n", "when": "terminalFocus", "command": "workbench.action.terminal.new" },
+
+    { "key": "cmd+[", "when": "editorFocus", "command": "workbench.action.navigateBack" },
+    { "key": "ctrl+[", "when": "editorFocus", "command": "workbench.action.navigateBack" },
+
+    { "key": "cmd+]", "when": "editorFocus", "command": "workbench.action.navigateForward" },
+    { "key": "ctrl+]", "when": "editorFocus", "command": "workbench.action.navigateForward" },
+
+    { "key": "cmd+l", "when": "editorFocus", "command": "workbench.action.nextEditor" },
+    { "key": "ctrl+l", "when": "editorFocus", "command": "workbench.action.nextEditor" },
+    { "key": "cmd+l", "when": "terminalFocus", "command": "workbench.action.terminal.focusNext" },
+    { "key": "ctrl+l", "when": "terminalFocus", "command": "workbench.action.terminal.focusNext" },
+
+    { "key": "cmd+h", "when": "editorFocus", "command": "workbench.action.previousEditor" },
+    { "key": "ctrl+h", "when": "editorFocus", "command": "workbench.action.previousEditor" },
+    { "key": "cmd+h", "when": "terminalFocus", "command": "workbench.action.terminal.focusPrevious" },
+    { "key": "ctrl+h", "when": "terminalFocus", "command": "workbench.action.terminal.focusPrevious" },
+
     {
-        "key": "cmd+h",
-        "command": "workbench.action.terminal.focusPrevious",
-        "when": "terminalFocus"
-    },
-    {
-        "key": "cmd+l",
-        "command": "workbench.action.terminal.focusNext",
-        "when": "terminalFocus"
-    },
-    {
-        "key": "cmd+t",
-        "command": "workbench.action.terminal.new",
-        "when": "terminalFocus"
-    },
-    {
-        "key": "cmd+h",
-        "command": "workbench.action.previousEditor",
-        "when": "editorFocus"
-    },
-    {
-        "key": "cmd+l",
-        "command": "workbench.action.nextEditor",
-        "when": "editorFocus"
-    },
-]
+      "key": "ctrl+f",
+      "command": "-extension.vim_ctrl+f",
+      "when": "editorTextFocus && vim.active && vim.use<C-f> && !inDebugRepl && vim.mode != 'Insert'"
+    }
+  ]
