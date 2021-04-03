@@ -1,13 +1,6 @@
 # Disable software flow control (i.e. <ctrl>-s and <ctrl>-q)
 stty -ixon
 
-# Path oh-my-zsh configuration.
-ZSH=$HOME/.zsh
-
-# Set name of the theme to load.
-ZSH_THEME="pure"
-PURE_GIT_PULL=0
-
 # Zsh settings
 COMPLETION_WAITING_DOTS="true"
 plugins=(vi-mode git z)
@@ -44,6 +37,15 @@ bindkey '^E' end-of-line
 bindkey '^F' forward-word
 bindkey '^B' backward-word
 
+# copy mode
+set -g escape-time 1
+set -g mouse on
+set -g status off
+set -g prefix S-C-M-w
+set -g mode-keys vi
+
+bindkey '^Space' copy-mode
+
 # use v to launch edit command
 autoload -Uz edit-command-line
 zle -N edit-command-line
@@ -53,23 +55,17 @@ bindkey -M vicmd 'v' edit-command-line
 autoload -U compinit
 compinit -i -d "${ZSH_COMPDUMP}"
 
-# Load all of the config files that end in .zsh
-for config_file ($ZSH/lib/*.zsh); do
-  source $config_file
-done
-
-# Load the theme
-if [ ! "$ZSH_THEME" = ""  ]; then
-  source "$ZSH/$ZSH_THEME.zsh-theme"
-fi
-
-
-# Load everything else
-. $HOME/.paths
+# commands, aliases, settings
 . $HOME/.aliases
 . $HOME/.functions
+. $HOME/.paths
 
 # Load machine-specific env vars
 if [ -d "$HOME/.env" ]; then
   for i in $HOME/.env/*.sh ; do source $i ; done
 fi
+
+# Setup pure theme
+fpath+=$HOME/.zsh/pure
+autoload -U promptinit; promptinit
+prompt pure

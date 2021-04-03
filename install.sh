@@ -29,7 +29,7 @@ git_config () {
 
   sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" $cwd/git/gitconfig > $HOME/.gitconfig
 
-  success 'gitconfig'
+  success 'setup gitconfig'
 }
 
 git_setup () {
@@ -42,39 +42,39 @@ git_setup () {
 }
 
 shell_common_setup () {
-  info 'installing shell aliases, functions, and paths'
+  info 'setup shell aliases, functions, and paths'
 
   cp $cwd/shell/aliases.sh $HOME/.aliases
   cp $cwd/shell/functions.sh $HOME/.functions
   cp $cwd/shell/paths.sh $HOME/.paths
 
-  success 'installed shell aliases, functions, and paths'
+  success 'setup shell aliases, functions, and paths'
 }
 
 shell_zsh_setup () {
-  info 'setting up zsh'
+  info 'setup zsh'
 
-  cp $cwd/shell/zsh/zshrc $HOME/.zshrc
-  cp -r $cwd/shell/zsh $HOME/.zsh
+  cp $cwd/shell/zshrc $HOME/.zshrc
+  if [ ! -d "$HOME/.zsh/pure" ];
+  then
+    git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+  fi
 
-  success 'set up zsh'
+  success 'setup zsh'
 }
 
 shell_bash_setup () {
-  info 'setting up bash'
+  info 'setup bash'
 
-  cp $cwd/shell/bash/bashrc ~/.bashrc
-  cp -r $cwd/shell/bash ~/.bash
+  cp $cwd/shell/bashrc ~/.bashrc
 
-  success 'set up bash'
+  success 'setup bash'
 }
 
 tmux_setup () {
-  info 'Installing tmux settings.'
-
+  info 'setup tmux'
   cp $cwd/tmux/tmux.conf ~/.tmux.conf
-
-  success 'Installing tmux settings.'
+  success 'setup tmux'
 }
 
 vim_setup () {
@@ -103,7 +103,7 @@ vim_setup () {
 
   vim +BundleInstall +qall
 
-  success 'setup vim done'
+  success 'setup vim'
 }
 
 misc_setup () {
@@ -128,4 +128,6 @@ tmux_setup
 vim_setup
 misc_setup
 
-success "All done!"
+echo ''
+echo 'done!'
+echo ''
