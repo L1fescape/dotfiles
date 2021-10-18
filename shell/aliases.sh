@@ -1,26 +1,37 @@
 #!/bin/bash
 
-# Aliases
-alias dotupdate="cd ~/code/dotfiles; git pull; bash install.sh update; cd -"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
+
 alias vi="vim"
 alias v="vim"
+
+alias d="docker"
+alias dc="docker-compose"
+
 alias :q="exit"
 alias :Q="exit"
+
 alias s="ls" # ;s
 alias ks="ls" # I mistype ls often
 alias sl="ls"
+# List all files colorized in long format
+alias l="ls -l ${colorflag}"
+alias ls="ls ${colorflag}"
+alias lsa="ls -la ${colorflag}"
+alias la="ls -lptra ${colorflag}"
+
 alias diff='vim -d'
-alias roll='curl -L http://bit.ly/10hA8iC | bash'
 alias co='cp'
+
 alias tmux='tmux -2' # fix for tmux with 256 colors in ubuntu
 alias t='tmux'
 alias ts='tmux ls'
-function ta() {
+# try to reattach to an existing tmux session, otherwise create one
+function ta() { 
   if [ -n "$1" ]
   then
     tmux attach-session -t $1
@@ -28,15 +39,8 @@ function ta() {
     tmux attach || tmux
   fi
 }
-alias 'ps?'='ps ax | grep '
-function readme() {
-  readmefile="${1:-README.md}"
-  pandoc -s -f markdown -t man "$readmefile" | groff -T utf8 -man | less
-}
 
-alias makegist="pbpaste | gist | pbcopy"
-alias makepate="pbpaste | pastebin -f - | pbcopy"
-alias xclip="xclip -selection c"
+alias 'ps?'='ps ax | grep '
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -48,15 +52,6 @@ fi
 # Get chmod value of a file
 alias chmod-get='stat --format "%a"'
 
-# List all files colorized in long format
-alias l="ls -l ${colorflag}"
-alias ls="ls ${colorflag}"
-alias lsa="ls -la ${colorflag}"
-alias la="ls -lptra ${colorflag}"
-
-# `cat` with beautiful colors. requires Pygments installed.
-#                  sudo easy_install Pygments
-alias c='pygmentize -O style=monokai -f console256 -g'
 
 # IP addresses
 function localip() {
