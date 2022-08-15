@@ -11,6 +11,10 @@ KEYTIMEOUT=1
 # rm * without asking for confirmation
 setopt rmstarsilent
 
+# History
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+
 # Prefer US English and use UTF-8
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
