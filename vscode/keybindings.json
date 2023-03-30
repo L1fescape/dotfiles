@@ -2,13 +2,13 @@
 [
     { "key": "cmd+t", "when": "editorFocus", "command": "workbench.action.files.newUntitledFile" },
     { "key": "ctrl+t", "when": "editorFocus", "command": "workbench.action.files.newUntitledFile" },
-    { "key": "cmd+t", "when": "terminalFocus", "command": "workbench.action.terminal.new" },
-    { "key": "ctrl+t", "when": "terminalFocus", "command": "workbench.action.terminal.new" },
+    { "key": "cmd+t", "when": "terminalFocus", "command": "workbench.action.terminal.newWithCwd" },
+    { "key": "ctrl+t", "when": "terminalFocus", "command": "workbench.action.terminal.newWithCwd" },
 
     { "key": "cmd+n", "when": "editorFocus", "command": "workbench.action.files.newUntitledFile" },
     { "key": "ctrl+n", "when": "editorFocus", "command": "workbench.action.files.newUntitledFile" },
-    { "key": "cmd+n", "when": "terminalFocus", "command": "workbench.action.terminal.new" },
-    { "key": "ctrl+n", "when": "terminalFocus", "command": "workbench.action.terminal.new" },
+    { "key": "cmd+n", "when": "terminalFocus", "command": "workbench.action.terminal.newWithCwd" },
+    { "key": "ctrl+n", "when": "terminalFocus", "command": "workbench.action.terminal.newWithCwd" },
 
     { "key": "cmd+[", "when": "editorFocus", "command": "workbench.action.navigateBack" },
     { "key": "ctrl+[", "when": "editorFocus", "command": "workbench.action.navigateBack" },
@@ -25,6 +25,9 @@
     { "key": "ctrl+h", "when": "editorFocus", "command": "workbench.action.previousEditor" },
     { "key": "cmd+h", "when": "terminalFocus", "command": "workbench.action.terminal.focusPrevious" },
     { "key": "ctrl+h", "when": "terminalFocus", "command": "workbench.action.terminal.focusPrevious" },
+
+    { "key": "cmd+w", "when": "terminalFocus", "command": "workbench.action.terminal.kill" },
+    { "key": "ctrl+w", "when": "terminalFocus", "command": "workbench.action.terminal.kill" },
 
     {
       "key": "ctrl+f",
