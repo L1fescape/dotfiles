@@ -16,13 +16,11 @@ alias :q="exit"
 alias :Q="exit"
 
 alias s="ls" # ;s
-alias ks="ls" # I mistype ls often
+alias ks="ls"
 alias sl="ls"
-# List all files colorized in long format
-alias l="ls -l ${colorflag}"
-alias ls="ls ${colorflag}"
-alias lsa="ls -la ${colorflag}"
-alias la="ls -lptra ${colorflag}"
+alias l="ls -l"
+alias lsa="ls -la"
+alias la="ls -lptra"
 
 alias diff='vim -d'
 alias co='cp'
