@@ -15,6 +15,7 @@ alias dc="docker-compose"
 alias :q="exit"
 alias :Q="exit"
 
+alias ls="ls --color=auto"
 alias s="ls" # ;s
 alias ks="ls"
 alias sl="ls"
