@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Settings
-cwd=$(pwd)
+# Settings (always relative to this script, not the caller's pwd)
+cwd="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # functions for text formatting
 info () {
@@ -119,14 +119,67 @@ osx_setup () {
   brew install node
 }
 
-# run all the functions
-git_setup
-shell_common_setup
-shell_zsh_setup
-shell_bash_setup
-tmux_setup
-vim_setup
-misc_setup
+usage () {
+  cat <<EOF
+Usage: $(basename "$0") [target...]
+
+Install dotfiles into \$HOME. With no arguments, runs all default targets.
+
+Targets:
+  git         Copy .gitconfig and .gitignore
+  git-config  Interactive .gitconfig setup (prompts for name/email)
+  shell       Copy .aliases, .functions, and .paths
+  zsh         Copy .zshrc and clone pure prompt
+  bash        Copy .bashrc
+  tmux        Copy .tmux.conf
+  vim         Copy vim/nvim config and install bundles
+  misc        Copy .agignore
+  osx         Install packages via Homebrew (macOS only)
+  all         Run all default targets (same as no arguments)
+
+Examples:
+  $(basename "$0")              # install everything
+  $(basename "$0") zsh tmux     # install only zsh and tmux configs
+  $(basename "$0") git-config   # interactive git setup
+EOF
+}
+
+run_target () {
+  case "$1" in
+    git) git_setup ;;
+    git-config) git_config ;;
+    shell) shell_common_setup ;;
+    zsh) shell_zsh_setup ;;
+    bash) shell_bash_setup ;;
+    tmux) tmux_setup ;;
+    vim) vim_setup ;;
+    misc) misc_setup ;;
+    osx) osx_setup ;;
+    all) return 0 ;;
+    -h|--help|help) usage; exit 0 ;;
+    *)
+      fail "unknown target: $1 (run '$(basename "$0") help' for usage)"
+      ;;
+  esac
+}
+
+default_targets=(git shell zsh bash tmux vim misc)
+
+if [ $# -eq 0 ] || { [ $# -eq 1 ] && [ "$1" = "all" ]; }; then
+  targets=("${default_targets[@]}")
+else
+  targets=()
+  for arg in "$@"; do
+    if [ "$arg" = "all" ]; then
+      fail "'all' cannot be combined with other targets (use 'all' alone or omit arguments)"
+    fi
+    targets+=("$arg")
+  done
+fi
+
+for target in "${targets[@]}"; do
+  run_target "$target"
+done
 
 echo ''
 echo 'done!'

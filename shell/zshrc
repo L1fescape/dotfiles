@@ -1,32 +1,38 @@
 # Disable software flow control (i.e. <ctrl>-s and <ctrl>-q)
 stty -ixon
 
-# Zsh settings
-COMPLETION_WAITING_DOTS="true"
-plugins=(vi-mode git z)
-
 # 10ms for key sequences (default is 400)
 KEYTIMEOUT=1
+
+# vi-style line editing (replaces oh-my-zsh vi-mode plugin)
+bindkey -v
 
 # rm * without asking for confirmation
 setopt rmstarsilent
 
-# History
-SAVEHIST=10000
+# History (INC_APPEND + SHARE are required for tmux panes that stay open)
 HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt EXTENDED_HISTORY
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_FIND_NO_DUPS
 
 # Prefer US English and use UTF-8
 export LC_ALL="en_US.UTF-8"
-export LANG="en_US"
+export LANG="en_US.UTF-8"
 
 # Set default editor
 export EDITOR='vim'
 
 # By default, zsh considers many characters part of a word (e.g., _ and -).
-# # Narrow that down to allow easier skipping through words via M-f and M-b.
+# Narrow that down to allow easier skipping through words via M-f and M-b.
 export WORDCHARS='*?[]~&;!$%^<>'
 
-## re-bind zsh backwards search (gets unbound by vi-mode plugin)
+## re-bind zsh backwards search (vi mode unbinds these by default)
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 bindkey '^[[3~' delete-char
@@ -41,22 +47,14 @@ bindkey '^E' end-of-line
 bindkey '^F' forward-word
 bindkey '^B' backward-word
 
-# copy mode
-set -g escape-time 1
-set -g mouse on
-set -g status off
-set -g prefix S-C-M-w
-set -g mode-keys vi
-
-bindkey '^Space' copy-mode
-
-# use v to launch edit command
+# use v to launch edit command in vi command mode
 autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd 'v' edit-command-line
 
 # Load and run compinit
 autoload -U compinit
+ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/zcompdump-${HOST}-${ZSH_VERSION}"
 compinit -i -d "${ZSH_COMPDUMP}"
 
 # commands, aliases, settings
@@ -72,4 +70,25 @@ fi
 # Setup pure theme
 fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
+
+# Pure prints a leading newline before every prompt. Skip it on the first
+# prompt (new window/pane); keep spacing between commands.
+__pure_first_prompt=1
+print() {
+  if (( $# == 0 )) && [[ ${funcstack[2]:-} == prompt_pure_preprompt_render ]]; then
+    if (( __pure_first_prompt )); then
+      __pure_first_prompt=0
+    else
+      builtin print
+    fi
+  else
+    builtin print "$@"
+  fi
+}
+
+clear() {
+  __pure_first_prompt=1
+  command clear "$@"
+}
+
 prompt pure

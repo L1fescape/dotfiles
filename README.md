@@ -1,27 +1,17 @@
-# Settings and configs
-
-These are configs I like for programs I use often. Feel free to contribute!
-
-## Requirements
-
-- git
-- vim
-
-#### Optional
-
-- zsh
-- [Silver Searcher (ag)](https://github.com/ggreer/the_silver_searcher)
+# Env Settings and configs
 
 ## Installation
 
-Default install symlinks all
+Copies configs into `$HOME`. Run from the repo root:
 
-```
-$ bash install.sh
-$ bash install.sh nolink
+```bash
+bash install.sh              # install everything
+bash install.sh zsh tmux     # install specific targets only
+bash install.sh help         # list targets
 ```
 
 ## Acknowledgements
+
 - [Mathias Bynens](https://github.com/mathiasbynens) ([dotfiles](https://github.com/mathiasbynens/dotfiles))
 - [Zach Holman](https://github.com/holman) ([dotfiles](https://github.com/holman/dotfiles))
 - [Paul Irish](https://github.com/paulirish) ([dotfiles](https://github.com/paulirish/dotfiles))

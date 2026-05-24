@@ -1,36 +1,33 @@
+export EDITOR=vim
 # Check for an interactive session
 [ -z "$PS1" ] && return
 
 # Colors
 export TERM="xterm-256color"
 
-## colored grep
-export GREP_OPTIONS='--color=auto'
-export GREP_COLOR='1;33'
+## colored grep (GREP_OPTIONS is deprecated; use an alias instead)
+alias grep='grep --color=auto'
+export GREP_COLORS='mt=1;33'
 
 ## colored ls
 export LSCOLORS='Gxfxcxdxdxegedabagacad'
 
-# Theme
-export BASH_THEME="pure"
-export BASH_DIR="${HOME}/.bash"
-
-## Load colors first so they can be use in base theme
-source "${BASH_DIR}/themes/colors.theme.bash"
-source "${BASH_DIR}/themes/base.theme.bash"
-
-## Load theme
-source "$BASH_DIR/themes/$BASH_THEME/$BASH_THEME.theme.bash"
+# Standard colored prompt: user@host:path$
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
 # set vi mode
 set -o vi
 
 # don't put duplicate lines in the history. See bash(1) for more options
-# ... or force ignoredups and ignorespace
 HISTCONTROL=ignoredups:ignorespace
+HISTSIZE=10000
+HISTFILESIZE=20000
 
 # append to the history file, don't overwrite it
 shopt -s histappend
+
+# flush history after each command (needed for long-lived tmux panes)
+PROMPT_COMMAND='history -a; history -n'${PROMPT_COMMAND:+; $PROMPT_COMMAND}
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
