@@ -1,0 +1,12 @@
+{
+    "window.autoDetectColorScheme": true,
+    "remote.SSH.remotePlatform": {
+        "home": "linux"
+    },
+    "files.exclude": {
+        "**/.*": true
+    },
+    "terminal.integrated.showExitAlert": false,
+    "workbench.editor.wrapTabs": true,
+    "workbench.agentsWindowButton.enabled": false
+}

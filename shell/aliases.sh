@@ -11,6 +11,7 @@ alias v="vim"
 
 alias d="docker"
 alias dc="docker-compose"
+alias dls="docker container ls -a --format \"table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}\""
 
 alias :q="exit"
 alias :Q="exit"
