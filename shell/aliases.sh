@@ -6,11 +6,27 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 
-alias vi="vim"
-alias v="vim"
+# Editor: prefer neovim, but fall back to vim on machines without it so these
+# aliases work everywhere.
+if command -v nvim > /dev/null 2>&1; then
+  editor="nvim"
+  alias vim="nvim"
+  alias vimdiff="nvim -d"
+else
+  editor="vim"
+fi
+
+export EDITOR="$editor"
+export VISUAL="$editor"
+
+alias vi="$editor"
+alias v="$editor"
+alias diff="$editor -d"
+
+unset editor
 
 alias d="docker"
-alias dc="docker-compose"
+alias dc="docker compose"
 alias dls="docker container ls -a --format \"table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}\""
 
 alias :q="exit"
@@ -24,7 +40,6 @@ alias l="ls -l"
 alias lsa="ls -la"
 alias la="ls -lptra"
 
-alias diff='vim -d'
 alias co='cp'
 
 alias tmux='tmux -2' # fix for tmux with 256 colors in ubuntu

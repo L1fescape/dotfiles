@@ -81,9 +81,8 @@ vim_setup () {
   info 'setup vim'
 
   VIM_DIR=$HOME/.vim
-  NVIM_DIR=$HOME/.config/nvim
 
-  declare -a DIRS=("$NVIM_DIR" "$VIM_DIR" "$VIM_DIR/plugin-configs" "$VIM_DIR/colors")
+  declare -a DIRS=("$VIM_DIR" "$VIM_DIR/plugin-configs" "$VIM_DIR/colors")
   for DIR in "${DIRS[@]}"
   do
     if [ ! -d "$DIR" ];
@@ -92,7 +91,6 @@ vim_setup () {
     fi
   done
 
-  cp $cwd/nvim/init.vim $NVIM_DIR/init.vim
   cp $cwd/vim/vimrc $HOME/.vimrc
   cp $cwd/vim/bundles.vim $VIM_DIR/bundles.vim
   cp $cwd/vim/plugin-configs/* $VIM_DIR/plugin-configs
@@ -104,6 +102,91 @@ vim_setup () {
   vim +BundleInstall +qall
 
   success 'setup vim'
+}
+
+# The config needs features from neovim 0.11. Distro packages are often older
+# than that (Ubuntu 24.04 still ships 0.9), so check the version, not just
+# whether the binary exists.
+nvim_is_current () {
+  command -v nvim > /dev/null 2>&1 || return 1
+
+  version="$(nvim --version 2>/dev/null | head -1 | sed 's/^NVIM v//')"
+  [ -n "$version" ] || return 1
+  [ "$(printf '%s\n0.11.0\n' "$version" | sort -V | head -1)" = '0.11.0' ]
+}
+
+nvim_setup () {
+  info 'setup neovim'
+
+  NVIM_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/nvim"
+  mkdir -p "$NVIM_DIR"
+
+  # The old config was an init.vim that sourced ~/.vimrc. Neovim refuses to
+  # start when both init.vim and init.lua are present, so clear it out.
+  rm -f "$NVIM_DIR/init.vim"
+
+  cp -R "$cwd/nvim/." "$NVIM_DIR/"
+
+  if ! nvim_is_current; then
+    success "setup neovim (config only, run '$(basename "$0") nvim-install' for neovim 0.11+)"
+    return
+  fi
+
+  # Install plugins and parsers up front so the first real launch is quiet.
+  nvim --headless '+Lazy! sync' +qa > /dev/null 2>&1
+
+  success 'setup neovim'
+}
+
+nvim_install () {
+  info 'install neovim'
+
+  if [ "$(uname -s)" = "Darwin" ]; then
+    brew install neovim tree-sitter ripgrep
+    success 'install neovim'
+    return
+  fi
+
+  case "$(uname -m)" in
+    x86_64|amd64) nvim_arch='x86_64'; ts_arch='x64' ;;
+    aarch64|arm64) nvim_arch='arm64'; ts_arch='arm64' ;;
+    *) fail "install neovim (unsupported architecture: $(uname -m))" ;;
+  esac
+
+  prefix="$HOME/.local"
+  tmp="$(mktemp -d)"
+  mkdir -p "$prefix/bin" "$prefix/share"
+
+  if ! curl -fsSL "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-${nvim_arch}.tar.gz" -o "$tmp/nvim.tar.gz"; then
+    rm -rf "$tmp"
+    fail 'install neovim (download failed)'
+  fi
+
+  rm -rf "$prefix/share/nvim-linux-${nvim_arch}"
+  tar -xzf "$tmp/nvim.tar.gz" -C "$prefix/share"
+  ln -sf "$prefix/share/nvim-linux-${nvim_arch}/bin/nvim" "$prefix/bin/nvim"
+
+  # nvim-treesitter builds parsers with the tree-sitter CLI and a C compiler.
+  if ! command -v tree-sitter > /dev/null 2>&1; then
+    if curl -fsSL "https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-linux-${ts_arch}.gz" -o "$tmp/tree-sitter.gz"; then
+      gunzip -c "$tmp/tree-sitter.gz" > "$prefix/bin/tree-sitter"
+      chmod +x "$prefix/bin/tree-sitter"
+    fi
+  fi
+
+  rm -rf "$tmp"
+
+  case ":$PATH:" in
+    *":$prefix/bin:"*) ;;
+    *) printf "\r\033[2K  [ \033[0;33m?\033[0m ] put %s ahead of /usr/bin in your PATH (.paths does this)\n" "$prefix/bin" ;;
+  esac
+
+  # Make the new binary visible to targets running later in this same pass,
+  # shadowing any older neovim from the system package manager.
+  export PATH="$prefix/bin:$PATH"
+  hash -r
+
+  success "install neovim ($(nvim --version | head -1))"
 }
 
 misc_setup () {
@@ -126,21 +209,24 @@ Usage: $(basename "$0") [target...]
 Install dotfiles into \$HOME. With no arguments, runs all default targets.
 
 Targets:
-  git         Copy .gitconfig and .gitignore
-  git-config  Interactive .gitconfig setup (prompts for name/email)
-  shell       Copy .aliases, .functions, and .paths
-  zsh         Copy .zshrc and clone pure prompt
-  bash        Copy .bashrc
-  tmux        Copy .tmux.conf
-  vim         Copy vim/nvim config and install bundles
-  misc        Copy .agignore
-  osx         Install packages via Homebrew (macOS only)
-  all         Run all default targets (same as no arguments)
+  git           Copy .gitconfig and .gitignore
+  git-config    Interactive .gitconfig setup (prompts for name/email)
+  shell         Copy .aliases, .functions, and .paths
+  zsh           Copy .zshrc and clone pure prompt
+  bash          Copy .bashrc
+  tmux          Copy .tmux.conf
+  vim           Copy vim config and install bundles
+  nvim          Copy neovim config into ~/.config/nvim and sync plugins
+  nvim-install  Download neovim and the tree-sitter CLI into ~/.local
+  misc          Copy .agignore
+  osx           Install packages via Homebrew (macOS only)
+  all           Run all default targets (same as no arguments)
 
 Examples:
-  $(basename "$0")              # install everything
-  $(basename "$0") zsh tmux     # install only zsh and tmux configs
-  $(basename "$0") git-config   # interactive git setup
+  $(basename "$0")                   # install everything
+  $(basename "$0") zsh tmux          # install only zsh and tmux configs
+  $(basename "$0") nvim-install nvim # install neovim, then its config
+  $(basename "$0") git-config        # interactive git setup
 EOF
 }
 
@@ -153,6 +239,8 @@ run_target () {
     bash) shell_bash_setup ;;
     tmux) tmux_setup ;;
     vim) vim_setup ;;
+    nvim) nvim_setup ;;
+    nvim-install) nvim_install ;;
     misc) misc_setup ;;
     osx) osx_setup ;;
     all) return 0 ;;
@@ -163,7 +251,8 @@ run_target () {
   esac
 }
 
-default_targets=(git shell zsh bash tmux vim misc)
+# nvim-install is opt-in: it downloads binaries rather than copying configs.
+default_targets=(git shell zsh bash tmux vim nvim misc)
 
 if [ $# -eq 0 ] || { [ $# -eq 1 ] && [ "$1" = "all" ]; }; then
   targets=("${default_targets[@]}")

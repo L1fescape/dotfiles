@@ -25,7 +25,8 @@ setopt HIST_FIND_NO_DUPS
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 
-# Set default editor
+# Default editor. ~/.aliases is sourced later and upgrades this to nvim when
+# neovim is installed.
 export EDITOR='vim'
 
 # By default, zsh considers many characters part of a word (e.g., _ and -).

@@ -1,3 +1,5 @@
+# Default editor. ~/.aliases is sourced later and upgrades this to nvim when
+# neovim is installed.
 export EDITOR=vim
 # Check for an interactive session
 [ -z "$PS1" ] && return
