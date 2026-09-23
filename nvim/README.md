@@ -31,7 +31,7 @@ machines without it.
 | `nvim/lua/plugins/` | One file per plugin group |
 | `nvim/lua/util/` | Helpers too small to be plugins |
 
-### Keymaps
+## Keymaps
 
 The bindings from `.vimrc` carry over, including `<Space>` as leader, `\` as the
 toggle prefix, `L`/`H` for tabs and `<leader>hjkl` for splits. The differences
