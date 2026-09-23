@@ -10,31 +10,6 @@ bash install.sh zsh tmux     # install specific targets only
 bash install.sh help         # list targets
 ```
 
-### Keymaps
-
-The bindings from `.vimrc` carry over, including `<Space>` as leader, `\` as the
-toggle prefix, `L`/`H` for tabs and `<leader>hjkl` for splits. The differences
-worth knowing:
-
-| Key | Does |
-| --- | --- |
-| `<leader>o` | Find files (was ctrlp) |
-| `<leader>a`, `<C-f>` | Grep the project (was ag.vim) |
-| `<leader>n` | Toggle the file tree (was NERDTree) |
-| `<leader>f` | Format the buffer |
-| `<C-k>` / `<C-j>` | Grow / shrink the selection by syntax node |
-| `gd`, `gr`, `gh` | Go to definition, list references, hover docs |
-| `<leader>cr`, `<leader>ca` | Rename symbol, code action |
-| `<leader>g…` | Git hunks and status |
-| `\u` | Undo history (was gundo) |
-
-Hover is on `gh` rather than the usual `K`, because `K` is already the
-join-with-line-above mapping from the vim config.
-
-Icons are off by default since `fonts/` ships Powerline fonts rather than Nerd
-Fonts. Install a [Nerd Font](https://www.nerdfonts.com) and set
-`vim.g.have_nerd_font = true` in `nvim/lua/config/options.lua` to turn them on.
-
 ## Acknowledgements
 
 - [Mathias Bynens](https://github.com/mathiasbynens) ([dotfiles](https://github.com/mathiasbynens/dotfiles))
